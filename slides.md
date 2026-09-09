@@ -981,6 +981,194 @@ In the circuit, we need to add this SMT proof, to prove that the leaf at index `
 </style>
 
 ---
+layout: center
+class: text-center
+transition: slide-up
+---
+
+# The Circuit is Too Big!
+
+<div class="grid grid-cols-2 gap-6 mt-6 max-w-2xl mx-auto">
+  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-6">
+    <carbon:password class="text-3xl text-yellow-400 mb-2" />
+    <div class="text-3xl font-bold">2 GB</div>
+    <div class="text-sm opacity-70 mt-1">Proving key</div>
+  </div>
+  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-6">
+    <carbon:chip class="text-3xl text-yellow-400 mb-2" />
+    <div class="text-3xl font-bold">2 GB</div>
+    <div class="text-sm opacity-70 mt-1">Memory usage</div>
+  </div>
+</div>
+
+<div v-click class="mt-8 flex justify-center">
+  <div class="bg-red-500/10 backdrop-blur rounded-xl border border-red-400/40 p-4 flex items-center gap-4 max-w-md">
+    <carbon:mobile class="text-3xl text-red-400 shrink-0" />
+    <div class="text-left">The app <b>crashes</b> on <b>iPhone 16 Pro</b><br/>(out of memory — OOM)</div>
+  </div>
+</div>
+
+---
+transition: slide-up
+layout: center
+class: text-center
+---
+
+# What Do We Do When the Circuit is Too Big?
+
+<div class="mt-8 flex items-center justify-center gap-4">
+  <div v-click class="bg-red-50 rounded-xl border-2 border-red-400 p-5 text-center">
+    <carbon:circuit-composer class="text-4xl text-red-500 mb-2 mx-auto" />
+    <div class="text-lg font-semibold text-gray-800">1 circuit</div>
+    <div class="text-sm text-gray-600 mt-1">RSA × 2 + SMT</div>
+    <div class="text-sm text-red-600 mt-2 font-bold">1 proof</div>
+    <div class="text-sm text-red-600 mt-2 font-bold">2GB memory</div>
+  </div>
+  <carbon:arrow-right v-click class="text-3xl text-gray-500 shrink-0" />
+  <div v-click class="flex gap-3">
+    <div class="bg-green-50 rounded-xl border-2 border-green-400 p-5 text-center">
+      <carbon:circuit-composer class="text-3xl text-blue-600 mb-2 mx-auto" />
+      <div class="text-lg font-semibold text-gray-800"><code>certChain</code> circuit</div>
+      <div class="text-sm text-gray-600 mt-1">RSA: Issuer → cert</div>
+      <div class="text-sm text-green-600 mt-2 font-bold"><code>certChain</code> proof</div>
+      <div class="text-sm text-green-600 mt-2 font-bold">1GB memory</div>
+    </div>
+    <div class="text-2xl text-gray-500 self-center">+</div>
+    <div class="bg-green-50 rounded-xl border-2 border-green-400 p-5 text-center">
+      <carbon:circuit-composer class="text-3xl text-blue-600 mb-2 mx-auto" />
+      <div class="text-lg font-semibold text-gray-800"><code>userSig</code> circuit</div>
+      <div class="text-sm text-gray-600 mt-1">RSA: User → message<br/>+ SMT</div>
+      <div class="text-sm text-green-600 mt-2 font-bold"><code>userSig</code> proof</div>
+      <div class="text-sm text-green-600 mt-2 font-bold">1GB memory</div>
+    </div>
+  </div>
+</div>
+
+<div v-click class="mt-6 flex justify-center">
+  <div class="bg-green-50 rounded-xl border-2 border-green-400 px-5 py-3 flex items-center gap-3">
+    <carbon:checkmark-filled class="text-2xl text-green-600 shrink-0" />
+    <div class="text-lg text-gray-800">Splitting the two circuits <b>runs them separately</b>, so <b class="text-green-600">peak memory is only 1GB</b></div>
+  </div>
+</div>
+
+
+---
+transition: slide-up
+layout: center
+class: text-center
+---
+
+# How Do We Ensure Both ZK Proofs <br/> Come From the Same Citizen Digital Certificate
+
+
+---
+transition: slide-up 
+---
+
+# Current ZK Circuit
+
+<div class="diagrams-wrap">
+
+<div class="flex items-start justify-center">
+  <div class="flex flex-col gap-2 text-base text-right self-center pl-10">
+    <div class="flex items-center justify-end text-blue-400 mt-6">*Issuer RSA public key <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
+    <div class="flex items-center justify-end text-gray-500">Issuer RSA signature <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
+    <div class="flex items-center justify-end text-gray-500">User X.509 cert (TBS) <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
+  </div>
+  <div class="flex flex-col items-center">
+    <div class="text-base tracking-[0.2em] text-gray-700 mb-2">CertChain Circuit</div>
+    <div class="border-2 border-dashed border-gray-700 rounded-xl p-4">
+      <div class="border-2 border-slate-500 bg-slate-300/60 rounded-lg px-6 py-4 text-center">
+        <div class="font-bold text-base">RSA signature</div>
+        <div class="text-sm text-gray-600">Issuer → User cert</div>
+      </div>
+    </div>
+  </div>
+  <div class="relative flex items-center self-center text-gray-500">
+    <span class="arrow-line w-16"></span>
+    <div class="border-2 border-amber-500 bg-amber-100/60 rounded-lg px-5 py-4 text-center font-bold text-amber-700">CertChain proof</div>
+  </div>
+</div>
+
+<div class="flex items-start justify-center mt-4">
+  <div class="flex flex-col gap-2 text-base text-right self-center pl-10">
+    <div class="flex items-center justify-end text-gray-500 mt-10">User RSA public key <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
+    <div class="flex items-center justify-end text-gray-500">User RSA signature <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
+    <div class="flex items-center justify-end text-blue-400">*Message (TBS) <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
+    <div class="flex items-center justify-end text-blue-400">*SMT root <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
+    <div class="flex items-center justify-end text-gray-500">serialNumber <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
+    <div class="flex items-center justify-end text-gray-500">SMT siblings <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
+  </div>
+  <div class="flex flex-col items-center">
+    <div class="text-base tracking-[0.2em] text-gray-700 mb-2">UserSig Circuit</div>
+    <div class="border-2 border-dashed border-gray-700 rounded-xl p-4 flex flex-col gap-4">
+      <div class="border-2 border-slate-500 bg-slate-300/60 rounded-lg px-6 py-4 text-center">
+        <div class="font-bold text-base">RSA signature</div>
+        <div class="text-sm text-gray-600">User → message</div>
+      </div>
+      <div class="border-2 border-slate-500 bg-slate-300/60 rounded-lg px-6 py-4 text-center">
+        <div class="font-bold text-base">SMT non-membership</div>
+        <div class="text-sm text-gray-600">serialNumber not revoked</div>
+      </div>
+    </div>
+  </div>
+  <div class="relative flex items-center self-center mt-8 text-gray-500">
+    <span class="arrow-line w-16"></span>
+    <div class="border-2 border-amber-500 bg-amber-100/60 rounded-lg px-5 py-4 text-center font-bold text-amber-700">UserSig proof</div>
+  </div>
+</div>
+
+<div v-click class="overlay-note-20">How do we ensure these two ZK Proofs are linked?</div>
+
+</div>
+
+<div class="flex justify-center gap-6 mt-4 text-base text-gray-500">
+  <span class="flex items-center gap-2"><span class="w-6 h-0.5 bg-blue-400"></span>Public input</span>
+  <span class="flex items-center gap-2"><span class="w-6 h-0.5 bg-gray-500"></span>Private input</span>
+  <span class="flex items-center gap-2"><span class="w-6 h-0.5 bg-amber-500"></span>Circuit output</span>
+</div>
+
+<style>
+.diagrams-wrap {
+  position: relative;
+}
+.overlay-note-20 {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 2px solid #f87171;
+  background: #fef2f2;
+  color: #dc2626;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.arrow-line {
+  position: relative;
+  display: inline-block;
+  height: 2px;
+  background: currentColor;
+}
+.arrow-line::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-style: solid;
+  border-width: 5px 0 5px 8px;
+  border-color: transparent transparent transparent currentColor;
+}
+</style>
+
+
+---
 transition: fade-out
 ---
 
