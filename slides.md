@@ -471,16 +471,16 @@ $$\underbrace{{\mathrm{signature}^{\,65537}}}_{\text{RSA signature}} \bmod \unde
 
 # ZK Circuit: Verification Flow
 
-<div class="flex items-start justify-center mt-12">
+<div class="flex items-start justify-center mt-8">
   <div class="relative flex flex-col gap-3 text-l text-right mt-18 pl-10">
     <div class="flex items-center justify-end text-blue-400">*Issuer RSA public key <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500">Issuer RSA signature <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500"><span v-motion class="rounded-full px-2 py-0.5 border-2" :initial="{ color: '#6b7280', borderColor: 'transparent' }" :enter="{ color: '#6b7280', borderColor: 'transparent' }" :click-2="{ color: '#ef4444', borderColor: '#ef4444' }">User X.509 cert (TBS)</span> <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
-    <div class="flex items-center justify-end py-4"></div>
+    <div v-click="2" class="flex items-center justify-end text-red-500 -translate-x-53">Contains</div>
     <div class="flex items-center justify-end text-gray-500"><span v-motion class="rounded-full px-2 py-0.5 border-2" :initial="{ color: '#6b7280', borderColor: 'transparent' }" :enter="{ color: '#6b7280', borderColor: 'transparent' }" :click-2="{ color: '#ef4444', borderColor: '#ef4444' }">User RSA public key</span> <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500">User RSA signature <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-blue-400">*Message (TBS) <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
-    <svg class="absolute pointer-events-none" style="left: 0.5rem; top: 32%; width: 1.75rem; height: 38%;" viewBox="0 0 40 100" preserveAspectRatio="none">
+    <svg v-click="2" class="absolute pointer-events-none" style="left: 0.5rem; top: 32%; width: 1.75rem; height: 38%;" viewBox="0 0 40 100" preserveAspectRatio="none">
       <defs>
         <marker id="arrowContains" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f87171" /></marker>
       </defs>
@@ -499,10 +499,14 @@ $$\underbrace{{\mathrm{signature}^{\,65537}}}_{\text{RSA signature}} \bmod \unde
     <span class="arrow-line w-20"></span>
     <div class="border-2 border-amber-500 bg-amber-100/60 rounded-lg px-8 py-8 text-center font-bold text-amber-700">ZK Proof</div>
   </div>
-  <div v-click="1" class="absolute inset-0 flex items-center justify-center translate-y-15 translate-x-5">
+  <div v-click="1" class="absolute inset-0 flex items-center justify-center translate-y-11 translate-x-5">
     <div class="border-2 border-red-400 bg-red-50 text-red-600 rounded-full px-5 py-3 text-l font-semibold text-center">How do we ensure these two signatures are linked?</div>
   </div>
   <div v-click="2" class="hidden"></div>
+</div>
+<div class="flex justify-center gap-6 mt-6 text-sm text-gray-500">
+  <span class="flex items-center gap-2"><span class="w-6 h-0.5 bg-blue-400"></span>Public input</span>
+  <span class="flex items-center gap-2"><span class="w-6 h-0.5 bg-gray-500"></span>Private input</span>
 </div>
 <style>
 .arrow-line {
