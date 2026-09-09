@@ -744,24 +744,24 @@ transition: slide-up
   <div class="stage">
     <svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="smtArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge)"></path></marker>
+        <marker id="smtArrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge)"></path></marker>
       </defs>
-      <path d="M420,75 L235,140" fill="none" stroke="var(--edge0)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <path d="M420,75 L235,140" fill="none" stroke="var(--edge0)" stroke-width="1.8" marker-end="url(#smtArrow2)"></path>
       <circle cx="330" cy="108" r="13" fill="#ffffff" stroke="var(--edge0)" stroke-width="1.3"></circle>
       <text x="330" y="113" text-anchor="middle" font-size="15px" fill="var(--edge0)">0</text>
-      <path d="M480,75 L665,140" fill="none" stroke="var(--edge1)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <path d="M480,75 L665,140" fill="none" stroke="var(--edge1)" stroke-width="1.8" marker-end="url(#smtArrow2)"></path>
       <circle cx="570" cy="108" r="13" fill="#ffffff" stroke="var(--edge1)" stroke-width="1.3"></circle>
       <text x="570" y="113" text-anchor="middle" font-size="15px" fill="var(--edge1)">1</text>
-      <path d="M195,195 L115,260" fill="none" stroke="var(--edge0)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <path d="M195,195 L115,260" fill="none" stroke="var(--edge0)" stroke-width="1.8" marker-end="url(#smtArrow2)"></path>
       <circle cx="150" cy="228" r="13" fill="#ffffff" stroke="var(--edge0)" stroke-width="1.3"></circle>
       <text x="150" y="233" text-anchor="middle" font-size="15px" fill="var(--edge0)">0</text>
-      <path d="M255,195 L330,260" fill="none" stroke="var(--edge1)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <path d="M255,195 L330,260" fill="none" stroke="var(--edge1)" stroke-width="1.8" marker-end="url(#smtArrow2)"></path>
       <circle cx="295" cy="228" r="13" fill="#ffffff" stroke="var(--edge1)" stroke-width="1.3"></circle>
       <text x="295" y="233" text-anchor="middle" font-size="15px" fill="var(--edge1)">1</text>
-      <path d="M645,195 L565,260" fill="none" stroke="var(--edge0)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <path d="M645,195 L565,260" fill="none" stroke="var(--edge0)" stroke-width="1.8" marker-end="url(#smtArrow2)"></path>
       <circle cx="600" cy="228" r="13" fill="#ffffff" stroke="var(--edge0)" stroke-width="1.3"></circle>
       <text x="600" y="233" text-anchor="middle" font-size="15px" fill="var(--edge0)">0</text>
-      <path d="M705,195 L780,260" fill="none" stroke="var(--edge1)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <path d="M705,195 L780,260" fill="none" stroke="var(--edge1)" stroke-width="1.8" marker-end="url(#smtArrow2)"></path>
       <circle cx="745" cy="228" r="13" fill="#ffffff" stroke="var(--edge1)" stroke-width="1.3"></circle>
       <text x="745" y="233" text-anchor="middle" font-size="15px" fill="var(--edge1)">1</text>
       <rect x="360" y="20" width="180" height="55" rx="10" fill="var(--branch-fill)" stroke="var(--branch-stroke)" stroke-width="1.5"></rect>
@@ -875,9 +875,9 @@ In the circuit, we need to add this SMT proof, to prove that the leaf at index `
   </div>
 </div>
 <div class="flex justify-center gap-6 mt-6 text-base text-gray-500">
-  <span class="flex items-center gap-2"><span class="w-6 h-0.5 bg-blue-400"></span>Public input</span>
-  <span class="flex items-center gap-2"><span class="w-6 h-0.5 bg-gray-500"></span>Private input</span>
-  <span class="flex items-center gap-2"><span class="w-6 h-0.5 bg-amber-500"></span>Circuit output</span>
+  <span v-click="2" class="flex items-center gap-2"><span class="w-6 h-0.5 bg-blue-400"></span>Public input</span>
+  <span v-click="2" class="flex items-center gap-2"><span class="w-6 h-0.5 bg-gray-500"></span>Private input</span>
+  <span v-click="2" class="flex items-center gap-2"><span class="w-6 h-0.5 bg-amber-500"></span>Circuit output</span>
 </div>
 
 <style>
@@ -885,6 +885,83 @@ In the circuit, we need to add this SMT proof, to prove that the leaf at index `
   border-color: #f2b544;
   background: color-mix(in srgb, #f2b544 12%, transparent);
 }
+.arrow-line {
+  position: relative;
+  display: inline-block;
+  height: 2px;
+  background: currentColor;
+}
+.arrow-line::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-style: solid;
+  border-width: 5px 0 5px 8px;
+  border-color: transparent transparent transparent currentColor;
+}
+</style>
+
+---
+
+
+# Current ZK Circuits
+
+<div class="flex items-start justify-center mt-4">
+  <div class="relative flex flex-col gap-2 text-lg text-right mt-10 pl-10">
+    <div class="flex items-center justify-end text-blue-400">*Issuer RSA public key <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-gray-500">Issuer RSA signature <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-gray-500"><span v-motion class="rounded-full px-2 py-0.5 border-2" :initial="{ color: '#6b7280', borderColor: 'transparent' }" :enter="{ color: '#6b7280', borderColor: 'transparent' }" :click-1="{ color: '#ef4444', borderColor: '#ef4444' }">User X.509 cert (TBS)</span> <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-gray-500"><span v-motion class="rounded-full px-2 py-0.5 border-2" :initial="{ color: '#6b7280', borderColor: 'transparent' }" :enter="{ color: '#6b7280', borderColor: 'transparent' }" :click-1="{ color: '#ef4444', borderColor: '#ef4444' }">User RSA public key</span> <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-gray-500">User RSA signature <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-blue-400">*Message (TBS) <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-blue-400 mt-2">*SMT root <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-gray-500"><span v-motion class="rounded-full px-2 py-0.5 border-2" :initial="{ color: '#6b7280', borderColor: 'transparent' }" :enter="{ color: '#6b7280', borderColor: 'transparent' }" :click-1="{ color: '#ef4444', borderColor: '#ef4444' }">serialNumber</span> <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-gray-500">SMT siblings <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
+    <svg v-click="1" class="absolute pointer-events-none" style="left: 0.5rem; top: 24%; width: 2rem; height: 11%;" viewBox="0 0 40 100" preserveAspectRatio="none">
+      <defs>
+        <marker id="p17ArrowContains1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f87171" /></marker>
+      </defs>
+      <path d="M 30 0 C 5 15, 5 85, 40 100" fill="none" stroke="#f87171" stroke-width="2.5" stroke-dasharray="5 4" marker-end="url(#p17ArrowContains1)" vector-effect="non-scaling-stroke" />
+    </svg>
+    <div v-click="1" class="absolute text-red-500" style="left: -3.5rem; top: 55%;">Contains</div>
+    <svg v-click="1" class="absolute pointer-events-none" style="left: -1.25rem; top: 24%; width: 3.75rem; height: 58%;" viewBox="0 0 40 100" preserveAspectRatio="none">
+      <defs>
+        <marker id="p17ArrowContains2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f87171" /></marker>
+      </defs>
+      <path d="M 30 0 C 5 15, 5 85, 40 100" fill="none" stroke="#f87171" stroke-width="2.5" stroke-dasharray="5 4" marker-end="url(#p17ArrowContains2)" vector-effect="non-scaling-stroke" />
+    </svg>
+  </div>
+  <div class="flex flex-col items-center -mt-6">
+    <div class="text-xl tracking-[0.3em] text-gray-700 mb-3">ZK PROGRAM</div>
+    <div class="border-2 border-dashed border-gray-700 rounded-xl p-6 flex flex-col gap-5">
+      <div class="border-2 border-slate-500 bg-slate-300/60 rounded-lg px-6 py-6 text-center">
+        <div class="font-bold text-lg">RSA signature</div>
+        <div class="text-sm text-gray-600">Issuer → User cert</div>
+      </div>
+      <div class="border-2 border-slate-500 bg-slate-300/60 rounded-lg px-6 py-6 text-center">
+        <div class="font-bold text-lg">RSA signature</div>
+        <div class="text-sm text-gray-600">User → message</div>
+      </div>
+      <div class="border-2 border-slate-500 bg-slate-300/60 rounded-lg px-6 py-6 text-center">
+        <div class="font-bold text-lg">SMT non-membership</div>
+        <div class="text-sm text-gray-600">serialNumber not revoked</div>
+      </div>
+    </div>
+  </div>
+  <div class="relative flex items-center self-center mt-10 text-gray-500">
+    <span class="arrow-line w-20"></span>
+    <div class="border-2 border-amber-500 bg-amber-100/60 rounded-lg px-8 py-8 text-center font-bold text-xl text-amber-700">ZK Proof</div>
+  </div>
+</div>
+<div class="flex justify-center gap-6 mt-2 text-base text-gray-500">
+  <span class="flex items-center gap-2"><span class="w-6 h-0.5 bg-blue-400"></span>Public input</span>
+  <span class="flex items-center gap-2"><span class="w-6 h-0.5 bg-gray-500"></span>Private input</span>
+  <span class="flex items-center gap-2"><span class="w-6 h-0.5 bg-amber-500"></span>Circuit output</span>
+</div>
+
+<style>
 .arrow-line {
   position: relative;
   display: inline-block;
