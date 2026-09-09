@@ -472,7 +472,7 @@ $$\underbrace{{\mathrm{signature}^{\,65537}}}_{\text{RSA signature}} \bmod \unde
 # ZK Circuit: Verification Flow
 
 <div class="flex items-start justify-center mt-8">
-  <div class="relative flex flex-col gap-3 text-l text-right mt-18 pl-10">
+  <div class="relative flex flex-col gap-3 text-lg text-right mt-18 pl-10">
     <div class="flex items-center justify-end text-blue-400">*Issuer RSA public key <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500">Issuer RSA signature <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500"><span v-motion class="rounded-full px-2 py-0.5 border-2" :initial="{ color: '#6b7280', borderColor: 'transparent' }" :enter="{ color: '#6b7280', borderColor: 'transparent' }" :click-2="{ color: '#ef4444', borderColor: '#ef4444' }">User X.509 cert (TBS)</span> <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
@@ -500,7 +500,7 @@ $$\underbrace{{\mathrm{signature}^{\,65537}}}_{\text{RSA signature}} \bmod \unde
     <div class="border-2 border-amber-500 bg-amber-100/60 rounded-lg px-8 py-8 text-center font-bold text-amber-700">ZK Proof</div>
   </div>
   <div v-click="1" class="absolute inset-0 flex items-center justify-center translate-y-11 translate-x-5">
-    <div class="border-2 border-red-400 bg-red-50 text-red-600 rounded-full px-5 py-3 text-l font-semibold text-center">How do we ensure these two signatures are linked?</div>
+    <div class="border-2 border-red-400 bg-red-50 text-red-600 rounded-full px-5 py-3 text-lg font-semibold text-center">How do we ensure these two signatures are linked?</div>
   </div>
   <div v-click="2" class="hidden"></div>
 </div>
