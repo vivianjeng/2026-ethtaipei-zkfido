@@ -528,6 +528,382 @@ $$\underbrace{{\mathrm{signature}^{\,65537}}}_{\text{RSA signature}} \bmod \unde
 </style>
 
 ---
+layout: center
+class: text-center
+transition: slide-up
+---
+
+# How Can You Prove <br/>a Citizen Digital Certificate Is Valid?
+
+<img src="/images/moica_example.png" alt="Citizen Digital Certificate example" class="rounded-2xl shadow-lg w-80 mx-auto" />
+
+<div class="grid grid-cols-2 gap-4 mt-6 max-w-xl mx-auto">
+  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-3">
+    <carbon:time class="text-2xl text-blue-300 shrink-0" />
+    <div>1. Not expired</div>
+  </div>
+  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-3">
+    <carbon:certificate class="text-2xl text-blue-300 shrink-0" />
+    <div>2. Not revoked</div>
+  </div>
+</div>
+
+---
+transition: slide-up
+---
+
+# Revocation
+
+<div class="grid grid-cols-2 gap-4 mt-6">
+  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-4">
+    <carbon:time class="text-2xl text-blue-300 shrink-0" />
+    <div>Check whether the <b>validity period</b> has expired</div>
+  </div>
+  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-4">
+    <carbon:certificate class="text-2xl text-blue-300 shrink-0" />
+    <div>Check whether it's on the Ministry of the Interior's<br/><a href="https://moica.nat.gov.tw/save_1.html" target="_blank" class="underline opacity-90">Citizen Digital Certificate revocation list</a></div>
+  </div>
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-4">
+  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-4">
+    <carbon:barcode class="text-2xl text-red-400 shrink-0" />
+    <div>Revocation list lookup <b>requires the certificate's serial number</b> <code>serialNumber</code></div>
+  </div>
+  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-4">
+    <carbon:view-off class="text-2xl text-red-400 shrink-0" />
+    <div>User providing their own serial number <b>= exposing their privacy</b></div>
+  </div>
+</div>
+
+<div v-click class="mt-8 flex justify-center quote-reveal">
+  <div class="quote-box max-w-2xl text-center rounded-xl border-2 p-6" style="border-color: var(--slidev-theme-primary); background: color-mix(in srgb, var(--slidev-theme-primary) 15%, transparent);">
+    <p class="text-l italic leading-relaxed" style="color: var(--slidev-theme-primary);">"How can we prove the Citizen Digital Certificate hasn't been revoked,<br/> while still preserving privacy?"</p>
+  </div>
+</div>
+
+<style>
+.slidev-vclick-target {
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+.slidev-vclick-hidden {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.quote-reveal.slidev-vclick-hidden {
+  opacity: 0;
+  transform: scale(0.7) rotate(-4deg) translateY(30px);
+  filter: blur(6px);
+}
+.quote-reveal.slidev-vclick-target {
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.34, 1.56, 0.64, 1), filter 700ms ease;
+}
+.quote-reveal:not(.slidev-vclick-hidden) .quote-box {
+  animation: quote-glow 2.4s ease-in-out infinite;
+}
+@keyframes quote-glow {
+  0%, 100% { box-shadow: 0 0 0px 0px color-mix(in srgb, var(--slidev-theme-primary) 45%, transparent); }
+  50% { box-shadow: 0 0 28px 6px color-mix(in srgb, var(--slidev-theme-primary) 45%, transparent); }
+}
+</style>
+
+---
+transition: slide-up
+---
+
+# Sparse Merkle Tree (SMT)
+
+<div class="smt-stage-wrap flex justify-center mt-4">
+  <div class="stage">
+    <div class="sub">The Root is composed of the hash of its left and right child nodes; empty nodes are filled with a fixed value of 0, and when there is data (<code>serialNumber</code>), the leaf node stores its hash value</div>
+    <div class="sub">The diagram below assumes <code>serialNumber = 2</code>, i.e. <code>k = 2</code>, and <code>v = 1</code></div>
+    <svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="smtArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge)"></path></marker>
+      </defs>
+      <path d="M420,75 L235,140" fill="none" stroke="var(--edge0)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <circle cx="330" cy="108" r="13" fill="#ffffff" stroke="var(--edge0)" stroke-width="1.3"></circle>
+      <text x="330" y="113" text-anchor="middle" font-size="15px" fill="var(--edge0)">0</text>
+      <path d="M480,75 L665,140" fill="none" stroke="var(--edge1)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <circle cx="570" cy="108" r="13" fill="#ffffff" stroke="var(--edge1)" stroke-width="1.3"></circle>
+      <text x="570" y="113" text-anchor="middle" font-size="15px" fill="var(--edge1)">1</text>
+      <path d="M195,195 L115,260" fill="none" stroke="var(--edge0)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <circle cx="150" cy="228" r="13" fill="#ffffff" stroke="var(--edge0)" stroke-width="1.3"></circle>
+      <text x="150" y="233" text-anchor="middle" font-size="15px" fill="var(--edge0)">0</text>
+      <path d="M255,195 L330,260" fill="none" stroke="var(--edge1)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <circle cx="295" cy="228" r="13" fill="#ffffff" stroke="var(--edge1)" stroke-width="1.3"></circle>
+      <text x="295" y="233" text-anchor="middle" font-size="15px" fill="var(--edge1)">1</text>
+      <path d="M645,195 L565,260" fill="none" stroke="var(--edge0)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <circle cx="600" cy="228" r="13" fill="#ffffff" stroke="var(--edge0)" stroke-width="1.3"></circle>
+      <text x="600" y="233" text-anchor="middle" font-size="15px" fill="var(--edge0)">0</text>
+      <path d="M705,195 L780,260" fill="none" stroke="var(--edge1)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <circle cx="745" cy="228" r="13" fill="#ffffff" stroke="var(--edge1)" stroke-width="1.3"></circle>
+      <text x="745" y="233" text-anchor="middle" font-size="15px" fill="var(--edge1)">1</text>
+      <rect x="360" y="20" width="180" height="55" rx="10" fill="var(--branch-fill)" stroke="var(--branch-stroke)" stroke-width="1.5"></rect>
+      <text x="450" y="43" text-anchor="middle" font-size="18px" fill="var(--text)" font-weight="700">Root</text>
+      <text x="450" y="62" text-anchor="middle" font-size="15px" fill="var(--text-dim)">= Hash2(L5, L6)</text>
+      <rect x="140" y="140" width="190" height="55" rx="10" fill="var(--branch-fill)" stroke="var(--branch-stroke)" stroke-width="1.5"></rect>
+      <text x="235" y="163" text-anchor="middle" font-size="18px" fill="var(--text)" font-weight="700">Branch</text>
+      <text x="235" y="182" text-anchor="middle" font-size="15px" fill="var(--text-dim)">L5 = Hash2(L1, L2)</text>
+      <rect x="580" y="140" width="190" height="55" rx="10" fill="var(--branch-fill)" stroke="var(--branch-stroke)" stroke-width="1.5"></rect>
+      <text x="675" y="163" text-anchor="middle" font-size="18px" fill="var(--text)" font-weight="700">Branch</text>
+      <text x="675" y="182" text-anchor="middle" font-size="15px" fill="var(--text-dim)">L6 = Hash2(L3, L4)</text>
+      <rect x="40" y="260" width="150" height="50" rx="10" fill="none" stroke="var(--empty-stroke)" stroke-width="1.4" stroke-dasharray="5 4"></rect>
+      <text x="115" y="290" text-anchor="middle" font-size="17px" fill="var(--empty-text)">L1 = 0</text>
+      <rect x="255" y="260" width="150" height="50" rx="10" fill="none" stroke="var(--empty-stroke)" stroke-width="1.4" stroke-dasharray="5 4"></rect>
+      <text x="330" y="290" text-anchor="middle" font-size="17px" fill="var(--empty-text)">L2 = 0</text>
+      <rect x="490" y="260" width="150" height="50" rx="10" fill="var(--leaf-fill)" stroke="var(--leaf-stroke)" stroke-width="1.6"></rect>
+      <text x="565" y="290" text-anchor="middle" font-size="17px" fill="var(--leaf-text)" font-weight="700">L3 = Hash3(k,v,1)</text>
+      <rect x="705" y="260" width="150" height="50" rx="10" fill="none" stroke="var(--empty-stroke)" stroke-width="1.4" stroke-dasharray="5 4"></rect>
+      <text x="780" y="290" text-anchor="middle" font-size="17px" fill="var(--empty-text)">L4 = 0</text>
+    </svg>
+    <div class="legend">
+      <span><span class="swatch" style="background:transparent;border:1.4px dashed var(--empty-stroke)"></span>Empty node (value = 0)</span>
+      <span><span class="swatch" style="background:var(--leaf-fill);border:1.4px solid var(--leaf-stroke)"></span>Leaf node (actual data)</span>
+    </div>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--branch-fill);border:1.4px solid var(--branch-stroke)"></span>Branch node</span>
+      <span><span class="swatch" style="background:var(--edge0)"></span>Path bit 0</span>
+      <span><span class="swatch" style="background:var(--edge1)"></span>Path bit 1</span>
+    </div>
+  </div>
+</div>
+
+<style>
+.smt-stage-wrap {
+  --branch-fill: #e2e8f0;
+  --branch-stroke: #64748b;
+  --empty-stroke: #94a3b8;
+  --empty-text: #64748b;
+  --leaf-fill: #5DCAA5;
+  --leaf-stroke: #0F6E56;
+  --leaf-text: #04342C;
+  --text: #1f2937;
+  --text-dim: #64748b;
+  --edge: #64748b;
+  --edge0: #2563eb;
+  --edge1: #d97706;
+}
+.smt-stage-wrap .stage {
+  width: 100%;
+  max-width: 740px;
+  background: transparent;
+  border-radius: 16px;
+  padding: 16px;
+}
+.smt-stage-wrap .sub {
+  text-align: center;
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+.smt-stage-wrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.smt-stage-wrap .legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 12px;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.smt-stage-wrap .legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.smt-stage-wrap .swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  display: inline-block;
+}
+</style>
+
+
+---
+transition: slide-up
+---
+
+# Sparse Merkle Tree (SMT)
+
+- $H_{\text{branch}} = \text{Hash2} (H_{left}, H_{right})$
+- $H_{\text{serialNumber}}=\text{Hash3}(k,v,1), v \text{ is always }1$
+- $H_i(k) =
+\begin{cases}
+\mathrm{Hash3}(k,\, v,\, 1) & \text{if } i = 0 \text{ and } k \text{ exists} \\
+0 & \text{if } i = 0 \text{ and } k \text{ does not exist} \\
+\mathrm{Hash2}\big(H_{i-1}(k \mid b_i = 0),\, H_{i-1}(k \mid b_i = 1)\big) & \text{otherwise}
+\end{cases}$
+
+<div class="smt-stage-wrap flex justify-center mt-2">
+  <div class="stage">
+    <svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="smtArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge)"></path></marker>
+      </defs>
+      <path d="M420,75 L235,140" fill="none" stroke="var(--edge0)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <circle cx="330" cy="108" r="13" fill="#ffffff" stroke="var(--edge0)" stroke-width="1.3"></circle>
+      <text x="330" y="113" text-anchor="middle" font-size="15px" fill="var(--edge0)">0</text>
+      <path d="M480,75 L665,140" fill="none" stroke="var(--edge1)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <circle cx="570" cy="108" r="13" fill="#ffffff" stroke="var(--edge1)" stroke-width="1.3"></circle>
+      <text x="570" y="113" text-anchor="middle" font-size="15px" fill="var(--edge1)">1</text>
+      <path d="M195,195 L115,260" fill="none" stroke="var(--edge0)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <circle cx="150" cy="228" r="13" fill="#ffffff" stroke="var(--edge0)" stroke-width="1.3"></circle>
+      <text x="150" y="233" text-anchor="middle" font-size="15px" fill="var(--edge0)">0</text>
+      <path d="M255,195 L330,260" fill="none" stroke="var(--edge1)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <circle cx="295" cy="228" r="13" fill="#ffffff" stroke="var(--edge1)" stroke-width="1.3"></circle>
+      <text x="295" y="233" text-anchor="middle" font-size="15px" fill="var(--edge1)">1</text>
+      <path d="M645,195 L565,260" fill="none" stroke="var(--edge0)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <circle cx="600" cy="228" r="13" fill="#ffffff" stroke="var(--edge0)" stroke-width="1.3"></circle>
+      <text x="600" y="233" text-anchor="middle" font-size="15px" fill="var(--edge0)">0</text>
+      <path d="M705,195 L780,260" fill="none" stroke="var(--edge1)" stroke-width="1.8" marker-end="url(#smtArrow)"></path>
+      <circle cx="745" cy="228" r="13" fill="#ffffff" stroke="var(--edge1)" stroke-width="1.3"></circle>
+      <text x="745" y="233" text-anchor="middle" font-size="15px" fill="var(--edge1)">1</text>
+      <rect x="360" y="20" width="180" height="55" rx="10" fill="var(--branch-fill)" stroke="var(--branch-stroke)" stroke-width="1.5"></rect>
+      <text x="450" y="43" text-anchor="middle" font-size="18px" fill="var(--text)" font-weight="700">Root</text>
+      <text x="450" y="62" text-anchor="middle" font-size="15px" fill="var(--text-dim)">= Hash2(L5, L6)</text>
+      <rect x="140" y="140" width="190" height="55" rx="10" fill="var(--branch-fill)" stroke="var(--branch-stroke)" stroke-width="1.5"></rect>
+      <text x="235" y="163" text-anchor="middle" font-size="18px" fill="var(--text)" font-weight="700">Branch</text>
+      <text x="235" y="182" text-anchor="middle" font-size="15px" fill="var(--text-dim)">L5 = Hash2(L1, L2)</text>
+      <rect x="580" y="140" width="190" height="55" rx="10" fill="var(--branch-fill)" stroke="var(--branch-stroke)" stroke-width="1.5"></rect>
+      <text x="675" y="163" text-anchor="middle" font-size="18px" fill="var(--text)" font-weight="700">Branch</text>
+      <text x="675" y="182" text-anchor="middle" font-size="15px" fill="var(--text-dim)">L6 = Hash2(L3, L4)</text>
+      <rect x="40" y="260" width="150" height="50" rx="10" fill="none" stroke="var(--empty-stroke)" stroke-width="1.4" stroke-dasharray="5 4"></rect>
+      <text x="115" y="290" text-anchor="middle" font-size="17px" fill="var(--empty-text)">L1 = 0</text>
+      <rect x="255" y="260" width="150" height="50" rx="10" fill="none" stroke="var(--empty-stroke)" stroke-width="1.4" stroke-dasharray="5 4"></rect>
+      <text x="330" y="290" text-anchor="middle" font-size="17px" fill="var(--empty-text)">L2 = 0</text>
+      <rect x="490" y="260" width="150" height="50" rx="10" fill="var(--leaf-fill)" stroke="var(--leaf-stroke)" stroke-width="1.6"></rect>
+      <text x="565" y="290" text-anchor="middle" font-size="17px" fill="var(--leaf-text)" font-weight="700">L3 = Hash3(k,v,1)</text>
+      <rect x="705" y="260" width="150" height="50" rx="10" fill="none" stroke="var(--empty-stroke)" stroke-width="1.4" stroke-dasharray="5 4"></rect>
+      <text x="780" y="290" text-anchor="middle" font-size="17px" fill="var(--empty-text)">L4 = 0</text>
+    </svg>
+  </div>
+</div>
+
+<style>
+.smt-stage-wrap {
+  --branch-fill: #e2e8f0;
+  --branch-stroke: #64748b;
+  --empty-stroke: #94a3b8;
+  --empty-text: #64748b;
+  --leaf-fill: #5DCAA5;
+  --leaf-stroke: #0F6E56;
+  --leaf-text: #04342C;
+  --text: #1f2937;
+  --text-dim: #64748b;
+  --edge: #64748b;
+  --edge0: #2563eb;
+  --edge1: #d97706;
+}
+.smt-stage-wrap .stage {
+  width: 100%;
+  max-width: 740px;
+  background: transparent;
+  border-radius: 16px;
+  padding: 16px;
+}
+.smt-stage-wrap .sub {
+  text-align: center;
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+.smt-stage-wrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.smt-stage-wrap .legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 12px;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.smt-stage-wrap .legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.smt-stage-wrap .swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  display: inline-block;
+}
+</style>
+
+
+---
+transition: slide-up
+---
+
+
+# ZK-SMT
+
+<div v-click class="mt-4 flex justify-center">
+  <div class="req-box max-w-xl rounded-xl border-2 p-4 flex items-start gap-3 text-left text-xl leading-relaxed">
+    <carbon:add-filled class="text-3xl shrink-0" style="color:#f2b544" />
+
+In the circuit, we need to add this SMT proof, to prove that the leaf at index `serialNumber` has value $0$
+
+  </div>
+</div>
+
+<div v-click class="flex items-start justify-center mt-4">
+  <div class="flex flex-col gap-3 text-xl text-right mt-20">
+    <div class="flex items-center justify-end text-blue-400">*SMT root <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-gray-500">serialNumber <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-gray-500">SMT siblings <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
+  </div>
+  <div class="flex flex-col items-center">
+    <div class="text-xl tracking-[0.3em] text-gray-700 mb-3">ZK PROGRAM</div>
+    <div class="border-2 border-dashed border-gray-700 rounded-xl p-6 flex flex-col gap-6">
+      <div class="border-2 border-slate-500 bg-slate-300/60 rounded-lg px-8 py-10 text-center font-bold text-xl">verifies SMT<br/>non-membership proof</div>
+    </div>
+  </div>
+  <div class="relative flex items-center self-center mt-10 text-gray-500">
+    <span class="arrow-line w-20"></span>
+    <div class="border-2 border-amber-500 bg-amber-100/60 rounded-lg px-8 py-8 text-center font-bold text-xl text-amber-700">ZK Proof</div>
+  </div>
+</div>
+<div class="flex justify-center gap-6 mt-6 text-base text-gray-500">
+  <span class="flex items-center gap-2"><span class="w-6 h-0.5 bg-blue-400"></span>Public input</span>
+  <span class="flex items-center gap-2"><span class="w-6 h-0.5 bg-gray-500"></span>Private input</span>
+  <span class="flex items-center gap-2"><span class="w-6 h-0.5 bg-amber-500"></span>Circuit output</span>
+</div>
+
+<style>
+.req-box {
+  border-color: #f2b544;
+  background: color-mix(in srgb, #f2b544 12%, transparent);
+}
+.arrow-line {
+  position: relative;
+  display: inline-block;
+  height: 2px;
+  background: currentColor;
+}
+.arrow-line::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-style: solid;
+  border-width: 5px 0 5px 8px;
+  border-color: transparent transparent transparent currentColor;
+}
+</style>
+
+---
 transition: fade-out
 ---
 
