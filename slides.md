@@ -1869,6 +1869,39 @@ Response Fields of /getAthOrSignResult
   </div>
 </div>
 
+---
+
+# The Real Value of the Citizen Digital Certificate
+
+<div class="grid grid-cols-2 gap-4 mt-2">
+  <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-4">
+    <carbon:code class="text-2xl mb-1" style="color:#2563eb" />
+    <div class="font-semibold text-gray-800">Developer-Friendly</div>
+    <div class="text-sm text-gray-600 mt-1">Verified via web or app — no photo upload or manual review like an ID card requires</div>
+  </div>
+  <div v-click class="bg-purple-50 rounded-xl border-2 border-purple-400 p-4">
+    <carbon:certificate class="text-2xl mb-1" style="color:#9333ea" />
+    <div class="font-semibold text-gray-800">Hard to Forge</div>
+    <div class="text-sm text-gray-600 mt-1">A digital signature can be verified precisely as coming from the MOI — unlike a physical card, which only needs to "look real"</div>
+  </div>
+  <div v-click class="bg-amber-50 rounded-xl border-2 border-amber-400 p-4">
+    <carbon:list-checked class="text-2xl mb-1" style="color:#d97706" />
+    <div class="font-semibold text-gray-800">Public Revocation List</div>
+    <div class="text-sm text-gray-600 mt-1">The MOI publishes a <a href="https://moica.nat.gov.tw/save_1.html" target="_blank" class="underline">revocation list</a>, so anyone can check if a cert is expired or revoked. ID cards have no such public list</div>
+  </div>
+  <div v-click class="bg-teal-50 rounded-xl border-2 border-teal-500 p-4">
+    <carbon:view-off class="text-2xl mb-1" style="color:#0d9488" />
+    <div class="font-semibold text-gray-800">Privacy via Zero-Knowledge</div>
+    <div class="text-sm text-gray-600 mt-1">We only need to prove a user is a Taiwanese citizen — not their name or ID number. More in <a href="https://hackmd.io/k3YuE5dLT_WURtxjbkTLow" target="_blank" class="underline">the ZK article</a></div>
+  </div>
+</div>
+
+<div v-click class="mt-5 flex justify-center">
+  <div class="flex items-center gap-3 rounded-xl border-2 border-indigo-400 bg-indigo-50 px-6 py-4 max-w-3xl">
+    <carbon:favorite class="text-3xl shrink-0" style="color:#4f46e5" />
+    <div class="text-base text-gray-800">Hoping it becomes as common as the ID card, and that it also stores info like <b>birthdate and address</b> to unlock more use cases.</div>
+  </div>
+</div>
 
 ---
 
