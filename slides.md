@@ -1583,7 +1583,292 @@ challengeSquared <== challenge * challenge;
 layout: center
 ---
 
-# TW FidO Development
+# TW FidO <br/>(Mobile Citizen Digital Certificate)<br/> Development
+
+---
+
+<div class="relative max-w-5xl mx-auto mt-8">
+  <div class="rounded-xl border-2 border-gray-300 overflow-hidden shadow-lg">
+    <div class="flex items-center gap-3 px-4 py-2 bg-gray-100 border-b border-gray-300">
+      <div class="flex gap-1.5 shrink-0">
+        <div class="w-3 h-3 rounded-full" style="background:#ff5f56"></div>
+        <div class="w-3 h-3 rounded-full" style="background:#febc2e"></div>
+        <div class="w-3 h-3 rounded-full" style="background:#27c93f"></div>
+      </div>
+      <div class="flex-1 bg-white rounded-md px-3 py-1 border border-gray-200 text-center">
+        <a href="https://fido.moi.gov.tw/pt/" target="_blank" class="text-sm text-gray-600 hover:underline">https://fido.moi.gov.tw/pt/</a>
+      </div>
+    </div>
+    <img src="/images/twfido_web.jpg" alt="Mobile Citizen Digital Certificate website" class="w-full block" />
+  </div>
+
+  <div v-click class="absolute bottom-4 left-60">
+    <div class="bg-red-50 border-2 border-red-500 rounded-xl px-5 py-3 flex items-center gap-3 shadow-xl">
+      <carbon:api class="text-2xl shrink-0" style="color:#dc2626" />
+      <div class="text-gray-800">Apply for <code class="text-red-700 font-semibold" style="background-color:#fee2e2; border-radius:6px;">SpServiceID</code> and <code class="text-red-700 font-semibold" style="background-color:#fee2e2; border-radius:6px;">AESKey</code></div>
+    </div>
+  </div>
+</div>
+
+---
+
+# Generating the Key Pair
+
+Generate a key pair for the TW FidO app.
+
+<div class="mt-6">
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {
+  'primaryColor': '#dbeafe',
+  'primaryBorderColor': '#2563eb',
+  'primaryTextColor': '#1f2937',
+  'actorBkg': '#dbeafe',
+  'actorBorder': '#2563eb',
+  'actorTextColor': '#1f2937',
+  'signalColor': '#374151',
+  'signalTextColor': '#1f2937',
+  'labelBoxBkgColor': '#dbeafe',
+  'labelBoxBorderColor': '#2563eb',
+  'labelTextColor': '#1f2937',
+  'noteBkgColor': '#fef9c3',
+  'noteBorderColor': '#d97706',
+  'noteTextColor': '#1f2937',
+  'fontSize': '16px'
+}}}%%
+sequenceDiagram
+    participant FIDO as TW FidO App
+    participant Backend as TW FidO Server
+ 
+    FIDO->>FIDO: Tap the physical Citizen Digital Certificate card
+    FIDO->>FIDO: Generate a new public/private key pair
+    FIDO->>Backend: Register the user, device, and public key information
+    
+```
+
+</div>
+
+---
+transition: slide-up
+---
+
+# Request service: `/getSpTicket`
+
+The application must first request an **SP ticket (Service Provider ticket)** from the backend service via the `/getSpTicket` API before it can request **signing** or **authorization** services.
+
+<div class="mt-6 flex justify-center">
+
+```mermaid {scale: 1}
+%%{init: {'theme': 'base', 'themeVariables': {
+  'primaryColor': '#dbeafe',
+  'primaryBorderColor': '#2563eb',
+  'primaryTextColor': '#1f2937',
+  'actorBkg': '#dbeafe',
+  'actorBorder': '#2563eb',
+  'actorTextColor': '#1f2937',
+  'signalColor': '#374151',
+  'signalTextColor': '#1f2937',
+  'labelBoxBkgColor': '#dbeafe',
+  'labelBoxBorderColor': '#2563eb',
+  'labelTextColor': '#1f2937',
+  'noteBkgColor': '#fef9c3',
+  'noteBorderColor': '#d97706',
+  'noteTextColor': '#1f2937',
+  'fontSize': '16px'
+}}}%%
+sequenceDiagram
+    participant User as User
+    participant App as Application
+    participant Backend as TW FidO Server
+ 
+    User->>App: Provide national ID number (身分證字號)
+    App->>Backend: Request sp_ticket
+    Backend->>App: Return sp_ticket
+```
+
+</div>
+
+---
+transition: slide-up
+---
+
+# `SpTicket`
+
+- `transaction_id`: A one-time [UUID](https://zh.wikipedia.org/zh-tw/%E9%80%9A%E7%94%A8%E5%94%AF%E4%B8%80%E8%AF%86%E5%88%AB%E7%A0%81).
+- `sp_service_id`: The app-specific ID you receive after applying for TW FidO development.
+- `id_num`: The national ID number (身分證字號) of the user the request is for.
+- `op_code`: Operation code — authentication (`ATH`), signing (`SIGN`), or NFC-card signing (`NFCSIGN`).
+- `op_mode`: Operation mode — active scan (`I-SCAN`), APP-to-APP (`APP2APP`), or Mobile Web to App (`MWEB2APP`).
+- `hint`: A hint message shown in the user's TW FidO app.
+- `time_limit`: Operation time limit
+- `sign_info` (If `op_code` is `SIGN`):
+  - `sign_type`: Signature type — `PKCS#1`, `PKCS#7`, or `RAW`.
+  - `sign_data`: The data to be signed, limited to 1024 bytes.
+  - `tbs_encoding`: Encoding of the data to be signed — `NONE` or `base64`.
+  - `hash_algorithm`: Hash algorithm — `SHA1`, `SHA256`, `SHA384`, or `SHA512`, default `SHA256`.
+
+---
+transition: slide-up
+---
+
+# `sp_checksum` in `SpTicket`
+
+<div class="flex justify-center mt-6 mb-6">
+  <div class="rounded-xl border-2 border-blue-400 bg-blue-50 px-6 py-4">
+    <code class="text-base text-gray-800">sp_checksum = AES_GCM_HEX(SHA256_HEX(Payload))</code>
+  </div>
+</div>
+
+<v-clicks>
+
+- Each relying party also gets a dedicated <b>AES private key</b>, decryptable only by the backend
+- A mismatch means the request was <b>tampered with</b> — rejected
+- Also confirms the request came from a <b>registered relying party</b>
+
+```js
+  const payload = transaction_id + sp_service_id + id_num + op_code + op_mode + hint + sign_data;
+  console.log('sha256HexPayload:', sha256Hex(payload));
+  console.log('sp_checksum:', computeSpChecksum(payload, aesKey));
+```
+
+</v-clicks>
+
+<div v-click class="flex justify-center mt-4">
+  <a href="https://github.com/0xvikasrushi/noir-claude-auditor" target="_blank" class="bg-white/10 backdrop-blur rounded-xl border border-white/20 px-5 py-3 flex items-center gap-3 hover:border-blue transition-colors">
+    <carbon:machine-learning-model class="text-2xl shrink-0" style="color:#8fb4d9" />
+    <div>Full implementation details in the <b>TW FidO integration article</b></div>
+    <carbon:launch class="text-lg opacity-50 shrink-0" />
+  </a>
+</div>
+
+---
+
+# `idp_checksum` after `/getSpTicket`
+
+On success, the response contains `sp_ticket` and `idp_checksum`.
+
+<v-clicks>
+
+- **`sp_ticket`**: echoes the original request data (`transaction_id`, `op_code`, `op_mode`, `sp_service_id`, `hint`, `sign_doc`), plus:
+  - `sp_ticket_id`: unique ticket identifier
+  - `sp_name`: the relying party's name
+  - `expiration_time`: expiry, as a millisecond Unix timestamp
+  - `hashed_id_num`: hashed national ID number, so it's never sent in plaintext
+- **`idp_checksum`**: let the app verify the backend's response wasn't tampered with. <br/>(**idp** = Identity Provider, i.e. the TW FidO backend)
+
+```js
+const idp_payload = transaction_id + error_code + sp_ticket;
+```
+<div class="flex justify-center mt-6 mb-6">
+  <div class="rounded-xl border-2 border-blue-400 bg-blue-50 px-6 py-4">
+    <code class="text-base text-gray-800">idp_checksum = AES_GCM_HEX(SHA256_HEX(Payload))</code>
+  </div>
+</div>
+
+</v-clicks>
+---
+
+# User Authorization and Sign
+
+<div class="mt-6 flex justify-center">
+
+```mermaid {scale: 0.9}
+%%{init: {'theme': 'base', 'themeVariables': {
+  'primaryColor': '#dbeafe',
+  'primaryBorderColor': '#2563eb',
+  'primaryTextColor': '#1f2937',
+  'actorBkg': '#dbeafe',
+  'actorBorder': '#2563eb',
+  'actorTextColor': '#1f2937',
+  'signalColor': '#374151',
+  'signalTextColor': '#1f2937',
+  'labelBoxBkgColor': '#dbeafe',
+  'labelBoxBorderColor': '#2563eb',
+  'labelTextColor': '#1f2937',
+  'noteBkgColor': '#fef9c3',
+  'noteBorderColor': '#d97706',
+  'noteTextColor': '#1f2937',
+  'fontSize': '16px'
+}}}%%
+sequenceDiagram
+    participant FIDO as TW FidO App
+    participant App as Application
+    participant Backend as TW FidO Server
+ 
+    App->>FIDO: Request user authorization
+    FIDO->>FIDO: Sign the request
+    FIDO->>Backend: Send signature information
+    FIDO->>App: Redirect back to the application     
+```
+</div>
+
+---
+
+# Application Requests the Signature Result <br/> `/getAthOrSignResult`
+
+<div class="mt-6 flex justify-center">
+
+```mermaid {scale: 0.8}
+%%{init: {'theme': 'base', 'themeVariables': {
+  'primaryColor': '#dbeafe',
+  'primaryBorderColor': '#2563eb',
+  'primaryTextColor': '#1f2937',
+  'actorBkg': '#dbeafe',
+  'actorBorder': '#2563eb',
+  'actorTextColor': '#1f2937',
+  'signalColor': '#374151',
+  'signalTextColor': '#1f2937',
+  'labelBoxBkgColor': '#dbeafe',
+  'labelBoxBorderColor': '#2563eb',
+  'labelTextColor': '#1f2937',
+  'noteBkgColor': '#fef9c3',
+  'noteBorderColor': '#d97706',
+  'noteTextColor': '#1f2937',
+  'fontSize': '16px'
+}}}%%
+sequenceDiagram
+    participant App as Application
+    participant Backend as TW FidO Server
+ 
+    App->>Backend: Request the user's signature content
+    Backend->>App: Return the user's signature content
+```
+</div>
+
+<v-clicks>
+
+- Gather `transaction_id`, `sp_service_id`, and `sp_ticket_id`
+- Recompute `sp_checksum` from 
+  ```js
+  payload = transaction_id + sp_service_id + sp_ticket_id
+  ```
+- Call `/getAthOrSignResult`
+
+</v-clicks>
+
+---
+transition: slide-up
+---
+
+# `/getAthOrSignResult`
+
+Response Fields of /getAthOrSignResult
+
+- **`hashed_id_num`**: hash of the user's national ID number
+- **`signed_response`**: the signature, in *signing mode*
+- **`signed_response_set`**: a set of signatures, in *continuous-signing mode*
+- **`cert`**: an [X.509 certificate](https://zh.wikipedia.org/zh-tw/X.509) proving the Mobile Citizen Digital Certificate was issued by Taiwan's <b>Ministry of the Interior (MOI)</b> — signed with a private key <b>only the MOI holds</b>. It's a key piece of the ZK proof <span class="text-sm text-gray-500">(more in <a href="https://hackmd.io/k3YuE5dLT_WURtxjbkTLow" target="_blank">the ZK article</a>)</span>
+- **`idp_checksum`**: same as before — verifies the backend's response wasn't tampered with
+    ```js
+    const payload = transaction_id + error_code + hashed_id_num + signed_response;
+    ```
+
+<div class="flex justify-center mt-6 mb-6">
+  <div class="rounded-xl border-2 border-blue-400 bg-blue-50 px-6 py-4">
+    <code class="text-base text-gray-800">idp_checksum = AES_GCM_HEX(SHA256_HEX(Payload))</code>
+  </div>
+</div>
+
 
 ---
 
