@@ -1169,6 +1169,472 @@ transition: slide-up
 
 
 ---
+transition: slide-up
+layout: center
+class: text-center
+---
+
+# `pkCommit`
+
+<div v-click class="flex justify-center mt-6">
+  <div class="pkcommit-box rounded-xl border-2 px-8 py-5">
+    <code class="text-base text-gray-800">pkCommit = hash(<span style="color:#2563eb; font-weight:600">userRSAPublicKey</span>, <span style="color:#7c3aed; font-weight:600">pkBlind</span>)</code>
+  </div>
+</div>
+
+<div class="grid grid-cols-3 gap-4 mt-8 max-w-2xl mx-auto text-left">
+  <div v-click class="bg-teal-50 rounded-xl border-2 border-teal-500 p-4 flex items-center gap-3">
+    <carbon:view-off class="text-2xl shrink-0" style="color:#0d9488" />
+    <div class="text-base text-gray-800">Doesn't reveal the user's real identity</div>
+  </div>
+  <div v-click class="bg-teal-50 rounded-xl border-2 border-teal-500 p-4 flex items-center gap-3">
+    <carbon:shuffle class="text-2xl shrink-0" style="color:#0d9488" />
+    <div class="text-base text-gray-800"><code style="color:#7c3aed; font-weight:600">pkBlind</code>: a random number</div>
+  </div>
+  <div v-click class="bg-teal-50 rounded-xl border-2 border-teal-500 p-4 flex items-center gap-3">
+    <carbon:renew class="text-2xl shrink-0" style="color:#0d9488" />
+    <div class="text-base text-gray-800">Prevents the same user from generating an identical <code class="text-gray-800">pkCommit</code><br/>across multiple proofs</div>
+  </div>
+</div>
+
+<style>
+.pkcommit-box {
+  border-color: #0d9488;
+  background: #f0fdfa;
+}
+</style>
+
+---
+transition: slide-up
+layout: center
+class: text-center
+---
+
+# Performance
+
+<div class="grid grid-cols-3 gap-4 mt-6 max-w-4xl mx-auto">
+  <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-6">
+    <ph:device-mobile class="text-3xl mb-2 mx-auto" style="color:#2563eb" />
+    <div class="text-3xl font-bold text-gray-800">~5s</div>
+    <div class="text-sm text-gray-600 mt-1">iPhone 16 Pro (2024)</div>
+  </div>
+  <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-6">
+    <ph:android-logo class="text-3xl mb-2 mx-auto" style="color:#2563eb" />
+    <div class="text-3xl font-bold text-gray-800">~6s</div>
+    <div class="text-sm text-gray-600 mt-1">Samsung S23U (2023)</div>
+  </div>
+  <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-6">
+    <carbon:laptop class="text-3xl mb-2 mx-auto" style="color:#2563eb" />
+    <div class="text-3xl font-bold text-gray-800">~20s</div>
+    <div class="text-sm text-gray-600 mt-1">MacBook Browser (wasm)</div>
+  </div>
+</div>
+
+<div v-click class="mt-6 flex justify-center gap-4">
+  <div class="bg-green-50 rounded-xl border-2 border-green-500 px-5 py-3 flex items-center gap-3">
+    <carbon:chip class="text-2xl text-green-600 shrink-0" />
+    <div class="text-gray-800">Memory peak: <b class="text-green-600">1 GB</b></div>
+  </div>
+  <div class="bg-green-50 rounded-xl border-2 border-green-500 px-5 py-3 flex items-center gap-3">
+    <carbon:save class="text-2xl text-green-600 shrink-0" />
+    <div class="text-gray-800">Storage: <b class="text-green-600">1 GB</b></div>
+  </div>
+</div>
+
+---
+transition: slide-up
+layout: center
+class: text-center
+---
+
+# Nullifier Design
+
+<div class="flex items-center justify-center gap-4 mt-8">
+  <div v-click class="bg-green-50 rounded-xl border-2 border-green-500 p-5 text-center">
+    <carbon:checkmark-filled class="text-3xl text-green-600 mb-2 mx-auto" />
+    <div class="text-lg font-semibold text-gray-800">First verification</div>
+    <div class="text-sm text-gray-600 mt-1">Ensures the user has only verified once</div>
+  </div>
+  <carbon:arrow-right v-click class="text-3xl text-gray-500 shrink-0" />
+  <div v-click class="bg-red-50 rounded-xl border-2 border-red-400 p-5 text-center">
+    <carbon:close-filled class="text-3xl text-red-500 mb-2 mx-auto" />
+    <div class="text-lg font-semibold text-gray-800">Second verification</div>
+    <div class="text-sm text-gray-600 mt-1">Treated as invalid</div>
+  </div>
+</div>
+
+<div v-click class="mt-6 flex justify-center">
+  <div class="bg-teal-50 rounded-xl border-2 border-teal-500 px-5 py-3 flex items-center gap-3">
+    <carbon:view-off class="text-2xl shrink-0" style="color:#0d9488" />
+    <div class="text-lg text-gray-800">But without <b>revealing the user's identity</b></div>
+  </div>
+</div>
+
+---
+transition: slide-up
+layout: center
+---
+
+# The Original Design
+
+<div class="text-base text-gray-600 mt-4">Uses the Citizen Digital Certificate's unique identifier <code>subjectDN</code></div>
+
+```json
+{
+  "subjectDN": "C=TW,CN=王小明,serialNumber=XXXXXXXXXXXXXXXX"
+}
+```
+
+```js
+nullifier = hash(subjectDN, appID)
+```
+
+<div v-click class="mt-6 flex justify-center">
+  <div class="bg-red-50 rounded-xl border-2 border-red-500 px-5 py-3 flex items-center gap-3 max-w-xl mx-auto">
+    <carbon:warning-alt class="text-2xl text-red-500 shrink-0" />
+    <div class="text-gray-800">Problem: <code>subjectDN</code> <b>is not private data</b></div>
+  </div>
+</div>
+
+<div v-click class="mt-3 flex justify-center">
+  <div class="bg-red-50 rounded-xl border-2 border-red-500 px-5 py-3 max-w-xl mx-auto text-base text-center text-gray-800">
+    Any platform that integrates it can obtain <code>subjectDN</code>, and compute <b style="color:#dc2626">everyone's nullifier</b>
+  </div>
+</div>
+
+<div v-click class="mt-3 flex justify-center">
+  <div class="bg-red-50 rounded-xl border-2 border-red-500 px-5 py-3 max-w-xl mx-auto text-base text-center text-gray-800">
+    Comparing nullifiers reveals <b style="color:#dc2626">who has registered</b>
+  </div>
+</div>
+
+---
+transition: slide-up
+layout: center
+---
+
+# Data Only the User Possesses
+
+<div class="grid grid-cols-2 gap-4 mt-6 max-w-xl mx-auto text-left">
+  <div v-click class="bg-green-50 rounded-xl border-2 border-green-500 p-4 flex items-center gap-3">
+    <carbon:locked class="text-2xl shrink-0" style="color:#16a34a" />
+    <div class="text-gray-800">RSA <b>private key</b></div>
+  </div>
+  <div v-click class="bg-green-50 rounded-xl border-2 border-green-500 p-4 flex items-center gap-3">
+    <carbon:pen-fountain class="text-2xl shrink-0" style="color:#16a34a" />
+    <div class="text-gray-800"><b>Sign</b> using the private key</div>
+  </div>
+</div>
+
+<div v-click class="flex items-center justify-center gap-4 mt-6 flex-wrap">
+  <div class="rounded-xl border-2 border-red-400 bg-red-50 px-5 py-3">
+    <code class="text-sm text-gray-500" style="text-decoration: line-through;">nullifier = hash(subjectDN, appID)</code>
+  </div>
+  <carbon:arrow-right class="text-2xl text-gray-500 shrink-0" />
+  <div class="rounded-xl border-2 border-green-500 bg-green-50 px-5 py-3">
+    <code class="text-base text-gray-800">nullifier = hash(signature(appID))</code>
+  </div>
+</div>
+
+<div v-click class="mt-6 flex justify-center">
+  <div class="bg-green-50 rounded-xl border-2 border-green-500 px-5 py-3 flex items-center gap-3 max-w-xl mx-auto">
+    <carbon:checkmark-filled class="text-2xl text-green-600 shrink-0" />
+    <div class="text-gray-800">Ensures <b>only the user</b> can produce this <code>signature</code> and <code>nullifier</code></div>
+  </div>
+</div>
+
+---
+transition: slide-up
+layout: center
+---
+
+# Trade off
+
+<div class="text-sm text-gray-600 mt-2 max-w-2xl mx-auto text-center">
+For security reasons, the private key never leaves the physical card's chip<br/>After the mobile Citizen Digital Certificate reads the physical card, it <b>generates a separate new private key</b> on the phone
+</div>
+
+<div class="flex items-center justify-center mt-2">
+  <div v-click class="bg-blue-50 rounded-lg border-2 border-blue-400 px-3 py-1.5 text-center">
+    <div class="text-xs text-gray-700 flex items-center gap-1.5"><carbon:id-management class="text-base" style="color:#2563eb" /> Same natural person</div>
+  </div>
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-2 max-w-xl mx-auto">
+  <div v-click class="flex flex-col items-center gap-1">
+    <div class="bg-teal-50 rounded-xl border-2 border-teal-500 p-2 text-center w-full">
+      <carbon:identification class="text-xl mx-auto mb-0.5" style="color:#0d9488" />
+      <div class="text-xs font-semibold text-gray-800">Physical Citizen Digital Certificate</div>
+      <div class="text-xs text-gray-600 mt-0.5">Private key stays on the card's chip</div>
+    </div>
+    <carbon:arrow-down class="text-gray-500 text-sm" />
+    <div class="rounded-lg border-2 px-2 py-1 text-xs text-gray-800" style="border-color:#0d9488;">signature A</div>
+  </div>
+  <div v-click class="flex flex-col items-center gap-1">
+    <div class="bg-amber-50 rounded-xl border-2 border-amber-500 p-2 text-center w-full">
+      <carbon:mobile class="text-xl mx-auto mb-0.5" style="color:#d97706" />
+      <div class="text-xs font-semibold text-gray-800">Mobile Citizen Digital Certificate</div>
+      <div class="text-xs text-gray-600 mt-0.5">A new private key is generated on the phone</div>
+    </div>
+    <carbon:arrow-down class="text-gray-500 text-sm" />
+    <div class="rounded-lg border-2 px-2 py-1 text-xs text-gray-800" style="border-color:#d97706;">signature B</div>
+  </div>
+</div>
+
+<div v-click class="mt-2 flex justify-center">
+  <div class="bg-red-50 rounded-lg border-2 border-red-500 px-4 py-1.5 text-sm text-center text-gray-800 max-w-xl mx-auto">
+    <b style="color:#dc2626">signature A ≠ signature B</b> (the same person produces different nullifiers)
+  </div>
+</div>
+
+<div v-click class="mt-2 flex justify-center">
+  <div class="bg-gray-50 rounded-lg border-2 border-gray-300 px-4 py-1.5 text-sm text-center text-gray-700 max-w-xl mx-auto">
+    Also can't check public data like <code>subjectDN</code> as a workaround, or it would <b>break the user's anonymity</b>
+  </div>
+</div>
+
+
+---
+layout: center
+class: text-center
+---
+
+# Comparing the Approaches
+
+<div class="grid grid-cols-2 gap-4 mt-4">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-4 text-left">
+    <code class="text-sm text-gray-800">hash(subjectDN, appID)</code>
+    <div class="mt-3 flex items-start gap-2 text-sm text-gray-800">
+      <carbon:checkmark class="text-green-600 shrink-0 mt-0.5" />
+      <div>Confirms it's the same natural person</div>
+    </div>
+    <div class="mt-2 flex items-start gap-2 text-sm text-gray-800">
+      <carbon:close class="text-red-500 shrink-0 mt-0.5" />
+      <div>The nullifier could be traced back</div>
+    </div>
+  </div>
+  <div v-click class="bg-green-50 rounded-xl border-2 border-green-500 p-4 text-left relative">
+    <div class="absolute -top-3 right-3 text-xs px-2 py-0.5 rounded-full font-bold" style="background:#16a34a;color:#ffffff;">Chosen</div>
+    <code class="text-sm text-gray-800">hash(signature(appID))</code>
+    <div class="mt-3 flex items-start gap-2 text-sm text-gray-800">
+      <carbon:checkmark class="text-green-600 shrink-0 mt-0.5" />
+      <div>Only the user can compute the nullifier</div>
+    </div>
+    <div class="mt-2 flex items-start gap-2 text-sm text-gray-800">
+      <carbon:close class="text-red-500 shrink-0 mt-0.5" />
+      <div>The same natural person can register multiple accounts using different devices (currently <b>up to three</b>)</div>
+    </div>
+  </div>
+</div>
+
+<div v-click class="mt-6 flex justify-center">
+  <div class="bg-green-50 rounded-xl border-2 border-green-500 px-5 py-3 text-base text-center text-gray-800 max-w-xl mx-auto">
+    The second approach is <b style="color:#16a34a">currently the most acceptable</b>, we hope for a better solution in the future
+  </div>
+</div>
+
+
+---
+layout: center
+---
+
+# Challenge Design
+
+<div class="grid grid-cols-2 gap-4 mt-6 max-w-xl mx-auto text-left">
+  <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-4 flex items-center gap-3">
+    <carbon:time class="text-2xl shrink-0" style="color:#2563eb" />
+    <div class="text-gray-800">Gives the ZK proof <b>a time limit</b></div>
+  </div>
+  <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-4 flex items-center gap-3">
+    <carbon:certificate-check class="text-2xl shrink-0" style="color:#2563eb" />
+    <div class="text-gray-800">The platform provides the challenge and <b>checks whether it has expired</b></div>
+  </div>
+</div>
+
+<div class="mt-8"></div>
+
+<div v-click class="max-w-md mx-auto rounded-xl border-2 border-gray-300 overflow-hidden shadow-lg">
+  <div class="flex items-center gap-2 px-5 py-3 bg-gray-100">
+    <div class="w-3 h-3 rounded-full" style="background:#ff5f56"></div>
+    <div class="w-3 h-3 rounded-full" style="background:#febc2e"></div>
+    <div class="w-3 h-3 rounded-full" style="background:#27c93f"></div>
+  </div>
+
+<div class="p-4">
+
+```js
+signal input challenge;
+signal challengeSquared;
+challengeSquared <== challenge * challenge;
+```
+
+</div>
+</div>
+
+<div v-click class="mt-4 text-center">
+
+<span class="text-lg text-gray-600">Both [Semaphore](https://github.com/semaphore-protocol/semaphore/blob/4dbc39b83a4066bf5084fd7f5d336202aad2f815/packages/circuits/src/semaphore.circom#L74) and [Tornado Cash](https://github.com/tornadocash/tornado-core/blob/1ef6a263ac6a0e476d063fcb269a9df65a1bd56a/circuits/withdraw.circom#L61) have related implementations</span>
+
+</div>
+
+
+
+--- 
+
+# Circuit Auditing
+
+<div v-click class="flex justify-center mt-4">
+  <a href="https://github.com/0xvikasrushi/noir-claude-auditor" target="_blank" class="bg-white/10 backdrop-blur rounded-xl border border-white/20 px-5 py-3 flex items-center gap-3 hover:border-blue transition-colors">
+    <carbon:machine-learning-model class="text-2xl shrink-0" style="color:#8fb4d9" />
+    <div>AI auditing tool <code>noir-claude-auditor</code></div>
+    <carbon:launch class="text-lg opacity-50 shrink-0" />
+  </a>
+</div>
+
+<div v-click class="text-sm text-gray-600 text-center mt-8 tracking-wide font-semibold">KEY TAKEAWAYS</div>
+
+<div class="flex flex-col gap-3 mt-3 max-w-2xl mx-auto text-left">
+  <div v-click class="bg-amber-50 rounded-xl border-2 border-amber-500 p-4 flex items-start gap-3">
+    <carbon:scales class="text-2xl shrink-0 mt-0.5" style="color:#d97706" />
+    <div class="text-gray-800">
+      <b>AI audit results still need your own judgment on whether they fit the use case</b>
+      <div class="text-sm text-gray-600 mt-1">For example, the report flagged the <b>Nullifier design</b> as a <b class="text-red-500">CRITICAL</b> vulnerability, but this was actually the result of the trade-off discussed earlier — choosing the lesser of two evils</div>
+    </div>
+  </div>
+  <div v-click class="bg-amber-50 rounded-xl border-2 border-amber-500 p-4 flex items-start gap-3">
+    <carbon:renew class="text-2xl shrink-0 mt-0.5" style="color:#d97706" />
+    <div class="text-gray-800">
+      <b>Auditing isn't a one-shot process — it requires multiple iterations</b>
+      <div class="text-sm text-gray-600 mt-1">AI won't necessarily catch every vulnerability the first time; asking multiple times can surface different findings — the more you audit, the safer the circuit becomes</div>
+    </div>
+  </div>
+</div>
+
+
+---
+
+# Future Work
+
+<div class="grid grid-cols-2 gap-8 mt-8 max-w-3xl mx-auto">
+<div>
+
+<h2 class="text-lg font-semibold flex items-center gap-2 text-gray-800"><carbon:devices class="text-2xl" style="color:#2563eb" /> Cross-platform</h2>
+
+<div class="flex flex-col gap-3 mt-4">
+  <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-3 flex items-center gap-3">
+    <carbon:mobile class="text-xl shrink-0" style="color:#2563eb" />
+    <div class="text-gray-800">React Native</div>
+  </div>
+  <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-3 flex items-center gap-3">
+    <carbon:application class="text-xl shrink-0" style="color:#2563eb" />
+    <div class="text-gray-800">Flutter</div>
+  </div>
+</div>
+
+</div>
+<div>
+
+<h2 class="text-lg font-semibold flex items-center gap-2 text-gray-800"><carbon:certificate class="text-2xl" style="color:#d97706" />Multiple Certificate Types</h2>
+
+<div class="flex flex-col gap-3 mt-4">
+  <div v-click class="bg-amber-50 rounded-xl border-2 border-amber-500 p-3 flex items-center gap-3">
+    <carbon:airline-passenger-care class="text-xl shrink-0" style="color:#d97706" />
+    <div class="text-gray-800">Passport</div>
+  </div>
+  <div v-click class="bg-amber-50 rounded-xl border-2 border-amber-500 p-3 flex items-center gap-3">
+    <carbon:wallet class="text-xl shrink-0" style="color:#d97706" />
+    <div class="text-gray-800">Digital Credential Wallet</div>
+  </div>
+  <div v-click class="bg-amber-50 rounded-xl border-2 border-amber-500 p-3 flex items-center gap-3">
+    <carbon:earth class="text-xl shrink-0" style="color:#d97706" />
+    <div class="text-gray-800">Certificates from other countries, etc.</div>
+  </div>
+</div>
+
+</div>
+</div>
+
+--- 
+
+# Try it out
+
+<div class="grid grid-cols-3 gap-6 mt-6 max-w-5xl mx-auto text-center">
+  <div v-click class="flex flex-col items-center gap-3">
+    <ph:apple-logo class="text-4xl" style="color:#8fb4d9" />
+    <div class="text-lg font-semibold">iOS (TestFlight)</div>
+    <img src="/images/try_ios_qr.png" class="w-48 h-48 rounded-lg bg-white p-1" />
+    <a href="https://testflight.apple.com/join/UuVzqwHk" target="_blank" class="text-sm opacity-60 underline break-all">testflight.apple.com/join/UuVzqwHk</a>
+  </div>
+  <div v-click class="flex flex-col items-center gap-3">
+    <ph:android-logo class="text-4xl" style="color:#8fb4d9" />
+    <div class="text-lg font-semibold">Android (APK)</div>
+    <img src="/images/try_android_qr.png" class="w-48 h-48 rounded-lg bg-white p-1" />
+    <a href="https://drive.google.com/file/d/15ukmBzA5Ih1SFu0uuf1LursOIYai7ooU/view" target="_blank" class="text-sm opacity-60 underline">Google Drive</a>
+  </div>
+  <div v-click class="flex flex-col items-center gap-3">
+    <ph:globe class="text-4xl" style="color:#8fb4d9" />
+    <div class="text-lg font-semibold">Web</div>
+    <img src="/images/try_web_qr.png" class="w-48 h-48 rounded-lg bg-white p-1" />
+    <a href="https://staging.devptt.dev/profile" target="_blank" class="text-sm opacity-60 underline">staging.devptt.dev/profile</a>
+  </div>
+</div>
+
+---
+layout: center
+---
+
+# TW FidO Development
+
+---
+
+# Article Series
+
+## Developing a Zero-Knowledge Mobile Citizen Digital Certificate
+
+<div class="grid grid-cols-3 gap-6 mt-6 max-w-5xl mx-auto text-center">
+  <div v-click class="flex flex-col items-center gap-3">
+    <carbon:book class="text-4xl" style="color:#8fb4d9" />
+    <div class="text-lg font-semibold">The Story</div>
+    <img src="/images/zkfido_story_qr.svg" class="w-48 h-48 rounded-lg bg-white p-1" />
+    <a href="https://hackmd.io/@vivi432/zkfido-story" target="_blank" class="text-sm opacity-60 underline break-all">hackmd.io/@vivi432/zkfido-story</a>
+  </div>
+  <div v-click class="flex flex-col items-center gap-3">
+    <carbon:certificate class="text-4xl" style="color:#8fb4d9" />
+    <div class="text-lg font-semibold">Mobile Citizen Digital Certificate</div>
+    <img src="/images/zkfido_fido_qr.svg" class="w-48 h-48 rounded-lg bg-white p-1" />
+    <a href="https://hackmd.io/@vivi432/zkfido-fido" target="_blank" class="text-sm opacity-60 underline break-all">hackmd.io/@vivi432/zkfido-fido</a>
+  </div>
+  <div v-click class="flex flex-col items-center gap-3">
+    <carbon:locked class="text-4xl" style="color:#8fb4d9" />
+    <div class="text-lg font-semibold">ZK</div>
+    <img src="/images/zkfido_zk_qr.svg" class="w-48 h-48 rounded-lg bg-white p-1" />
+    <a href="https://hackmd.io/@vivi432/zkfido-zk" target="_blank" class="text-sm opacity-60 underline break-all">hackmd.io/@vivi432/zkfido-zk</a>
+  </div>
+</div>
+
+
+---
+layout: center
+class: text-center
+---
+
+<div class="flex items-center justify-center gap-10">
+  <img src="/images/avatar.jpg" alt="Vivian (Ya-wen) Jeng" class="w-56 h-56 object-cover rounded-full" />
+  <div class="flex flex-col items-center">
+    <img src="/images/linktree_qr.jpg" alt="Linktree QR code" class="w-48 rounded" />
+    <a href="https://linktr.ee/vivianjeng" target="_blank" class="mt-2 opacity-75">linktr.ee/vivianjeng</a>
+  </div>
+</div>
+
+<div class="flex items-center justify-center gap-2 mt-12 opacity-80">
+  <carbon:chat class="text-xl shrink-0" style="color:#8fb4d9" />
+  <div>If you have any ZK-related questions, feel free to ask me!</div>
+</div>
+
+
+
+
+---
 transition: fade-out
 ---
 
