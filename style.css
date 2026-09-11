@@ -3,7 +3,9 @@
   --slidev-code-line-height: 18px;
 }
 
-.slidev-code {
-  white-space: pre-wrap;
-  word-break: break-all;
+.slidev-code,
+.slidev-code code,
+.slidev-code .line {
+  white-space: pre-wrap !important;
+  word-break: break-all !important;
 }

@@ -2091,9 +2091,39 @@ transition: slide-up
   Use <a href="https://ngrok.com/" target="_blank" class="underline">ngrok</a> to expose the local server
 </div>
 
+<div class="terminal-window max-w-2xl mx-auto mt-4 rounded-xl overflow-hidden border-2 border-gray-300 shadow-lg">
+  <div class="flex items-center gap-2 px-4 py-2" style="background:#2d2d2d;">
+    <div class="flex gap-1.5 shrink-0">
+      <div class="w-3 h-3 rounded-full" style="background:#ff5f56"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#febc2e"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#27c93f"></div>
+    </div>
+    <div class="flex-1 text-center text-xs font-mono" style="color:#9ca3af;">bash</div>
+  </div>
+
 ```sh
 ngrok http 8080
 ```
+
+</div>
+
+<style>
+.terminal-window .slidev-code-wrapper {
+  margin: 0 !important;
+}
+.terminal-window .slidev-code {
+  border-radius: 0 !important;
+}
+.slidev-code {
+  background: #1e1e1e !important;
+}
+.shiki span {
+  color: var(--shiki-dark) !important;
+}
+:deep(.slidev-code-copy) {
+  color: white;
+}
+</style>
 
 ```sh {all|12}                                                                           
 ngrok                                                                               (Ctrl+C to quit)
@@ -2143,19 +2173,57 @@ transition: slide-up
 </div>
 
 ## Clone the repo
+
+<div class="terminal-window mx-auto mt-2 rounded-xl overflow-hidden border-2 border-gray-300 shadow-lg">
+  <div class="flex items-center gap-2 px-4 py-2" style="background:#2d2d2d;">
+    <div class="flex gap-1.5 shrink-0">
+      <div class="w-3 h-3 rounded-full" style="background:#ff5f56"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#febc2e"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#27c93f"></div>
+    </div>
+    <div class="flex-1 text-center text-xs font-mono" style="color:#9ca3af;">bash</div>
+  </div>
+
 ```sh
-git clone https://github.com/privacy-ethereum/openac-taiwan-citizen-digital-certificate-ios-example.git
+git clone \
+  https://github.com/privacy-ethereum/openac-taiwan-citizen-digital-certificate-ios-example.git
 ```
+
+</div>
+
+<style>
+.terminal-window .slidev-code-wrapper {
+  margin: 0 !important;
+}
+.terminal-window .slidev-code {
+  border-radius: 0 !important;
+}
+.slidev-code {
+  background: #1e1e1e !important;
+}
+.shiki span {
+  color: var(--shiki-dark) !important;
+}
+:deep(.slidev-code-copy) {
+  color: white;
+}
+</style>
 
 ---
 transition: slide-up
 ---
 # iOS settings
 
+<div class="code-block-group flex flex-col gap-6 mt-6">
+
+- Replace `<your-subdomain>.ngrok-free.app` in `serverURL` and `linkVerifyURL` with your ngrok Forwarding host
+
 ```swift [OpenACExampleApp/ProofViewModel.swift]  {lines: true, startLine: 22}
 private let serverURL = URL(string: "https://<your-subdomain>.ngrok-free.app/challenge")!
 private let linkVerifyURL = URL(string: "https://<your-subdomain>.ngrok-free.app/link-verify")!
 ```
+
+- Create `Secrets.swift` and add your `fidoSpServiceID` and `fidoAESKey`
 
 ```swift [OpenACExampleApp/Secrets.swift] {lines: true}
 enum Secrets {
@@ -2164,22 +2232,67 @@ enum Secrets {
 }
 ```
 
+</div>
+
+<style>
+.code-block-group {
+  --slidev-code-tab-font-size: 14px;
+}
+.slidev-code,
+.slidev-code code,
+.slidev-code .line {
+  white-space: pre !important;
+  word-break: normal !important;
+}
+.slidev-code {
+  padding: 16px !important;
+}
+</style>
+
 ---
 transition: slide-up
 ---
 # Xcode
 
 
-<h2 class="text-lg font-semibold leading-tight flex items-center gap-2 mt-2"><carbon:development class="text-xl" style="color:#2563eb" /> Xcode</h2>
+<h2 class="text-lg font-semibold leading-tight flex items-center gap-2 mt-2"><carbon:development class="text-xl" style="color:#2563eb" /> Open the project in Xcode</h2>
+
+<div class="terminal-window max-w-2xl mx-auto mt-2 rounded-xl overflow-hidden border-2 border-gray-300 shadow-lg">
+  <div class="flex items-center gap-2 px-4 py-2" style="background:#2d2d2d;">
+    <div class="flex gap-1.5 shrink-0">
+      <div class="w-3 h-3 rounded-full" style="background:#ff5f56"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#febc2e"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#27c93f"></div>
+    </div>
+    <div class="flex-1 text-center text-xs font-mono" style="color:#9ca3af;">bash — openac-taiwan-citizen-digital-certificate-ios-example</div>
+  </div>
 
 ```sh
 open . -a Xcode
 ```
 
+</div>
+
+<style>
+.terminal-window .slidev-code-wrapper {
+  margin: 0 !important;
+}
+.terminal-window .slidev-code {
+  border-radius: 0 !important;
+  background: #1e1e1e !important;
+}
+.terminal-window .shiki span {
+  color: var(--shiki-dark) !important;
+}
+.terminal-window :deep(.slidev-code-copy) {
+  color: white;
+}
+</style>
+
 <h2 class="text-lg font-semibold leading-tight flex items-center gap-2 mt-4"><carbon:update-now class="text-xl" style="color:#2563eb" /> Update dependencies</h2>
 
 <div class="flex justify-center mt-2">
-  <img src="/images/ios_update.jpg" alt="Update Swift package dependencies in Xcode" class="rounded-lg border-2 border-gray-300 shadow-lg max-w-2xl w-full" />
+  <img src="/images/ios_update.jpg" alt="Update Swift package dependencies in Xcode" class="rounded-lg border-2 border-gray-300 shadow-lg max-w-md w-full" />
 </div>
 
 ---
