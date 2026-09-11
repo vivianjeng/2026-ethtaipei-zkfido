@@ -2296,6 +2296,52 @@ open . -a Xcode
 </div>
 
 ---
+transition: slide-up
+---
+
+# Run the App
+
+<div class="relative flex justify-center mt-2">
+  <img src="/images/run_xcode.jpg" alt="Update Swift package dependencies in Xcode" class="rounded-lg border-2 border-gray-300 shadow-lg w-full" />
+  <div v-click class="absolute inset-0">
+    <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 2146 936" preserveAspectRatio="none">
+      <ellipse cx="1331" cy="41" rx="75" ry="32" fill="none" stroke="#ef4444" stroke-width="4" vector-effect="non-scaling-stroke" />
+    </svg>
+    <div class="absolute" style="left: 79%; top: 0%; transform: translateX(-50%);">
+      <div class="bg-red-50 border-2 border-red-500 rounded-xl px-4 py-2 shadow-xl flex items-center gap-2 whitespace-nowrap">
+        <carbon:mobile class="text-lg shrink-0" style="color:#dc2626" />
+        <div class="text-sm font-semibold text-red-700">Choose a real device</div>
+      </div>
+    </div>
+  </div>
+
+  <div v-click class="absolute inset-0">
+    <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 2146 936" preserveAspectRatio="none">
+      <ellipse cx="1175" cy="197" rx="165" ry="30" fill="none" stroke="#2563eb" stroke-width="5" vector-effect="non-scaling-stroke" />
+      <ellipse cx="1493" cy="514" rx="105" ry="26" fill="none" stroke="#2563eb" stroke-width="5" vector-effect="non-scaling-stroke" />
+    </svg>
+    <div class="absolute" style="left: 66%; top: 30%;">
+      <div class="bg-blue-50 border-2 border-blue-500 rounded-xl px-4 py-2 shadow-xl flex items-center gap-2 whitespace-nowrap">
+        <carbon:user-avatar class="text-lg shrink-0" style="color:#2563eb" />
+        <div class="text-sm font-semibold text-blue-700">Signing with your account</div>
+      </div>
+    </div>
+  </div>
+
+  <div v-click class="absolute inset-0">
+    <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 2146 936" preserveAspectRatio="none">
+      <ellipse cx="545" cy="48" rx="32" ry="32" fill="none" stroke="#16a34a" stroke-width="5" vector-effect="non-scaling-stroke" />
+    </svg>
+    <div class="absolute" style="left: 25%; top: 10%;">
+      <div class="bg-green-50 border-2 border-green-600 rounded-xl px-4 py-2 shadow-xl flex items-center gap-2 whitespace-nowrap">
+        <carbon:play-filled-alt class="text-lg shrink-0" style="color:#16a34a" />
+        <div class="text-sm font-semibold text-green-700 flex items-center gap-1">Run the app, or use <kbd class="text-xs">⌘</kbd><kbd class="text-xs">R</kbd></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
 
 # Article Series
 
