@@ -473,13 +473,13 @@ $$\underbrace{{\mathrm{signature}^{\,65537}}}_{\text{RSA signature}} \bmod \unde
 
 <div class="flex items-start justify-center mt-8">
   <div class="relative flex flex-col gap-3 text-lg text-right mt-18 pl-10">
-    <div class="flex items-center justify-end text-blue-400">*Issuer RSA public key <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-blue-600">*Issuer RSA public key <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500">Issuer RSA signature <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500"><span v-motion class="rounded-full px-2 py-0.5 border-2" :initial="{ color: '#6b7280', borderColor: 'transparent' }" :enter="{ color: '#6b7280', borderColor: 'transparent' }" :click-2="{ color: '#ef4444', borderColor: '#ef4444' }">User X.509 cert (TBS)</span> <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
-    <div v-click="2" class="flex items-center justify-end text-red-500 -translate-x-53">Contains</div>
+    <div v-click="2" class="flex items-center justify-end text-red-600 -translate-x-53">Contains</div>
     <div class="flex items-center justify-end text-gray-500"><span v-motion class="rounded-full px-2 py-0.5 border-2" :initial="{ color: '#6b7280', borderColor: 'transparent' }" :enter="{ color: '#6b7280', borderColor: 'transparent' }" :click-2="{ color: '#ef4444', borderColor: '#ef4444' }">User RSA public key</span> <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500">User RSA signature <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
-    <div class="flex items-center justify-end text-blue-400">*Message (TBS) <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-blue-600">*Message (TBS) <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
     <svg v-click="2" class="absolute pointer-events-none" style="left: 0.5rem; top: 32%; width: 1.75rem; height: 38%;" viewBox="0 0 40 100" preserveAspectRatio="none">
       <defs>
         <marker id="arrowContains" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f87171" /></marker>
@@ -859,7 +859,7 @@ In the circuit, we need to add this SMT proof, to prove that the leaf at index `
 
 <div v-click class="flex items-start justify-center mt-4">
   <div class="flex flex-col gap-3 text-xl text-right mt-20">
-    <div class="flex items-center justify-end text-blue-400">*SMT root <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-blue-600">*SMT root <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500">serialNumber <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500">SMT siblings <span class="arrow-line w-28 ml-2 -mr-6"></span></div>
   </div>
@@ -910,13 +910,13 @@ In the circuit, we need to add this SMT proof, to prove that the leaf at index `
 
 <div class="flex items-start justify-center mt-4">
   <div class="relative flex flex-col gap-2 text-lg text-right mt-10 pl-10">
-    <div class="flex items-center justify-end text-blue-400">*Issuer RSA public key <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-blue-600">*Issuer RSA public key <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500">Issuer RSA signature <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500"><span v-motion class="rounded-full px-2 py-0.5 border-2" :initial="{ color: '#6b7280', borderColor: 'transparent' }" :enter="{ color: '#6b7280', borderColor: 'transparent' }" :click-1="{ color: '#ef4444', borderColor: '#ef4444' }">User X.509 cert (TBS)</span> <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500"><span v-motion class="rounded-full px-2 py-0.5 border-2" :initial="{ color: '#6b7280', borderColor: 'transparent' }" :enter="{ color: '#6b7280', borderColor: 'transparent' }" :click-1="{ color: '#ef4444', borderColor: '#ef4444' }">User RSA public key</span> <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500">User RSA signature <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
-    <div class="flex items-center justify-end text-blue-400">*Message (TBS) <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
-    <div class="flex items-center justify-end text-blue-400 mt-2">*SMT root <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-blue-600">*Message (TBS) <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
+    <div class="flex items-center justify-end text-blue-600 mt-2">*SMT root <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500"><span v-motion class="rounded-full px-2 py-0.5 border-2" :initial="{ color: '#6b7280', borderColor: 'transparent' }" :enter="{ color: '#6b7280', borderColor: 'transparent' }" :click-1="{ color: '#ef4444', borderColor: '#ef4444' }">serialNumber</span> <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
     <div class="flex items-center justify-end text-gray-500">SMT siblings <span class="arrow-line w-24 ml-2 -mr-6"></span></div>
     <svg v-click="1" class="absolute pointer-events-none" style="left: 0.5rem; top: 24%; width: 2rem; height: 11%;" viewBox="0 0 40 100" preserveAspectRatio="none">
@@ -925,7 +925,7 @@ In the circuit, we need to add this SMT proof, to prove that the leaf at index `
       </defs>
       <path d="M 30 0 C 5 15, 5 85, 40 100" fill="none" stroke="#f87171" stroke-width="2.5" stroke-dasharray="5 4" marker-end="url(#p17ArrowContains1)" vector-effect="non-scaling-stroke" />
     </svg>
-    <div v-click="1" class="absolute text-red-500" style="left: -3.5rem; top: 55%;">Contains</div>
+    <div v-click="1" class="absolute text-red-600" style="left: -3.5rem; top: 55%;">Contains</div>
     <svg v-click="1" class="absolute pointer-events-none" style="left: -1.25rem; top: 24%; width: 3.75rem; height: 58%;" viewBox="0 0 40 100" preserveAspectRatio="none">
       <defs>
         <marker id="p17ArrowContains2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f87171" /></marker>
@@ -1071,7 +1071,7 @@ transition: slide-up
 
 <div class="flex items-start justify-center">
   <div class="flex flex-col gap-2 text-base text-right self-center pl-10">
-    <div class="flex items-center justify-end text-blue-400 mt-6">*Issuer RSA public key <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
+    <div class="flex items-center justify-end text-blue-600 mt-6">*Issuer RSA public key <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
     <div class="flex items-center justify-end text-gray-500">Issuer RSA signature <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
     <div class="flex items-center justify-end text-gray-500">User X.509 cert (TBS) <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
   </div>
@@ -1094,8 +1094,8 @@ transition: slide-up
   <div class="flex flex-col gap-2 text-base text-right self-center pl-10">
     <div class="flex items-center justify-end text-gray-500 mt-10">User RSA public key <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
     <div class="flex items-center justify-end text-gray-500">User RSA signature <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
-    <div class="flex items-center justify-end text-blue-400">*Message (TBS) <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
-    <div class="flex items-center justify-end text-blue-400">*SMT root <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
+    <div class="flex items-center justify-end text-blue-600">*Message (TBS) <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
+    <div class="flex items-center justify-end text-blue-600">*SMT root <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
     <div class="flex items-center justify-end text-gray-500">serialNumber <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
     <div class="flex items-center justify-end text-gray-500">SMT siblings <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
   </div>
@@ -1498,7 +1498,7 @@ challengeSquared <== challenge * challenge;
     <carbon:scales class="text-2xl shrink-0 mt-0.5" style="color:#d97706" />
     <div class="text-gray-800">
       <b>AI audit results still need your own judgment on whether they fit the use case</b>
-      <div class="text-sm text-gray-600 mt-1">For example, the report flagged the <b>Nullifier design</b> as a <b class="text-red-500">CRITICAL</b> vulnerability, but this was actually the result of the trade-off discussed earlier — choosing the lesser of two evils</div>
+      <div class="text-sm text-gray-600 mt-1">For example, the report flagged the <b>Nullifier design</b> as a <b class="text-red-600">CRITICAL</b> vulnerability, but this was actually the result of the trade-off discussed earlier — choosing the lesser of two evils</div>
     </div>
   </div>
   <div v-click class="bg-amber-50 rounded-xl border-2 border-amber-500 p-4 flex items-start gap-3">
