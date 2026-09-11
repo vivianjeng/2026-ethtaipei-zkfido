@@ -125,11 +125,11 @@ layoutClass: gap-8
 <div class="mt-6">
   <h2 class="text-lg font-semibold leading-tight flex items-center gap-2"><carbon:warning-alt class="text-yellow-400 text-xl" /> School email registration</h2>
   <div class="flex flex-col gap-3 mt-4">
-    <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-4">
+    <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-4 flex items-center gap-4">
       <carbon:user-multiple class="text-3xl text-red-400 shrink-0" />
       <div class="text-base">Previously targeted by hackers who <b>mass-registered accounts</b></div>
     </div>
-    <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-4">
+    <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-4 flex items-center gap-4">
       <carbon:bullhorn class="text-3xl text-red-400 shrink-0" />
       <div class="text-base">Also subject to <b>opinion manipulation and troll armies</b></div>
     </div>
@@ -143,16 +143,16 @@ layoutClass: gap-8
 <div class="mt-6">
   <h2 v-click class="text-lg font-semibold leading-tight flex items-center gap-2"><carbon:reset class="text-blue-400 text-xl" /> AOTP: Reverse OTP</h2>
   <div class="flex flex-col gap-3 mt-4">
-    <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-3">
-      <div class="text-sm opacity-60 mb-1.5">Traditional OTP</div>
+    <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-3">
+      <div class="text-sm text-gray-500 mb-1.5">Traditional OTP</div>
       <div class="flex items-center gap-2 text-sm flex-wrap">
         <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><carbon:email class="text-xl shrink-0" /> Telecom sends SMS</span>
         <carbon:arrow-right class="shrink-0 opacity-50" />
         <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><carbon:password class="text-xl shrink-0" /> User enters it on the platform</span>
       </div>
     </div>
-    <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-3">
-      <div class="text-sm opacity-60 mb-1.5">AOTP</div>
+    <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-3">
+      <div class="text-sm text-gray-500 mb-1.5">AOTP</div>
       <div class="flex items-center gap-2 text-sm flex-wrap">
         <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><carbon:security class="text-xl shrink-0" /> Platform displays a code</span>
         <carbon:arrow-right class="shrink-0 opacity-50" />
@@ -187,12 +187,12 @@ layout: two-cols
 
 # Cost
 
-<div class="flex flex-col gap-3 mt-5">
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-4">
+<div class="flex flex-col gap-3 mt-5 mr-3">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-4 flex items-center gap-4">
     <carbon:chart-line class="text-2xl text-red-400 shrink-0" />
     <div class="text-base">As a non-profit, more users means <b>higher costs, not more revenue</b></div>
   </div>
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-4">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-4 flex items-center gap-4">
     <carbon:security class="text-2xl text-red-400 shrink-0" />
     <div class="text-base">Carries the <b>security risk of data breaches</b></div>
   </div>
@@ -204,25 +204,25 @@ layout: two-cols
 # Privacy
 
 <div class="flex flex-col gap-3 mt-5">
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-4">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-4 flex items-center gap-4">
     <carbon:police class="text-2xl text-red-400 shrink-0" />
     <div class="text-base">When fraud or crime happens on the platform, the platform is required to <b>cooperate with investigations</b></div>
   </div>
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-4">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-4 flex items-center gap-4">
     <carbon:warning-alt class="text-2xl text-red-400 shrink-0" />
     <div class="text-base">Complying means <b>handing over user data</b> — eroding user trust</div>
   </div>
 </div>
 
 
-<div class="absolute left-14 right-14 bottom-8 flex flex-col items-center gap-3">
-  <div v-click class="flex justify-center w-full quote-reveal">
-    <div class="quote-box max-w-3xl text-center rounded-xl border-2 p-6" style="border-color: var(--slidev-theme-primary); background: color-mix(in srgb, var(--slidev-theme-primary) 15%, transparent);">
-      <p class="text-l italic leading-relaxed" style="color: var(--slidev-theme-primary);">"PTT only needs users to prove they're Taiwanese —<br/> it doesn't need to know who they are."</p>
+<div class="absolute left-8 right-8 bottom-8 flex flex-col items-center gap-4">
+  <div v-click class="flex justify-center quote-reveal">
+    <div class="quote-box max-w-4xl w-full text-center rounded-xl border-2 px-10 py-7" style="border-color: var(--slidev-theme-primary); background: color-mix(in srgb, var(--slidev-theme-primary) 15%, transparent);">
+      <p class="text-xl italic leading-relaxed" style="color: var(--slidev-theme-primary);">"PTT only needs users to prove they're Taiwanese —<br/> it doesn't need to know who they are."</p>
     </div>
   </div>
 
-  <div v-click class="text-center text-base opacity-70">
+  <div v-click class="text-center text-base text-gray-700">
     This is exactly the use case <b>Zero-Knowledge Proofs</b> are perfect for<br/>PTT wouldn't need to rely on telecoms, nor store users' personal data
   </div>
 </div>
@@ -262,19 +262,19 @@ layout: two-cols
 <h2 class="text-xl font-semibold flex items-center gap-2"><carbon:certificate class="text-blue-400" /> <a href="https://github.com/privacy-ethereum/zkID" target="_blank">zkID</a></h2>
 
 <div class="flex flex-col gap-3 mt-5">
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-3 flex items-center gap-3">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-3 flex items-center gap-3">
     <carbon:certificate class="text-2xl text-blue-400 shrink-0" />
     <div class="text-base">In 2025, the zkID team published a paper introducing the <a href="https://eprint.iacr.org/2026/251.pdf" target="_blank"><b>OpenAC</b></a> mechanism</div>
   </div>
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-3 flex items-center gap-3">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-3 flex items-center gap-3">
     <carbon:code class="text-2xl text-blue-400 shrink-0" />
     <div class="text-base"><a href="https://github.com/privacy-ethereum/zkID" target="_blank">Open-sources</a> the <a href="https://github.com/therealyingtong/Spartan2" target="_blank"><b>Spartan + Hyrax</b> Prover</a>, the core engine used to generate ZK proofs</div>
   </div>
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-3 flex items-center gap-3">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-3 flex items-center gap-3">
     <carbon:unlocked class="text-2xl text-blue-400 shrink-0" />
     <div class="text-base">No <b>trusted setup</b> required, and integrates with the widely-used circom frontend</div>
   </div>
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-3 flex items-center gap-3">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-3 flex items-center gap-3">
     <carbon:rocket class="text-2xl text-blue-400 shrink-0" />
     <div class="text-base">Excellent <b class="text-emerald-600">cross-platform</b> proving performance</div>
   </div>
@@ -286,19 +286,19 @@ layout: two-cols
 <h2 class="text-xl font-semibold flex items-center gap-2"><carbon:mobile class="text-orange-400" /> <a href="https://github.com/zkmopro/mopro" target="_blank">mopro</a></h2>
 
 <div class="flex flex-col gap-3 mt-5">
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-3 flex items-center gap-3">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-3 flex items-center gap-3">
     <carbon:api class="text-2xl text-orange-400 shrink-0" />
     <div class="text-base">Provides <a href="https://zkmopro.org/docs/setup/rust-setup#-customize-the-bindings" target="_blank">customizable FFI</a>, with built-in support for <b>circom, halo2, noir</b></div>
   </div>
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-3 flex items-center gap-3">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-3 flex items-center gap-3">
     <carbon:box class="text-2xl text-orange-400 shrink-0" />
     <div class="text-base">Freely import any Rust crate in <code>Cargo.toml</code> — integrating Spartan + Hyrax works just as well</div>
   </div>
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-3 flex items-center gap-3">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-3 flex items-center gap-3">
     <carbon:devices class="text-2xl text-orange-400 shrink-0" />
     <div class="text-base"><a href="https://mozilla.github.io/uniffi-rs/latest/" target="_blank"><b>UniFFI</b></a> + <a href="https://crates.io/crates/mopro-cli" target="_blank">mopro CLI</a> auto-generate Swift / Kotlin / React Native / Flutter bindings</div>
   </div>
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-3 flex items-center gap-3">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-3 flex items-center gap-3">
     <carbon:tools class="text-2xl text-orange-400 shrink-0" />
     <div class="text-base">Developers <b>no longer need to rewrite the Prover</b> for every language</div>
   </div>
@@ -538,11 +538,11 @@ transition: slide-up
 <img src="/images/moica_example.png" alt="Citizen Digital Certificate example" class="rounded-2xl shadow-lg w-80 mx-auto" />
 
 <div class="grid grid-cols-2 gap-4 mt-6 max-w-xl mx-auto">
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-3">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-4 flex items-center gap-3">
     <carbon:time class="text-2xl text-blue-300 shrink-0" />
     <div>1. Not expired</div>
   </div>
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-3">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-4 flex items-center gap-3">
     <carbon:certificate class="text-2xl text-blue-300 shrink-0" />
     <div>2. Not revoked</div>
   </div>
@@ -555,22 +555,22 @@ transition: slide-up
 # Revocation
 
 <div class="grid grid-cols-2 gap-4 mt-6">
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-4">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-4 flex items-center gap-4">
     <carbon:time class="text-2xl text-blue-300 shrink-0" />
     <div>Check whether the <b>validity period</b> has expired</div>
   </div>
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-4">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-4 flex items-center gap-4">
     <carbon:certificate class="text-2xl text-blue-300 shrink-0" />
     <div>Check whether it's on the Ministry of the Interior's<br/><a href="https://moica.nat.gov.tw/save_1.html" target="_blank" class="underline opacity-90">Citizen Digital Certificate revocation list</a></div>
   </div>
 </div>
 
 <div class="grid grid-cols-2 gap-4 mt-4">
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-4">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-4 flex items-center gap-4">
     <carbon:barcode class="text-2xl text-red-400 shrink-0" />
     <div>Revocation list lookup <b>requires the certificate's serial number</b> <code>serialNumber</code></div>
   </div>
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-4 flex items-center gap-4">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-4 flex items-center gap-4">
     <carbon:view-off class="text-2xl text-red-400 shrink-0" />
     <div>User providing their own serial number <b>= exposing their privacy</b></div>
   </div>
@@ -989,15 +989,15 @@ transition: slide-up
 # The Circuit is Too Big!
 
 <div class="grid grid-cols-2 gap-6 mt-6 max-w-2xl mx-auto">
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-6">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-6">
     <carbon:password class="text-3xl text-yellow-400 mb-2" />
     <div class="text-3xl font-bold">2 GB</div>
-    <div class="text-sm opacity-70 mt-1">Proving key</div>
+    <div class="text-sm text-gray-500 mt-1">Proving key</div>
   </div>
-  <div v-click class="bg-white/10 backdrop-blur rounded-xl border border-white/20 p-6">
+  <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-6">
     <carbon:chip class="text-3xl text-yellow-400 mb-2" />
     <div class="text-3xl font-bold">2 GB</div>
-    <div class="text-sm opacity-70 mt-1">Memory usage</div>
+    <div class="text-sm text-gray-500 mt-1">Memory usage</div>
   </div>
 </div>
 
@@ -1350,45 +1350,45 @@ layout: center
 
 # Trade off
 
-<div class="text-sm text-gray-600 mt-2 max-w-2xl mx-auto text-center">
+<div class="text-base text-gray-600 mt-3 max-w-2xl mx-auto text-center">
 For security reasons, the private key never leaves the physical card's chip<br/>After the mobile Citizen Digital Certificate reads the physical card, it <b>generates a separate new private key</b> on the phone
 </div>
 
-<div class="flex items-center justify-center mt-2">
-  <div v-click class="bg-blue-50 rounded-lg border-2 border-blue-400 px-3 py-1.5 text-center">
-    <div class="text-xs text-gray-700 flex items-center gap-1.5"><carbon:id-management class="text-base" style="color:#2563eb" /> Same natural person</div>
+<div class="flex items-center justify-center mt-3">
+  <div v-click class="bg-blue-50 rounded-lg border-2 border-blue-400 px-4 py-2 text-center">
+    <div class="text-base text-gray-700 flex items-center gap-1.5"><carbon:id-management class="text-lg" style="color:#2563eb" /> Same natural person</div>
   </div>
 </div>
 
-<div class="grid grid-cols-2 gap-4 mt-2 max-w-xl mx-auto">
-  <div v-click class="flex flex-col items-center gap-1">
-    <div class="bg-teal-50 rounded-xl border-2 border-teal-500 p-2 text-center w-full">
-      <carbon:identification class="text-xl mx-auto mb-0.5" style="color:#0d9488" />
-      <div class="text-xs font-semibold text-gray-800">Physical Citizen Digital Certificate</div>
-      <div class="text-xs text-gray-600 mt-0.5">Private key stays on the card's chip</div>
+<div class="grid grid-cols-2 gap-5 mt-3 max-w-2xl mx-auto">
+  <div v-click class="flex flex-col items-center gap-1.5">
+    <div class="bg-teal-50 rounded-xl border-2 border-teal-500 p-3 text-center w-full">
+      <carbon:identification class="text-2xl mx-auto mb-1" style="color:#0d9488" />
+      <div class="text-sm font-semibold text-gray-800">Physical Citizen Digital Certificate</div>
+      <div class="text-sm text-gray-600 mt-0.5">Private key stays on the card's chip</div>
     </div>
-    <carbon:arrow-down class="text-gray-500 text-sm" />
-    <div class="rounded-lg border-2 px-2 py-1 text-xs text-gray-800" style="border-color:#0d9488;">signature A</div>
+    <carbon:arrow-down class="text-gray-500 text-base" />
+    <div class="rounded-lg border-2 px-3 py-1.5 text-sm text-gray-800" style="border-color:#0d9488;">signature A</div>
   </div>
-  <div v-click class="flex flex-col items-center gap-1">
-    <div class="bg-amber-50 rounded-xl border-2 border-amber-500 p-2 text-center w-full">
-      <carbon:mobile class="text-xl mx-auto mb-0.5" style="color:#d97706" />
-      <div class="text-xs font-semibold text-gray-800">Mobile Citizen Digital Certificate</div>
-      <div class="text-xs text-gray-600 mt-0.5">A new private key is generated on the phone</div>
+  <div v-click class="flex flex-col items-center gap-1.5">
+    <div class="bg-amber-50 rounded-xl border-2 border-amber-500 p-3 text-center w-full">
+      <carbon:mobile class="text-2xl mx-auto mb-1" style="color:#d97706" />
+      <div class="text-sm font-semibold text-gray-800">Mobile Citizen Digital Certificate</div>
+      <div class="text-sm text-gray-600 mt-0.5">A new private key is generated on the phone</div>
     </div>
-    <carbon:arrow-down class="text-gray-500 text-sm" />
-    <div class="rounded-lg border-2 px-2 py-1 text-xs text-gray-800" style="border-color:#d97706;">signature B</div>
+    <carbon:arrow-down class="text-gray-500 text-base" />
+    <div class="rounded-lg border-2 px-3 py-1.5 text-sm text-gray-800" style="border-color:#d97706;">signature B</div>
   </div>
 </div>
 
-<div v-click class="mt-2 flex justify-center">
-  <div class="bg-red-50 rounded-lg border-2 border-red-500 px-4 py-1.5 text-sm text-center text-gray-800 max-w-xl mx-auto">
+<div v-click class="mt-3 flex justify-center">
+  <div class="bg-red-50 rounded-lg border-2 border-red-500 px-5 py-2 text-base text-center text-gray-800 max-w-xl mx-auto">
     <b style="color:#dc2626">signature A ≠ signature B</b> (the same person produces different nullifiers)
   </div>
 </div>
 
-<div v-click class="mt-2 flex justify-center">
-  <div class="bg-gray-50 rounded-lg border-2 border-gray-300 px-4 py-1.5 text-sm text-center text-gray-700 max-w-xl mx-auto">
+<div v-click class="mt-3 flex justify-center">
+  <div class="bg-gray-50 rounded-lg border-2 border-gray-300 px-5 py-2 text-base text-center text-gray-700 max-w-xl mx-auto">
     Also can't check public data like <code>subjectDN</code> as a workaround, or it would <b>break the user's anonymity</b>
   </div>
 </div>
@@ -1563,19 +1563,19 @@ challengeSquared <== challenge * challenge;
     <ph:apple-logo class="text-4xl" style="color:#8fb4d9" />
     <div class="text-lg font-semibold">iOS (TestFlight)</div>
     <img src="/images/try_ios_qr.png" class="w-48 h-48 rounded-lg bg-white p-1" />
-    <a href="https://testflight.apple.com/join/UuVzqwHk" target="_blank" class="text-sm opacity-60 underline break-all">testflight.apple.com/join/UuVzqwHk</a>
+    <a href="https://testflight.apple.com/join/UuVzqwHk" target="_blank" class="text-base text-gray-600 underline break-all">testflight.apple.com/join/UuVzqwHk</a>
   </div>
   <div v-click class="flex flex-col items-center gap-3">
     <ph:android-logo class="text-4xl" style="color:#8fb4d9" />
     <div class="text-lg font-semibold">Android (APK)</div>
     <img src="/images/try_android_qr.png" class="w-48 h-48 rounded-lg bg-white p-1" />
-    <a href="https://drive.google.com/file/d/15ukmBzA5Ih1SFu0uuf1LursOIYai7ooU/view" target="_blank" class="text-sm opacity-60 underline">Google Drive</a>
+    <a href="https://drive.google.com/file/d/15ukmBzA5Ih1SFu0uuf1LursOIYai7ooU/view" target="_blank" class="text-base text-gray-600 underline">Google Drive</a>
   </div>
   <div v-click class="flex flex-col items-center gap-3">
     <ph:globe class="text-4xl" style="color:#8fb4d9" />
     <div class="text-lg font-semibold">Web</div>
     <img src="/images/try_web_qr.png" class="w-48 h-48 rounded-lg bg-white p-1" />
-    <a href="https://staging.devptt.dev/profile" target="_blank" class="text-sm opacity-60 underline">staging.devptt.dev/profile</a>
+    <a href="https://staging.devptt.dev/profile" target="_blank" class="text-base text-gray-600 underline">staging.devptt.dev/profile</a>
   </div>
 </div>
 
@@ -1734,7 +1734,7 @@ transition: slide-up
 </v-clicks>
 
 <div v-click class="flex justify-center mt-4">
-  <a href="https://github.com/0xvikasrushi/noir-claude-auditor" target="_blank" class="bg-white/10 backdrop-blur rounded-xl border border-white/20 px-5 py-3 flex items-center gap-3 hover:border-blue transition-colors">
+  <a href="https://github.com/0xvikasrushi/noir-claude-auditor" target="_blank" class="bg-gray-50 rounded-xl border-2 border-gray-300 px-5 py-3 flex items-center gap-3 hover:border-blue transition-colors">
     <carbon:machine-learning-model class="text-2xl shrink-0" style="color:#8fb4d9" />
     <div>Full implementation details in the <b>TW FidO integration article</b></div>
     <carbon:launch class="text-lg opacity-50 shrink-0" />
@@ -1871,6 +1871,12 @@ Response Fields of /getAthOrSignResult
 
 ---
 
+# Demo Web
+
+
+
+---
+
 # The Real Value of the Citizen Digital Certificate
 
 <div class="grid grid-cols-2 gap-4 mt-2">
@@ -1904,6 +1910,109 @@ Response Fields of /getAthOrSignResult
 </div>
 
 ---
+layout: center
+---
+
+# Example App
+
+---
+
+# Available Packages
+
+<div class="index-glow-box bg-gray-50 rounded-xl border-2 border-gray-300 px-4 py-1.5 flex items-center justify-center gap-2 mt-1 max-w-xl mx-auto text-center">
+  <carbon:logo-github class="text-lg opacity-70 shrink-0" />
+  <div class="text-base text-gray-700">Full index: <a href="https://github.com/privacy-ethereum/ZK-based-Proof-of-Personhood" target="_blank" class="underline text-gray-800">privacy-ethereum/ZK-based-Proof-of-Personhood</a></div>
+</div>
+
+<style>
+.index-glow-box {
+  animation: index-glow 2.4s ease-in-out infinite;
+}
+@keyframes index-glow {
+  0%, 100% { box-shadow: 0 0 0px 0px color-mix(in srgb, var(--slidev-theme-primary) 45%, transparent); border-color: rgba(255,255,255,0.2); }
+  50% { box-shadow: 0 0 20px 4px color-mix(in srgb, var(--slidev-theme-primary) 45%, transparent); border-color: color-mix(in srgb, var(--slidev-theme-primary) 60%, transparent); }
+}
+</style>
+
+<div class="mt-3 max-w-4xl mx-auto">
+  <div class="text-sm text-gray-500 tracking-wide mb-1.5">Core Packages</div>
+  <div class="grid grid-cols-3 gap-2">
+    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+      <div class="flex items-center gap-1 flex-wrap"><span class="pill pill-prove">Prove</span><span class="pill pill-verify">Verify</span></div>
+      <a href="https://github.com/privacy-ethereum/zkID/tree/RSA-X.509-Cert" target="_blank" class="font-mono block mt-0.5">zkid</a>
+      <div class="text-xs text-gray-500 mt-0.5">Rust circuit + prove/verify logic</div>
+    </div>
+    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+      <span class="pill pill-verify">Verify</span>
+      <a href="https://github.com/zkmopro/go-zkid-verifier" target="_blank" class="font-mono block mt-0.5">go-zkid-verifier</a>
+      <div class="text-xs text-gray-500 mt-0.5">Go bindings for Rust verify, used by the PTT backend</div>
+    </div>
+    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+      <span class="pill pill-prove">Prove</span>
+      <a href="https://github.com/privacy-ethereum/moica-revocation-smt" target="_blank" class="font-mono block mt-0.5">moica-revocation-smt</a>
+      <div class="text-xs text-gray-500 mt-0.5">Builds the revocation SMT, updates the root every 12h</div>
+    </div>
+  </div>
+
+  <div class="text-sm text-gray-500 tracking-wide mb-1.5 mt-3">Cross-Platform Prove SDKs</div>
+  <div class="grid grid-cols-3 gap-2">
+    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+      <span class="pill pill-prove">Prove</span>
+      <a href="https://github.com/privacy-ethereum/openac-rsa-x509-swift" target="_blank" class="font-mono block mt-0.5">Swift SDK</a>
+      <div class="text-xs text-gray-500 mt-0.5">iOS proof generation</div>
+    </div>
+    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+      <span class="pill pill-prove">Prove</span>
+      <a href="https://github.com/privacy-ethereum/openac-rsa-x509-kotlin" target="_blank" class="font-mono block mt-0.5">Kotlin SDK</a>
+      <div class="text-xs text-gray-500 mt-0.5">Android proof generation</div>
+    </div>
+    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+      <span class="pill pill-prove">Prove</span>
+      <a href="https://github.com/privacy-ethereum/openac-rsa-x509-js" target="_blank" class="font-mono block mt-0.5">JS SDK</a>
+      <div class="text-xs text-gray-500 mt-0.5">Web proof generation</div>
+    </div>
+  </div>
+
+  <div class="text-sm text-gray-500 tracking-wide mb-1.5 mt-3">Example Apps</div>
+  <div class="grid grid-cols-3 gap-2">
+    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+      <span class="pill pill-prove">Prove</span>
+      <a href="https://github.com/privacy-ethereum/openac-taiwan-citizen-digital-certificate-ios-example" target="_blank" class="font-mono block mt-0.5">iOS Example</a>
+      <div class="text-xs text-gray-500 mt-0.5">Mobile cert + ZK proof integration</div>
+    </div>
+    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+      <span class="pill pill-prove">Prove</span>
+      <a href="https://github.com/privacy-ethereum/openac-taiwan-citizen-digital-certificate-android-example" target="_blank" class="font-mono block mt-0.5">Android Example</a>
+      <div class="text-xs text-gray-500 mt-0.5">Mobile cert + ZK proof integration</div>
+    </div>
+    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+      <span class="pill pill-prove">Prove</span>
+      <a href="https://github.com/privacy-ethereum/openac-taiwan-citizen-digital-certificate-web-example" target="_blank" class="font-mono block mt-0.5">Web Example</a>
+      <div class="text-xs text-gray-500 mt-0.5">Cert / Mobile cert + ZK proof integration</div>
+    </div>
+  </div>
+</div>
+
+<style>
+.pill {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 999px;
+  margin-right: 4px;
+}
+.pill-prove {
+  background: color-mix(in srgb, #8fb4d9 20%, transparent);
+  color: #8fb4d9;
+}
+.pill-verify {
+  background: color-mix(in srgb, #5eead4 20%, transparent);
+  color: #5eead4;
+}
+</style>
+
+---
 
 # Article Series
 
@@ -1914,19 +2023,19 @@ Response Fields of /getAthOrSignResult
     <carbon:book class="text-4xl" style="color:#8fb4d9" />
     <div class="text-lg font-semibold">The Story</div>
     <img src="/images/zkfido_story_qr.svg" class="w-48 h-48 rounded-lg bg-white p-1" />
-    <a href="https://hackmd.io/@vivi432/zkfido-story" target="_blank" class="text-sm opacity-60 underline break-all">hackmd.io/@vivi432/zkfido-story</a>
+    <a href="https://hackmd.io/@vivi432/zkfido-story" target="_blank" class="text-sm text-gray-600 underline break-all">hackmd.io/@vivi432/zkfido-story</a>
   </div>
   <div v-click class="flex flex-col items-center gap-3">
     <carbon:certificate class="text-4xl" style="color:#8fb4d9" />
     <div class="text-lg font-semibold">Mobile Citizen Digital Certificate</div>
     <img src="/images/zkfido_fido_qr.svg" class="w-48 h-48 rounded-lg bg-white p-1" />
-    <a href="https://hackmd.io/@vivi432/zkfido-fido" target="_blank" class="text-sm opacity-60 underline break-all">hackmd.io/@vivi432/zkfido-fido</a>
+    <a href="https://hackmd.io/@vivi432/zkfido-fido" target="_blank" class="text-sm text-gray-600 underline break-all">hackmd.io/@vivi432/zkfido-fido</a>
   </div>
   <div v-click class="flex flex-col items-center gap-3">
     <carbon:locked class="text-4xl" style="color:#8fb4d9" />
     <div class="text-lg font-semibold">ZK</div>
     <img src="/images/zkfido_zk_qr.svg" class="w-48 h-48 rounded-lg bg-white p-1" />
-    <a href="https://hackmd.io/@vivi432/zkfido-zk" target="_blank" class="text-sm opacity-60 underline break-all">hackmd.io/@vivi432/zkfido-zk</a>
+    <a href="https://hackmd.io/@vivi432/zkfido-zk" target="_blank" class="text-sm text-gray-600 underline break-all">hackmd.io/@vivi432/zkfido-zk</a>
   </div>
 </div>
 
