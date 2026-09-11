@@ -1,0 +1,9 @@
+:root {
+  --slidev-code-font-size: 14px;
+  --slidev-code-line-height: 18px;
+}
+
+.slidev-code {
+  white-space: pre-wrap;
+  word-break: break-all;
+}

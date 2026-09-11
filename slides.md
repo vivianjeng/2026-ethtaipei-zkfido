@@ -1873,6 +1873,21 @@ Response Fields of /getAthOrSignResult
 
 # Demo Web
 
+<div class="relative max-w-5xl mx-auto mt-6">
+  <div class="rounded-xl border-2 border-gray-300 overflow-hidden shadow-lg">
+    <div class="flex items-center gap-3 px-4 py-2 bg-gray-100 border-b border-gray-300">
+      <div class="flex gap-1.5 shrink-0">
+        <div class="w-3 h-3 rounded-full" style="background:#ff5f56"></div>
+        <div class="w-3 h-3 rounded-full" style="background:#febc2e"></div>
+        <div class="w-3 h-3 rounded-full" style="background:#27c93f"></div>
+      </div>
+      <div class="flex-1 bg-white rounded-md px-3 py-1 border border-gray-200 text-center">
+        <a href="https://tw-fido-sp-demo.pages.dev/" target="_blank" class="text-sm text-gray-600 hover:underline">https://tw-fido-sp-demo.pages.dev/</a>
+      </div>
+    </div>
+    <iframe src="https://tw-fido-sp-demo.pages.dev/" class="w-full block" style="height: 420px; border: none;"></iframe>
+  </div>
+</div>
 
 
 ---
@@ -1915,6 +1930,9 @@ layout: center
 
 # Example App
 
+
+---
+transition: slide-up
 ---
 
 # Available Packages
@@ -1937,17 +1955,17 @@ layout: center
 <div class="mt-3 max-w-4xl mx-auto">
   <div class="text-sm text-gray-500 tracking-wide mb-1.5">Core Packages</div>
   <div class="grid grid-cols-3 gap-2">
-    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+    <div class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
       <div class="flex items-center gap-1 flex-wrap"><span class="pill pill-prove">Prove</span><span class="pill pill-verify">Verify</span></div>
       <a href="https://github.com/privacy-ethereum/zkID/tree/RSA-X.509-Cert" target="_blank" class="font-mono block mt-0.5">zkid</a>
       <div class="text-xs text-gray-500 mt-0.5">Rust circuit + prove/verify logic</div>
     </div>
-    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+    <div class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
       <span class="pill pill-verify">Verify</span>
       <a href="https://github.com/zkmopro/go-zkid-verifier" target="_blank" class="font-mono block mt-0.5">go-zkid-verifier</a>
       <div class="text-xs text-gray-500 mt-0.5">Go bindings for Rust verify, used by the PTT backend</div>
     </div>
-    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+    <div class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
       <span class="pill pill-prove">Prove</span>
       <a href="https://github.com/privacy-ethereum/moica-revocation-smt" target="_blank" class="font-mono block mt-0.5">moica-revocation-smt</a>
       <div class="text-xs text-gray-500 mt-0.5">Builds the revocation SMT, updates the root every 12h</div>
@@ -1956,17 +1974,17 @@ layout: center
 
   <div class="text-sm text-gray-500 tracking-wide mb-1.5 mt-3">Cross-Platform Prove SDKs</div>
   <div class="grid grid-cols-3 gap-2">
-    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+    <div class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
       <span class="pill pill-prove">Prove</span>
       <a href="https://github.com/privacy-ethereum/openac-rsa-x509-swift" target="_blank" class="font-mono block mt-0.5">Swift SDK</a>
       <div class="text-xs text-gray-500 mt-0.5">iOS proof generation</div>
     </div>
-    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+    <div class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
       <span class="pill pill-prove">Prove</span>
       <a href="https://github.com/privacy-ethereum/openac-rsa-x509-kotlin" target="_blank" class="font-mono block mt-0.5">Kotlin SDK</a>
       <div class="text-xs text-gray-500 mt-0.5">Android proof generation</div>
     </div>
-    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+    <div class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
       <span class="pill pill-prove">Prove</span>
       <a href="https://github.com/privacy-ethereum/openac-rsa-x509-js" target="_blank" class="font-mono block mt-0.5">JS SDK</a>
       <div class="text-xs text-gray-500 mt-0.5">Web proof generation</div>
@@ -1975,17 +1993,17 @@ layout: center
 
   <div class="text-sm text-gray-500 tracking-wide mb-1.5 mt-3">Example Apps</div>
   <div class="grid grid-cols-3 gap-2">
-    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+    <div class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
       <span class="pill pill-prove">Prove</span>
       <a href="https://github.com/privacy-ethereum/openac-taiwan-citizen-digital-certificate-ios-example" target="_blank" class="font-mono block mt-0.5">iOS Example</a>
       <div class="text-xs text-gray-500 mt-0.5">Mobile cert + ZK proof integration</div>
     </div>
-    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+    <div class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
       <span class="pill pill-prove">Prove</span>
       <a href="https://github.com/privacy-ethereum/openac-taiwan-citizen-digital-certificate-android-example" target="_blank" class="font-mono block mt-0.5">Android Example</a>
       <div class="text-xs text-gray-500 mt-0.5">Mobile cert + ZK proof integration</div>
     </div>
-    <div v-click class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
+    <div class="bg-gray-50 rounded-lg border-2 border-gray-300 p-1.5 text-sm">
       <span class="pill pill-prove">Prove</span>
       <a href="https://github.com/privacy-ethereum/openac-taiwan-citizen-digital-certificate-web-example" target="_blank" class="font-mono block mt-0.5">Web Example</a>
       <div class="text-xs text-gray-500 mt-0.5">Cert / Mobile cert + ZK proof integration</div>
@@ -2011,6 +2029,158 @@ layout: center
   color: #5eead4;
 }
 </style>
+
+---
+transition: slide-up
+---
+
+# Start a backend server
+
+<div class="index-glow-box bg-gray-50 rounded-xl border-2 border-gray-300 px-4 py-1.5 flex items-center justify-center gap-2 mt-1 max-w-xl mx-auto text-center">
+  <carbon:logo-github class="text-xl opacity-70 shrink-0 mr-3" />
+  <div class="text-xl text-gray-700"><a href="https://github.com/privacy-ethereum/go-zkid-verifier" target="_blank" class="underline text-gray-800">privacy-ethereum/go-zkid-verifier</a></div>
+</div>
+
+<div class="terminal-window max-w-3xl mx-auto mt-4 rounded-xl overflow-hidden border-2 border-gray-300 shadow-lg">
+  <div class="flex items-center gap-2 px-4 py-2" style="background:#2d2d2d;">
+    <div class="flex gap-1.5 shrink-0">
+      <div class="w-3 h-3 rounded-full" style="background:#ff5f56"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#febc2e"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#27c93f"></div>
+    </div>
+    <div class="flex-1 text-center text-xs font-mono" style="color:#9ca3af;">bash — go-zkid-verifier</div>
+  </div>
+
+```sh
+git clone https://github.com/privacy-ethereum/go-zkid-verifier.git
+cd go-zkid-verifier
+make build            
+cp .env.example .env
+echo "APP_ID=$(LC_ALL=C tr -dc '0-9a-f' </dev/urandom | head -c 31)" >> .env
+make serve
+```
+
+</div>
+
+<style>
+.terminal-window .slidev-code-wrapper {
+  margin: 0 !important;
+}
+.terminal-window .slidev-code {
+  border-radius: 0 !important;
+  background: #1e1e1e !important;
+}
+.terminal-window .shiki span {
+  color: var(--shiki-dark) !important;
+}
+.terminal-window :deep(.slidev-code-copy) {
+  color: white;
+}
+</style>
+
+- Then the server will be run on port `8080`
+
+---
+transition: slide-up
+---
+
+# Expose the backend server
+
+<div class="flex items-center gap-2 text-base text-gray-700 mt-2 mb-3">
+  <carbon:api class="text-xl shrink-0" style="color:#2563eb" />
+  Use <a href="https://ngrok.com/" target="_blank" class="underline">ngrok</a> to expose the local server
+</div>
+
+```sh
+ngrok http 8080
+```
+
+```sh {all|12}                                                                           
+ngrok                                                                               (Ctrl+C to quit)
+                                                                                                    
+🚪 One gateway for every AI model. https://app.ngrok.ai                                             
+                                                                                                    
+Session Status                online                                                                
+Account                       vivi43222@gmail.com (Plan: Free)                                      
+Update                        update available (version 3.39.11, Ctrl-U to update)                  
+Version                       3.37.3                                                                
+Region                        Japan (jp)                                                            
+Latency                       38ms                                                                  
+Web Interface                 http://127.0.0.1:4040                                                 
+Forwarding                    https://fd6d-211-75-7-191.ngrok-free.app -> http://localhost:8080     
+                                                                                                    
+Connections                   ttl     opn     rt1     rt5     p50     p90                           
+                              0       0       0.00    0.00    0.00    0.00        
+```
+
+---
+transition: slide-up
+---
+
+# iOS Example App
+
+
+<div class="index-glow-box bg-gray-50 rounded-xl border-2 border-gray-300 px-4 py-1.5 flex items-center justify-center gap-2 mt-1 mx-auto text-center">
+  <carbon:logo-github class="text-xl opacity-70 shrink-0 mr-3" />
+  <div class="text-xl text-gray-700"><a href="https://github.com/privacy-ethereum/openac-taiwan-citizen-digital-certificate-ios-example" target="_blank" class="underline text-gray-800">privacy-ethereum/openac-taiwan-citizen-digital-certificate-ios-example</a></div>
+</div>
+
+## Prerequisites
+
+<div class="flex flex-col gap-2 mt-2 max-w-2xl">
+  <div class="flex items-center gap-3 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
+    <carbon:development class="text-xl shrink-0" style="color:#2563eb" />
+    <div class="text-sm text-gray-800">Xcode</div>
+  </div>
+  <div class="flex items-center gap-3 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
+    <carbon:password class="text-xl shrink-0" style="color:#2563eb" />
+    <div class="text-sm text-gray-800">Apply <code class="text-red-700 font-semibold" style="background-color:#fee2e2; border-radius:6px;">fidoSpServiceID</code> and <code class="text-red-700 font-semibold" style="background-color:#fee2e2; border-radius:6px;">fidoAESKey</code> from <a href="https://fido.moi.gov.tw/pt/" target="_blank" class="underline">fido.moi.gov.tw/pt</a></div>
+  </div>
+  <div class="flex flex-col gap-1 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
+    <div class="flex items-center gap-3 text-sm text-gray-800"><carbon:mobile class="text-xl shrink-0" style="color:#2563eb" /> Install TW FidO (行動自然人憑證) App from <a href="https://apps.apple.com/tw/app/%E8%A1%8C%E5%8B%95%E8%87%AA%E7%84%B6%E4%BA%BA%E6%86%91%E8%AD%89/id1462866416" target="_blank" class="underline">App Store</a></div>
+    <div class="text-xs text-gray-600 pl-8">Apply for a Citizen Digital Certificate (自然人憑證) and register it in the TW FidO App</div>
+  </div>
+</div>
+
+## Clone the repo
+```sh
+git clone https://github.com/privacy-ethereum/openac-taiwan-citizen-digital-certificate-ios-example.git
+```
+
+---
+transition: slide-up
+---
+# iOS settings
+
+```swift [OpenACExampleApp/ProofViewModel.swift]  {lines: true, startLine: 22}
+private let serverURL = URL(string: "https://<your-subdomain>.ngrok-free.app/challenge")!
+private let linkVerifyURL = URL(string: "https://<your-subdomain>.ngrok-free.app/link-verify")!
+```
+
+```swift [OpenACExampleApp/Secrets.swift] {lines: true}
+enum Secrets {
+    static let fidoSpServiceID = "your-sp-service-id"
+    static let fidoAESKey      = "your-32-byte-aes-key-base64"
+}
+```
+
+---
+transition: slide-up
+---
+# Xcode
+
+
+<h2 class="text-lg font-semibold leading-tight flex items-center gap-2 mt-2"><carbon:development class="text-xl" style="color:#2563eb" /> Xcode</h2>
+
+```sh
+open . -a Xcode
+```
+
+<h2 class="text-lg font-semibold leading-tight flex items-center gap-2 mt-4"><carbon:update-now class="text-xl" style="color:#2563eb" /> Update dependencies</h2>
+
+<div class="flex justify-center mt-2">
+  <img src="/images/ios_update.jpg" alt="Update Swift package dependencies in Xcode" class="rounded-lg border-2 border-gray-300 shadow-lg max-w-2xl w-full" />
+</div>
 
 ---
 
