@@ -2081,8 +2081,6 @@ make serve
 - Then the server will be run on port `8080`
 
 ---
-transition: slide-up
----
 
 # Expose the backend server
 
@@ -2142,6 +2140,12 @@ Forwarding                    https://fd6d-211-75-7-191.ngrok-free.app -> http:/
 Connections                   ttl     opn     rt1     rt5     p50     p90                           
                               0       0       0.00    0.00    0.00    0.00        
 ```
+
+---
+layout: center
+---
+
+# 3 Different Platforms
 
 ---
 transition: slide-up
@@ -2296,8 +2300,6 @@ open . -a Xcode
 </div>
 
 ---
-transition: slide-up
----
 
 # Run the App
 
@@ -2340,6 +2342,116 @@ transition: slide-up
     </div>
   </div>
 </div>
+
+---
+transition: slide-up
+---
+
+# Android Example App
+
+
+<div class="index-glow-box bg-gray-50 rounded-xl border-2 border-gray-300 px-4 py-1.5 flex items-center justify-center gap-2 mt-1 mx-auto text-center">
+  <carbon:logo-github class="text-xl opacity-70 shrink-0 mr-3" />
+  <div class="text-xl text-gray-700"><a href="https://github.com/privacy-ethereum/openac-taiwan-citizen-digital-certificate-android-example" target="_blank" class="underline text-gray-800">privacy-ethereum/openac-taiwan-citizen-digital-certificate-android-example</a></div>
+</div>
+
+## Prerequisites
+
+<div class="flex flex-col gap-2 mt-2 max-w-2xl">
+  <div class="flex items-center gap-3 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
+    <carbon:development class="text-xl shrink-0" style="color:#2563eb" />
+    <div class="text-sm text-gray-800">Android Studio</div>
+  </div>
+  <div class="flex items-center gap-3 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
+    <carbon:password class="text-xl shrink-0" style="color:#2563eb" />
+    <div class="text-sm text-gray-800">Apply <code class="text-red-700 font-semibold" style="background-color:#fee2e2; border-radius:6px;">fidoSpServiceID</code> and <code class="text-red-700 font-semibold" style="background-color:#fee2e2; border-radius:6px;">fidoAESKey</code> from <a href="https://fido.moi.gov.tw/pt/" target="_blank" class="underline">fido.moi.gov.tw/pt</a></div>
+  </div>
+  <div class="flex flex-col gap-1 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
+    <div class="flex items-center gap-3 text-sm text-gray-800"><carbon:mobile class="text-xl shrink-0" style="color:#2563eb" /> Install TW FidO (行動自然人憑證) App from <a href="https://play.google.com/store/apps/details?id=tw.gov.moi.tfido" target="_blank" class="underline">Google Play</a></div>
+    <div class="text-xs text-gray-600 pl-8">Apply for a Citizen Digital Certificate (自然人憑證) and register it in the TW FidO App</div>
+  </div>
+</div>
+
+## Clone the repo
+
+<div class="terminal-window mx-auto mt-2 rounded-xl overflow-hidden border-2 border-gray-300 shadow-lg">
+  <div class="flex items-center gap-2 px-4 py-2" style="background:#2d2d2d;">
+    <div class="flex gap-1.5 shrink-0">
+      <div class="w-3 h-3 rounded-full" style="background:#ff5f56"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#febc2e"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#27c93f"></div>
+    </div>
+    <div class="flex-1 text-center text-xs font-mono" style="color:#9ca3af;">bash</div>
+  </div>
+
+```sh
+git clone \
+  https://github.com/privacy-ethereum/openac-taiwan-citizen-digital-certificate-android-example.git
+```
+
+</div>
+
+<style>
+.terminal-window .slidev-code-wrapper {
+  margin: 0 !important;
+}
+.terminal-window .slidev-code {
+  border-radius: 0 !important;
+}
+.slidev-code {
+  background: #1e1e1e !important;
+}
+.shiki span {
+  color: var(--shiki-dark) !important;
+}
+:deep(.slidev-code-copy) {
+  color: white;
+}
+</style>
+
+
+---
+transition: slide-up
+---
+# Android settings
+
+<div class="code-block-group flex flex-col gap-6 mt-6">
+
+- Replace `<your-subdomain>.ngrok-free.app` in `serverURL` and `linkVerifyURL` with your ngrok Forwarding host
+
+```kotlin [app/src/main/java/com/example/openacandroidexample/ProofViewModel.kt]  {lines: true, startLine: 41}
+private const val SERVER_URL      = "https://<your-subdomain>.ngrok-free.app/challenge"
+private const val LINK_VERIFY_URL = "https://<your-subdomain>.ngrok-free.app/link-verify"
+```
+
+- Create `Secrets.swift` and add your `fidoSpServiceID` and `fidoAESKey`
+
+```kotlin [app/src/main/java/com/example/openacandroidexample/Secrets.kt] {lines: true}
+package com.example.openacandroidexample
+
+object Secrets {
+    const val fidoSpServiceID: String = "your-sp-service-id"
+    const val fidoAESKey: String = "your-32-byte-aes-key-base64"
+}
+```
+
+</div>
+
+<style>
+.code-block-group {
+  --slidev-code-tab-font-size: 14px;
+}
+.slidev-code,
+.slidev-code code,
+.slidev-code .line {
+  white-space: pre !important;
+  word-break: normal !important;
+}
+.slidev-code {
+  padding: 4px !important;
+}
+</style>
+
 
 ---
 
