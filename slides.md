@@ -1873,8 +1873,8 @@ Response Fields of /getAthOrSignResult
 
 # Demo Web
 
-<div class="relative max-w-5xl mx-auto mt-6">
-  <div class="rounded-xl border-2 border-gray-300 overflow-hidden shadow-lg">
+<div class="relative max-w-5xl mx-auto pb-4">
+  <div class="rounded-xl border-2 border-gray-300 overflow-hidden shadow-lg bg-white">
     <div class="flex items-center gap-3 px-4 py-2 bg-gray-100 border-b border-gray-300">
       <div class="flex gap-1.5 shrink-0">
         <div class="w-3 h-3 rounded-full" style="background:#ff5f56"></div>
@@ -2424,7 +2424,7 @@ private const val SERVER_URL      = "https://<your-subdomain>.ngrok-free.app/cha
 private const val LINK_VERIFY_URL = "https://<your-subdomain>.ngrok-free.app/link-verify"
 ```
 
-- Create `Secrets.swift` and add your `fidoSpServiceID` and `fidoAESKey`
+- Create `Secrets.kt` and add your `fidoSpServiceID` and `fidoAESKey`
 
 ```kotlin [app/src/main/java/com/example/openacandroidexample/Secrets.kt] {lines: true}
 package com.example.openacandroidexample
@@ -2452,6 +2452,88 @@ object Secrets {
 }
 </style>
 
+
+---
+transition: slide-up
+---
+
+
+# Android Studio
+
+<h2 class="text-lg font-semibold leading-tight flex items-center gap-2 mt-2"><carbon:development class="text-xl" style="color:#2563eb" /> Open the project in Android Studio</h2>
+
+<div class="terminal-window mx-auto mt-2 rounded-xl overflow-hidden border-2 border-gray-300 shadow-lg">
+  <div class="flex items-center gap-2 px-4 py-2" style="background:#2d2d2d;">
+    <div class="flex gap-1.5 shrink-0">
+      <div class="w-3 h-3 rounded-full" style="background:#ff5f56"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#febc2e"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#27c93f"></div>
+    </div>
+    <div class="flex-1 text-center text-xs font-mono" style="color:#9ca3af;">bash — openac-taiwan-citizen-digital-certificate-android-example</div>
+  </div>
+
+```sh
+open . -a Android\ Studio 
+```
+
+</div>
+
+<h2 class="text-lg font-semibold leading-tight flex items-center gap-2 mt-4"><carbon:update-now class="text-xl" style="color:#2563eb" /> Sync dependencies</h2>
+
+<div class="flex justify-center mt-2">
+  <img src="/images/android_sync.jpg" alt="Sync projects" class="rounded-lg border-2 border-gray-300 shadow-lg max-w-md w-full" />
+</div>
+
+<style>
+.terminal-window .slidev-code-wrapper {
+  margin: 0 !important;
+}
+.terminal-window .slidev-code {
+  border-radius: 0 !important;
+}
+.slidev-code {
+  background: #1e1e1e !important;
+}
+.shiki span {
+  color: var(--shiki-dark) !important;
+}
+:deep(.slidev-code-copy) {
+  color: white;
+}
+</style>
+
+
+---
+
+# Run the App
+
+<div class="relative flex justify-center mt-2">
+  <img src="/images/android_run.jpg" alt="Run the app on a real Android device" class="rounded-lg border-2 border-gray-300 shadow-lg w-full" />
+
+  <div v-click class="absolute inset-0">
+    <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 2420 1246" preserveAspectRatio="none">
+      <ellipse cx="1080" cy="40" rx="200" ry="35" fill="none" stroke="#ef4444" stroke-width="5" vector-effect="non-scaling-stroke" />
+    </svg>
+    <div class="absolute" style="left: 44%; top: 13%; transform: translateX(-50%);">
+      <div class="bg-red-50 border-2 border-red-500 rounded-xl px-4 py-2 shadow-xl flex items-center gap-2 whitespace-nowrap">
+        <carbon:mobile class="text-lg shrink-0" style="color:#dc2626" />
+        <div class="text-sm font-semibold text-red-700">Choose a real device</div>
+      </div>
+    </div>
+  </div>
+
+  <div v-click class="absolute inset-0">
+    <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 2420 1246" preserveAspectRatio="none">
+      <ellipse cx="1510" cy="40" rx="34" ry="32" fill="none" stroke="#16a34a" stroke-width="5" vector-effect="non-scaling-stroke" />
+    </svg>
+    <div class="absolute" style="left: 63%; top: 13%; transform: translateX(-50%);">
+      <div class="bg-green-50 border-2 border-green-600 rounded-xl px-4 py-2 shadow-xl flex items-center gap-2 whitespace-nowrap">
+        <carbon:play-filled-alt class="text-lg shrink-0" style="color:#16a34a" />
+        <div class="text-sm font-semibold text-green-700">Run the app</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 ---
 
