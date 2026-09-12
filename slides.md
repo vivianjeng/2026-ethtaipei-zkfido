@@ -2536,6 +2536,138 @@ open . -a Android\ Studio
 </div>
 
 ---
+transition: slide-up
+---
+
+# Web Example App
+
+
+<div class="index-glow-box bg-gray-50 rounded-xl border-2 border-gray-300 px-4 py-1.5 flex items-center justify-center gap-2 mt-1 mx-auto text-center">
+  <carbon:logo-github class="text-xl opacity-70 shrink-0 mr-3" />
+  <div class="text-xl text-gray-700"><a href="https://github.com/privacy-ethereum/openac-taiwan-citizen-digital-certificate-web-example" target="_blank" class="underline text-gray-800">privacy-ethereum/openac-taiwan-citizen-digital-certificate-web-example</a></div>
+</div>
+
+## Prerequisites
+
+<div class="flex flex-col gap-2 mt-2 max-w-3xl">
+  <div class="flex flex-col gap-1 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
+    <div class="flex items-center gap-3 text-sm text-gray-800"><carbon:building class="text-xl shrink-0" style="color:#2563eb" /> Apply for a Citizen Digital Certificate (自然人憑證) at a Household Registration Office (戶政事務所)</div>
+    <div class="text-xs text-gray-600 pl-8">Reference: <a href="https://moica.nat.gov.tw/index.html" target="_blank" class="underline">moica.nat.gov.tw</a></div>
+  </div>
+  <div class="flex items-center gap-3 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
+    <carbon:usb class="text-xl shrink-0" style="color:#2563eb" />
+    <div class="text-sm text-gray-800">Prepare a smart card reader (晶片讀卡機)</div>
+  </div>
+</div>
+
+## Clone the repo
+
+<div class="terminal-window mx-auto mt-2 rounded-xl overflow-hidden border-2 border-gray-300 shadow-lg">
+  <div class="flex items-center gap-2 px-4 py-2" style="background:#2d2d2d;">
+    <div class="flex gap-1.5 shrink-0">
+      <div class="w-3 h-3 rounded-full" style="background:#ff5f56"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#febc2e"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#27c93f"></div>
+    </div>
+    <div class="flex-1 text-center text-xs font-mono" style="color:#9ca3af;">bash</div>
+  </div>
+
+```sh
+git clone \
+  https://github.com/privacy-ethereum/openac-taiwan-citizen-digital-certificate-web-example.git
+```
+
+</div>
+
+<style>
+.terminal-window .slidev-code-wrapper {
+  margin: 0 !important;
+}
+.terminal-window .slidev-code {
+  border-radius: 0 !important;
+}
+.slidev-code {
+  background: #1e1e1e !important;
+}
+.shiki span {
+  color: var(--shiki-dark) !important;
+}
+:deep(.slidev-code-copy) {
+  color: white;
+}
+</style>
+
+
+---
+transition: slide-up
+---
+
+# Run the app
+
+<div class="terminal-window mx-auto mt-2 rounded-xl overflow-hidden border-2 border-gray-300 shadow-lg">
+  <div class="flex items-center gap-2 px-4 py-2" style="background:#2d2d2d;">
+    <div class="flex gap-1.5 shrink-0">
+      <div class="w-3 h-3 rounded-full" style="background:#ff5f56"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#febc2e"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#27c93f"></div>
+    </div>
+    <div class="flex-1 text-center text-xs font-mono" style="color:#9ca3af;">bash — openac-taiwan-citizen-digital-certificate-web-example</div>
+  </div>
+
+```sh
+pnpm install
+cp .env.example .env.local            # set VITE_VERIFIER_BASE_URL, etc.
+pnpm dev                              # opens http://localhost:5173
+```
+
+</div>
+
+<style>
+.terminal-window .slidev-code-wrapper {
+  margin: 0 !important;
+}
+.terminal-window .slidev-code {
+  border-radius: 0 !important;
+}
+.slidev-code {
+  background: #1e1e1e !important;
+}
+.shiki span {
+  color: var(--shiki-dark) !important;
+}
+:deep(.slidev-code-copy) {
+  color: white;
+}
+</style>
+
+It will be run on `http://localhost:5173/`
+
+<div class="mt-4 flex justify-center">
+  <div class="flex items-center gap-3 rounded-xl border-2 border-amber-400 bg-amber-50 px-5 py-3 max-w-2xl">
+    <carbon:information-filled class="text-2xl shrink-0" style="color:#d97706" />
+    <div class="text-sm text-gray-800">By default, the backend (<code class="text-amber-700 font-semibold" style="background-color:#fef3c7; border-radius:6px;">VITE_VERIFIER_BASE_URL</code>) points to <code class="text-amber-700 font-semibold" style="background-color:#fef3c7; border-radius:6px;">http://localhost:8080</code> — the <code class="text-amber-700 font-semibold" style="background-color:#fef3c7; border-radius:6px;">go-zkid-verifier</code> server running locally</div>
+  </div>
+</div>
+
+---
+
+<div class="relative max-w-4xl mx-auto mt-6">
+  <div class="rounded-xl border-2 border-gray-300 overflow-hidden shadow-lg bg-white pb-4">
+    <div class="flex items-center gap-3 px-4 py-2 bg-gray-100 border-b border-gray-300">
+      <div class="flex gap-1.5 shrink-0">
+        <div class="w-3 h-3 rounded-full" style="background:#ff5f56"></div>
+        <div class="w-3 h-3 rounded-full" style="background:#febc2e"></div>
+        <div class="w-3 h-3 rounded-full" style="background:#27c93f"></div>
+      </div>
+      <div class="flex-1 bg-white rounded-md px-3 py-1 border border-gray-200 text-center">
+        <a href="http://localhost:5173/" target="_blank" class="text-sm text-gray-600 hover:underline">http://localhost:5173/</a>
+      </div>
+    </div>
+    <img src="/images/web_app.jpg" alt="Web example app running locally" class="w-full block" />
+  </div>
+</div>
+
+---
 
 # Article Series
 
