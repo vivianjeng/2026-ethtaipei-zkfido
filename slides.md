@@ -2551,12 +2551,12 @@ transition: slide-up
 
 <div class="flex flex-col gap-2 mt-2 max-w-3xl">
   <div class="flex flex-col gap-1 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
-    <div class="flex items-center gap-3 text-sm text-gray-800"><carbon:building class="text-xl shrink-0" style="color:#2563eb" /> Apply for a Citizen Digital Certificate (自然人憑證) at a Household Registration Office (戶政事務所)</div>
-    <div class="text-xs text-gray-600 pl-8">Reference: <a href="https://moica.nat.gov.tw/index.html" target="_blank" class="underline">moica.nat.gov.tw</a></div>
+    <div class="flex items-center gap-3 text-m text-gray-800"><carbon:building class="text-xl shrink-0" style="color:#2563eb" /> Apply for a Citizen Digital Certificate (自然人憑證) at a Household Registration Office (戶政事務所)</div>
+    <div class="text-s text-gray-600 pl-8">Reference: <a href="https://moica.nat.gov.tw/index.html" target="_blank" class="underline">moica.nat.gov.tw</a></div>
   </div>
   <div class="flex items-center gap-3 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
     <carbon:usb class="text-xl shrink-0" style="color:#2563eb" />
-    <div class="text-sm text-gray-800">Prepare a smart card reader (晶片讀卡機)</div>
+    <div class="text-m text-gray-800">Prepare a smart card reader (晶片讀卡機)</div>
   </div>
 </div>
 
@@ -2645,7 +2645,7 @@ It will be run on `http://localhost:5173/`
 <div class="mt-4 flex justify-center">
   <div class="flex items-center gap-3 rounded-xl border-2 border-amber-400 bg-amber-50 px-5 py-3 max-w-2xl">
     <carbon:information-filled class="text-2xl shrink-0" style="color:#d97706" />
-    <div class="text-sm text-gray-800">By default, the backend (<code class="text-amber-700 font-semibold" style="background-color:#fef3c7; border-radius:6px;">VITE_VERIFIER_BASE_URL</code>) points to <code class="text-amber-700 font-semibold" style="background-color:#fef3c7; border-radius:6px;">http://localhost:8080</code> — the <code class="text-amber-700 font-semibold" style="background-color:#fef3c7; border-radius:6px;">go-zkid-verifier</code> server running locally</div>
+    <div class="text-xl text-gray-800">By default, the backend (<code class="text-amber-700 font-semibold" style="background-color:#fef3c7; border-radius:6px;">VITE_VERIFIER_BASE_URL</code>) points to <code class="text-amber-700 font-semibold" style="background-color:#fef3c7; border-radius:6px;">http://localhost:8080</code> — the <code class="text-amber-700 font-semibold" style="background-color:#fef3c7; border-radius:6px;">go-zkid-verifier</code> server running locally</div>
   </div>
 </div>
 
@@ -2671,29 +2671,109 @@ It will be run on `http://localhost:5173/`
 
 # Article Series
 
-## Developing a Zero-Knowledge Mobile Citizen Digital Certificate
+## Developing a Zero-Knowledge Citizen Digital Certificate
 
-<div class="grid grid-cols-3 gap-6 mt-6 max-w-5xl mx-auto text-center">
-  <div v-click class="flex flex-col items-center gap-3">
+<div class="grid grid-cols-3 gap-4 mt-6 max-w-5xl mx-auto text-center">
+  <div class="flex flex-col items-center gap-3">
     <carbon:book class="text-4xl" style="color:#8fb4d9" />
     <div class="text-lg font-semibold">The Story</div>
     <img src="/images/zkfido_story_qr.svg" class="w-48 h-48 rounded-lg bg-white p-1" />
-    <a href="https://hackmd.io/@vivi432/zkfido-story" target="_blank" class="text-sm text-gray-600 underline break-all">hackmd.io/@vivi432/zkfido-story</a>
+    <a href="https://hackmd.io/@vivi432/zkfido-story" target="_blank" class="text-lg text-gray-600 underline whitespace-nowrap">hackmd.io/@vivi432/zkfido-story</a>
   </div>
-  <div v-click class="flex flex-col items-center gap-3">
+  <div class="flex flex-col items-center gap-3">
     <carbon:certificate class="text-4xl" style="color:#8fb4d9" />
-    <div class="text-lg font-semibold">Mobile Citizen Digital Certificate</div>
+    <div class="text-lg font-semibold">TW FidO</div>
     <img src="/images/zkfido_fido_qr.svg" class="w-48 h-48 rounded-lg bg-white p-1" />
-    <a href="https://hackmd.io/@vivi432/zkfido-fido" target="_blank" class="text-sm text-gray-600 underline break-all">hackmd.io/@vivi432/zkfido-fido</a>
+    <a href="https://hackmd.io/@vivi432/zkfido-twfido" target="_blank" class="text-lg text-gray-600 underline whitespace-nowrap">hackmd.io/@vivi432/zkfido-twfido</a>
   </div>
-  <div v-click class="flex flex-col items-center gap-3">
+  <div class="flex flex-col items-center gap-3">
     <carbon:locked class="text-4xl" style="color:#8fb4d9" />
     <div class="text-lg font-semibold">ZK</div>
     <img src="/images/zkfido_zk_qr.svg" class="w-48 h-48 rounded-lg bg-white p-1" />
-    <a href="https://hackmd.io/@vivi432/zkfido-zk" target="_blank" class="text-sm text-gray-600 underline break-all">hackmd.io/@vivi432/zkfido-zk</a>
+    <a href="https://hackmd.io/@vivi432/zkfido-zk" target="_blank" class="text-lg text-gray-600 underline whitespace-nowrap">hackmd.io/@vivi432/zkfido-zk</a>
   </div>
 </div>
 
+
+---
+layout: center
+class: text-center
+---
+
+# Taiwan Digital Identity Wallet<br/>TWDIW
+
+---
+
+# Posts from Mashbean
+
+<div class="flex flex-col gap-2 mt-2">
+  <div class="bg-gray-50 rounded-lg border-2 border-gray-300 px-4 py-2.5">
+    <div class="flex items-center gap-3 mb-1.5">
+      <carbon:store class="text-2xl shrink-0" style="color:#2563eb" />
+      <div class="flex items-baseline gap-2 flex-wrap">
+        <span class="text-lg font-semibold text-gray-800">第三方數位皮夾實現超商取貨</span>
+        <span class="text-sm text-gray-500">Third-Party Digital Wallet Enables Convenience Store Pickup</span>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-x-4 gap-y-1 pl-9">
+      <a href="https://www.facebook.com/share/p/1PF8BJED7E/" target="_blank" class="flex items-center gap-1 text-sm text-gray-600 underline"><carbon:logo-facebook class="shrink-0" /> Facebook post</a>
+      <a href="https://pro.mashbean.net/reports/2026-09-02-telecom-credential-convenience-store-pickup/" target="_blank" class="flex items-center gap-1 text-sm text-gray-600 underline"><carbon:blog class="shrink-0" /> Report</a>
+    </div>
+  </div>
+  <div class="bg-gray-50 rounded-lg border-2 border-gray-300 px-4 py-2.5">
+    <div class="flex items-center gap-3 mb-1.5">
+      <carbon:locked class="text-2xl shrink-0" style="color:#2563eb" />
+      <div class="flex items-baseline gap-2 flex-wrap">
+        <span class="text-lg font-semibold text-gray-800">零知識證明數位皮夾</span>
+        <span class="text-sm text-gray-500">Zero-Knowledge Proof Digital Wallet</span>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-x-4 gap-y-1 pl-9">
+      <a href="https://www.facebook.com/share/p/1DExWad6JG/" target="_blank" class="flex items-center gap-1 text-sm text-gray-600 underline"><carbon:logo-facebook class="shrink-0" /> Facebook post</a>
+      <a href="https://pro.mashbean.net/reports/2026-09-05-zero-knowledge-age-proof-from-phone-to-cloudflare/" target="_blank" class="flex items-center gap-1 text-sm text-gray-600 underline"><carbon:blog class="shrink-0" /> Report</a>
+      <a href="https://verifier.mashbean.net/zkp" target="_blank" class="flex items-center gap-1 text-sm text-gray-600 underline"><carbon:launch class="shrink-0" /> Try it: verifier.mashbean.net/zkp</a>
+    </div>
+  </div>
+  <div class="bg-gray-50 rounded-lg border-2 border-gray-300 px-4 py-2.5">
+    <div class="flex items-center gap-3 mb-1.5">
+      <carbon:wifi-off class="text-2xl shrink-0" style="color:#2563eb" />
+      <div class="flex items-baseline gap-2 flex-wrap">
+        <span class="text-lg font-semibold text-gray-800">數位皮夾離線驗證</span>
+        <span class="text-sm text-gray-500">Offline Verification for Digital Wallets</span>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-x-4 gap-y-1 pl-9">
+      <a href="https://www.facebook.com/share/p/1D4PkWgy8v/" target="_blank" class="flex items-center gap-1 text-sm text-gray-600 underline"><carbon:logo-facebook class="shrink-0" /> Facebook post</a>
+      <a href="https://pro.mashbean.net/reports/2026-09-06-offline-wallet-verification/" target="_blank" class="flex items-center gap-1 text-sm text-gray-600 underline"><carbon:blog class="shrink-0" /> Report</a>
+    </div>
+  </div>
+  <div class="bg-gray-50 rounded-lg border-2 border-gray-300 px-4 py-2.5">
+    <div class="flex items-center gap-3 mb-1.5">
+      <carbon:bank-vault class="text-2xl shrink-0" style="color:#2563eb" />
+      <div class="flex items-baseline gap-2 flex-wrap">
+        <span class="text-lg font-semibold text-gray-800">數位皮夾成為 MyData 的資料保險箱</span>
+        <span class="text-sm text-gray-500">Digital Wallet as a MyData Vault</span>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-x-4 gap-y-1 pl-9">
+      <a href="https://www.facebook.com/share/p/19Jk9xRfN3/" target="_blank" class="flex items-center gap-1 text-sm text-gray-600 underline"><carbon:logo-facebook class="shrink-0" /> Facebook post</a>
+      <a href="https://pro.mashbean.net/reports/2026-09-05-mydata-vault-in-the-digital-wallet/" target="_blank" class="flex items-center gap-1 text-sm text-gray-600 underline"><carbon:blog class="shrink-0" /> Report</a>
+    </div>
+  </div>
+  <div class="bg-gray-50 rounded-lg border-2 border-gray-300 px-4 py-2.5">
+    <div class="flex items-center gap-3 mb-1.5">
+      <carbon:radar class="text-2xl shrink-0" style="color:#2563eb" />
+      <div class="flex items-baseline gap-2 flex-wrap">
+        <span class="text-lg font-semibold text-gray-800">數位憑證皮夾生態系監測</span>
+        <span class="text-sm text-gray-500">Monitoring the Digital Credential Wallet Ecosystem</span>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-x-4 gap-y-1 pl-9">
+      <a href="https://www.facebook.com/share/p/1DTEPK1Yvu/" target="_blank" class="flex items-center gap-1 text-sm text-gray-600 underline"><carbon:logo-facebook class="shrink-0" /> Facebook post</a>
+      <a href="https://issuer.mashbean.net/monitor" target="_blank" class="flex items-center gap-1 text-sm text-gray-600 underline"><carbon:launch class="shrink-0" /> Monitor: issuer.mashbean.net/monitor</a>
+    </div>
+  </div>
+</div>
 
 ---
 layout: center
@@ -2709,10 +2789,9 @@ class: text-center
 </div>
 
 <div class="flex items-center justify-center gap-2 mt-12 opacity-80">
-  <carbon:chat class="text-xl shrink-0" style="color:#8fb4d9" />
+  <carbon:chat class="text-2xl shrink-0" style="color:#8fb4d9" />
   <div>If you have any ZK-related questions, feel free to ask me!</div>
 </div>
-
 
 
 
