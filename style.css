@@ -1,4 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&display=swap');
+
 :root {
+  --ground: #f2f2f3;
+  --ink: #1d1f20;
+  --body-ink: #424244;
+  --muted-ink: #5d5d60;
+  --steel: #5980a6;
+  --deep-steel: #416180;
+  --steel-field: #1d2d3d;
+  --hairline: #d4d4d7;
+
   --slidev-code-font-size: 14px;
   --slidev-code-line-height: 18px;
 }
@@ -8,4 +19,195 @@
 .slidev-code .line {
   white-space: pre-wrap !important;
   word-break: break-all !important;
+}
+
+/* --- Industry wireframe base --- */
+
+.slidev-layout {
+  background: var(--ground) !important;
+  color: var(--body-ink);
+  font-family: 'Barlow', sans-serif;
+  padding: 52px 51px 41px 51px !important;
+}
+
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.slidev-layout h1 {
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+/* Kicker: small uppercase label above a title */
+.kicker {
+  font-family: 'Barlow Condensed', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  color: var(--deep-steel);
+  margin-bottom: 0.5rem;
+}
+
+/* Bordered cell: replaces bg-*-50 rounded cards */
+.cell {
+  border: 1px solid var(--hairline);
+  padding: 1rem;
+  background: transparent;
+  border-radius: 0;
+}
+
+.cell-accent {
+  border: 1px solid var(--steel);
+}
+
+/* Corner registration marks on a framed object */
+.corner-marked {
+  position: relative;
+}
+
+.corner-mark {
+  position: absolute;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--steel);
+  transform: translate(-50%, -50%);
+}
+
+.corner-mark.tl { top: 0; left: 0; }
+.corner-mark.tr { top: 0; left: 100%; }
+.corner-mark.bl { top: 100%; left: 0; }
+.corner-mark.br { top: 100%; left: 100%; }
+
+/* Equal-column grid: steel top rule, hairline verticals */
+.industry-grid {
+  display: grid;
+  border-top: 1px solid var(--steel);
+}
+
+.industry-grid > * {
+  border-left: 1px solid var(--hairline);
+  padding: 1.25rem;
+}
+
+.industry-grid > *:first-child {
+  border-left: none;
+}
+
+/* Divider slide: steel field, reversed type, centered */
+.divider-slide {
+  background: var(--steel-field);
+  color: var(--ground);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 52px 51px 41px 51px;
+  z-index: 1;
+}
+
+.divider-slide .part-no {
+  font-family: 'IBM Plex Mono', monospace;
+  color: #94bce3;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.divider-slide h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  color: var(--ground);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  line-height: 0.98;
+}
+
+/* Table: steel rule under header, hairline under rows, mono numeric columns */
+.industry-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.industry-table th {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--steel);
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  color: var(--ink);
+}
+
+.industry-table td {
+  border-bottom: 1px solid var(--hairline);
+  padding: 0.5rem 0.75rem;
+  color: var(--body-ink);
+}
+
+.industry-table td.num {
+  font-family: 'IBM Plex Mono', monospace;
+  text-align: right;
+}
+
+/* Big-number slide: steel field, mono figures over a top rule */
+.bignum-slide {
+  background: var(--steel-field);
+  color: var(--ground);
+  position: fixed;
+  inset: 0;
+  padding: 52px 51px 41px 51px;
+  z-index: 1;
+}
+
+.bignum-row {
+  display: grid;
+  border-top: 1px solid var(--steel);
+  margin-top: 2rem;
+}
+
+.bignum-row > * {
+  padding-top: 1rem;
+}
+
+.bignum {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 3.4rem;
+  line-height: 1;
+  color: var(--ground);
+}
+
+.bignum-caption {
+  font-size: 0.95rem;
+  color: #94bce3;
+  margin-top: 0.5rem;
+}
+
+/* Stage-box row: bordered process/flow diagram */
+.stage-row {
+  display: flex;
+}
+
+.stage-box {
+  flex: 1;
+  border: 1px solid var(--hairline);
+  padding: 1rem;
+  text-align: center;
+}
+
+.stage-box.filled {
+  background: var(--steel-field);
+  color: var(--ground);
+  border-color: var(--steel);
+}
+
+.stage-box + .stage-box {
+  border-left: none;
 }

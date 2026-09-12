@@ -1,6 +1,5 @@
 ---
 theme: seriph
-background: https://cover.sli.dev
 # some information about your slides (markdown enabled)
 title: Zero-Knowledge Proofs and Proof-of-Personhood
 favicon: /favicon.ico
@@ -23,27 +22,34 @@ comark: true
 # duration of the presentation
 duration: 35min
 fonts:
-    sans: "Noto Sans TC"
-    serif: "Noto Serif TC"
-    mono: "Fira Code"
+    sans: "Barlow"
+    mono: "IBM Plex Mono"
 ---
 
-<div class="grid grid-cols-2 gap-8 items-center">
-<div class="text-left">
+<div class="kicker text-left">ETHTaipei &middot; Zero-Knowledge Proofs</div>
 
-# ZKP and<br/>Taiwan Citizen Digital Certificate
+<div class="cell-accent corner-marked text-left" style="padding: 3rem 3rem; margin-top: 1rem;">
+  <div class="corner-mark tl">+</div>
+  <div class="corner-mark tr">+</div>
+  <div class="corner-mark bl">+</div>
+  <div class="corner-mark br">+</div>
 
-<br/>
-<span class="text-white">Vivian (Ya-wen) Jeng</span>
+  <div class="grid grid-cols-2 gap-8 items-center">
+    <div>
+
+<h1 style="color:#000;">ZKP and<br/>Taiwan Citizen Digital Certificate</h1>
 
 </div>
-<div class="flex flex-col items-center">
-  <img src="/images/linktree_qr.jpg" alt="Linktree QR code" class="w-40 rounded" />
-  <a href="https://linktr.ee/vivianjeng" target="_blank" class="mt-2 opacity-75">linktr.ee/vivianjeng</a>
-</div>
+    <div class="flex flex-col items-center">
+      <img src="/images/linktree_qr.jpg" alt="Linktree QR code" class="w-40" />
+      <a href="https://linktr.ee/vivianjeng" target="_blank" class="mt-2" style="font-family:'IBM Plex Mono',monospace; font-size:0.85rem; color:var(--muted-ink);">linktr.ee/vivianjeng</a>
+    </div>
+  </div>
 </div>
 
-<div class="abs-br m-6 text-xl">
+<div class="text-left mt-4" style="font-family:'IBM Plex Mono',monospace; font-size:0.9rem; color:var(--muted-ink);">Vivian (Ya-wen) Jeng</div>
+
+<div class="abs-br m-6 text-xl" style="color:#000;">
   <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="slidev-icon-btn">
     <carbon:edit />
   </button>
@@ -85,7 +91,7 @@ image: /images/ptt_full.jpg
 # Background
 
 - 批踢踢實業坊(PTT): https://www.ptt.cc/bbs/index.html
-<div class="flex flex-col gap-4 mt-6 text-sm">
+<div class="flex flex-col gap-4 mt-6 text-lg">
   <div v-click.fade-in class="flex gap-3 items-start p-3 rounded border border-primary/20 bg-primary/10">
     <div>
       <div class="opacity-75">In 1995 <br/>— before social media existed —<br/> it was built by students</div>
@@ -123,14 +129,14 @@ layoutClass: gap-8
 # Problem
 
 <div class="mt-6">
-  <h2 class="text-lg font-semibold leading-tight flex items-center gap-2"><carbon:warning-alt class="text-yellow-400 text-xl" /> School email registration</h2>
+  <h2 class="text-lg font-semibold leading-tight flex items-center gap-2"><carbon:warning-alt class="text-xl" style="color:var(--steel)" /> School email registration</h2>
   <div class="flex flex-col gap-3 mt-4">
-    <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-4 flex items-center gap-4">
-      <carbon:user-multiple class="text-3xl text-red-400 shrink-0" />
+    <div v-click class="cell flex items-center gap-4">
+      <carbon:user-multiple class="text-3xl shrink-0" style="color:var(--steel)" />
       <div class="text-base">Previously targeted by hackers who <b>mass-registered accounts</b></div>
     </div>
-    <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-4 flex items-center gap-4">
-      <carbon:bullhorn class="text-3xl text-red-400 shrink-0" />
+    <div v-click class="cell flex items-center gap-4">
+      <carbon:bullhorn class="text-3xl shrink-0" style="color:var(--steel)" />
       <div class="text-base">Also subject to <b>opinion manipulation and troll armies</b></div>
     </div>
   </div>
@@ -141,27 +147,27 @@ layoutClass: gap-8
 # Previous solution
 
 <div class="mt-6">
-  <h2 v-click class="text-lg font-semibold leading-tight flex items-center gap-2"><carbon:reset class="text-blue-400 text-xl" /> AOTP: Reverse OTP</h2>
+  <h2 v-click class="text-lg font-semibold leading-tight flex items-center gap-2"><carbon:reset class="text-xl" style="color:var(--steel)" /> AOTP: Reverse OTP</h2>
   <div class="flex flex-col gap-3 mt-4">
-    <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-3">
-      <div class="text-sm text-gray-500 mb-1.5">Traditional OTP</div>
+    <div v-click class="cell">
+      <div class="text-sm mb-1.5" style="color:var(--muted-ink)">Traditional OTP</div>
       <div class="flex items-center gap-2 text-sm flex-wrap">
         <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><carbon:email class="text-xl shrink-0" /> Telecom sends SMS</span>
-        <carbon:arrow-right class="shrink-0 opacity-50" />
+        <carbon:arrow-right class="shrink-0" style="color:var(--muted-ink)" />
         <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><carbon:password class="text-xl shrink-0" /> User enters it on the platform</span>
       </div>
     </div>
-    <div v-click class="bg-gray-50 rounded-xl border-2 border-gray-300 p-3">
-      <div class="text-sm text-gray-500 mb-1.5">AOTP</div>
+    <div v-click class="cell">
+      <div class="text-sm mb-1.5" style="color:var(--muted-ink)">AOTP</div>
       <div class="flex items-center gap-2 text-sm flex-wrap">
         <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><carbon:security class="text-xl shrink-0" /> Platform displays a code</span>
-        <carbon:arrow-right class="shrink-0 opacity-50" />
+        <carbon:arrow-right class="shrink-0" style="color:var(--muted-ink)" />
         <span class="inline-flex items-center gap-1.5 whitespace-nowrap"><carbon:mobile class="text-xl shrink-0" /> User sends it via SMS</span>
       </div>
     </div>
   </div>
   <div v-click class="absolute left-14 right-14 bottom-14 flex justify-center">
-    <img src="/images/aotp.jpg" alt="AOTP" class="rounded-lg shadow-lg w-full object-contain max-h-56" />
+    <img src="/images/aotp.jpg" alt="AOTP" class="w-full object-contain max-h-56" style="border: 1px solid var(--hairline)" />
   </div>
 </div>
 
@@ -321,31 +327,17 @@ layout: two-cols
 
 # Taiwan Citizen Digital Certificate
 
-<div class="mt-2">
-  <span class="text-sm px-3 py-1 rounded-full border" style="border-color: var(--slidev-theme-primary); color: var(--slidev-theme-primary);">X.509 Certificate · Supports both computer and mobile verification</span>
-</div>
-
-<!-- <div class="flex justify-center">
-  <img src="/images/moica_example.png" alt="Citizen Digital Certificate example" class="rounded-lg shadow-lg w-full" />
-</div> -->
+<div class="kicker text-left mt-2">X.509 Certificate &middot; Supports both computer and mobile verification</div>
 
 | Comparison | **Citizen Digital Certificate** | Passport | Digital Credential Wallet |
 | --- | --- | --- | --- |
-| Adoption | ~17–20% (4.18M active) | <span class="win">✅ ~60% (14M people)</span> | Early rollout, low coverage |
-| Legal validity|<span class="win">✅ Legally binding — usable for e-signatures & gov services</span> | Travel document only, not for e-signing | Still evolving, unclear status |
-| Revocability | <span class="win">✅ Real-time revocation check (CRL/OCSP), fast reissue</span> | 10-year validity, chip data not updated live | Depends on wallet's own update mechanism |
-| Cross-platform| <span class="win">✅ Works with computer alone or mobile alone</span> | Needs phone + NFC scan | Needs a phone app | 
-| User experience| <span class="win">✅ FIDO2 biometrics on mobile — no card, no password</span> | Physical passport + NFC tap | App-guided setup, unproven at scale|
+| Adoption | ~17–20% (4.18M active) | <b>✅ ~60% (14M people)</b> | Early rollout, low coverage |
+| Legal validity|<b>✅ Legally binding — usable for e-signatures & gov services</b> | Travel document only, not for e-signing | Still evolving, unclear status |
+| Revocability | <b>✅ Real-time revocation check (CRL/OCSP), fast reissue</b> | 10-year validity, chip data not updated live | Depends on wallet's own update mechanism |
+| Cross-platform| <b>✅ Works with computer alone or mobile alone</b> | Needs phone + NFC scan | Needs a phone app | 
+| User experience| <b>✅ FIDO2 biometrics on mobile — no card, no password</b> | Physical passport + NFC tap | App-guided setup, unproven at scale|
 
 <style>
-.win {
-  color:rgb(49, 101, 80);
-  background: rgba(74, 222, 128, 0.28);
-  padding: 2px 8px;
-  border-radius: 6px;
-  font-weight: 800;
-}
-
 table {
   width: 100%;
   margin-top: 1.5rem;
@@ -358,26 +350,20 @@ th, td {
   vertical-align: top;
 }
 thead th {
-  font-size: 0.8rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  opacity: 0.6;
   font-weight: 600;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  color: var(--ink);
+  border-bottom: 1px solid var(--steel);
 }
 tbody td {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--hairline);
+  color: var(--body-ink);
 }
 tbody tr:last-child td {
   border-bottom: none;
-}
-tbody tr:nth-child(even) {
-  background: rgba(255, 255, 255, 0.03);
-}
-th:nth-child(2), td:nth-child(2) {
-  background: color-mix(in srgb, var(--slidev-theme-primary) 10%, transparent);
-  border-left: 1px solid var(--slidev-theme-primary);
-  border-right: 1px solid var(--slidev-theme-primary);
 }
 </style>
 
@@ -406,8 +392,8 @@ layout: center
     :initial="{ scale: 1, y: 0 }"
     :enter="{ scale: 1, y: 0 }"
     :click-1="{ scale: 0.5, y: -100 }"
-    class="rounded-xl border-2 px-8 py-10 text-center"
-    style="border-color: var(--slidev-theme-primary); background: color-mix(in srgb, var(--slidev-theme-primary) 10%, transparent); font-size: 1.25rem;"
+    class="border-2 px-8 py-10 text-center"
+    style="border-color: var(--steel); background: color-mix(in srgb, var(--steel) 8%, transparent); font-size: 1.25rem;"
   >
 
 $$\underbrace{{\mathrm{signature}^{\,65537}}}_{\text{RSA signature}} \bmod \underbrace{n}_{\text{RSA modulus}} = \mathrm{Encoded\ Message}\Big(\mathrm{SHA{\text -}256}\big(\underbrace{M}_{\text{message to verify}}\big)\Big)$$
@@ -428,12 +414,12 @@ $$\underbrace{{\mathrm{signature}^{\,65537}}}_{\text{RSA signature}} \bmod \unde
     v-click="1" 
     v-motion
     :click-1="{ y: -185 }"
-    class="bg-blue-400/10 backdrop-blur rounded-xl border-2 border-blue-400/40 p-4">
+    class="backdrop-blur rounded-xl border-2 p-4" style="background: color-mix(in srgb, var(--steel) 10%, transparent); border-color: color-mix(in srgb, var(--steel) 40%, transparent);">
     <div class="flex items-center gap-1 ">
-      <carbon:certificate-check class="text-xl text-blue-400 shrink-0" />
+      <carbon:certificate-check class="text-xl shrink-0" style="color:var(--steel)" />
       <span class="text-base font-bold">Verify government signature</span>
     </div>
-    <div class="text-sm mt-2 font-semibold text-green-600">Proves the Citizen Digital Certificate was issued by the government</div>
+    <div class="text-sm mt-2 font-semibold" style="color:var(--deep-steel)">Proves the Citizen Digital Certificate was issued by the government</div>
     <div class="font-mono text-sm mt-3 flex flex-col gap-1.5">
       <div>n = n<sub>issuer</sub> (2048 / 4096-bit) — Ministry of the Interior's public key</div>
       <div>M = M<sub>cert</sub> (the user's X.509 certificate)</div>
@@ -443,12 +429,12 @@ $$\underbrace{{\mathrm{signature}^{\,65537}}}_{\text{RSA signature}} \bmod \unde
     v-click="2"
     v-motion
     :click-1="{ y: -185 }"
-    class="bg-orange-400/10 backdrop-blur rounded-xl border-2 border-orange-400/40 p-4">
+    class="backdrop-blur rounded-xl border-2 p-4" style="background: color-mix(in srgb, var(--steel) 10%, transparent); border-color: color-mix(in srgb, var(--steel) 40%, transparent);">
     <div class="flex items-center gap-1">
-      <carbon:checkmark-filled class="text-xl text-orange-400 shrink-0" />
+      <carbon:checkmark-filled class="text-xl shrink-0" style="color:var(--steel)" />
       <span class="text-base font-bold">Verify user signature</span>
     </div>
-    <div class="text-sm mt-2 font-semibold text-green-600">Ensures the user owns the certificate</div>
+    <div class="text-sm mt-2 font-semibold" style="color:var(--deep-steel)">Ensures the user owns the certificate</div>
     <div class="font-mono text-sm mt-3 flex flex-col gap-1.5">
       <div>n = n<sub>user</sub> (2048-bit) — the user's public key</div>
       <div>M = designated message (provided by the platform)</div>
@@ -681,7 +667,7 @@ transition: slide-up
   --text: #1f2937;
   --text-dim: #64748b;
   --edge: #64748b;
-  --edge0: #2563eb;
+  --edge0: var(--steel);
   --edge1: #d97706;
 }
 .smt-stage-wrap .stage {
@@ -797,7 +783,7 @@ transition: slide-up
   --text: #1f2937;
   --text-dim: #64748b;
   --edge: #64748b;
-  --edge0: #2563eb;
+  --edge0: var(--steel);
   --edge1: #d97706;
 }
 .smt-stage-wrap .stage {
@@ -1069,7 +1055,7 @@ transition: slide-up
 
 <div class="diagrams-wrap">
 
-<div class="flex items-start justify-center">
+<div class="flex items-start justify-center -mt-4">
   <div class="flex flex-col gap-2 text-base text-right self-center pl-10">
     <div class="flex items-center justify-end text-blue-600 mt-6">*Issuer RSA public key <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
     <div class="flex items-center justify-end text-gray-500">Issuer RSA signature <span class="arrow-line w-20 ml-2 -mr-4"></span></div>
@@ -1178,29 +1164,29 @@ class: text-center
 
 <div v-click class="flex justify-center mt-6">
   <div class="pkcommit-box rounded-xl border-2 px-8 py-5">
-    <code class="text-base text-gray-800">pkCommit = hash(<span style="color:#2563eb; font-weight:600">userRSAPublicKey</span>, <span style="color:#7c3aed; font-weight:600">pkBlind</span>)</code>
+    <code class="text-base text-gray-800">pkCommit = hash(<span style="color:var(--steel); font-weight:600">userRSAPublicKey</span>, <span style="color:var(--deep-steel); font-weight:600">pkBlind</span>)</code>
   </div>
 </div>
 
 <div class="grid grid-cols-3 gap-4 mt-8 max-w-2xl mx-auto text-left">
-  <div v-click class="bg-teal-50 rounded-xl border-2 border-teal-500 p-4 flex items-center gap-3">
-    <carbon:view-off class="text-2xl shrink-0" style="color:#0d9488" />
+  <div v-click class="rounded-xl border-2 p-4 flex items-center gap-3" style="background: color-mix(in srgb, var(--steel) 8%, transparent); border-color: color-mix(in srgb, var(--steel) 50%, transparent);">
+    <carbon:view-off class="text-2xl shrink-0" style="color:var(--steel)" />
     <div class="text-base text-gray-800">Doesn't reveal the user's real identity</div>
   </div>
-  <div v-click class="bg-teal-50 rounded-xl border-2 border-teal-500 p-4 flex items-center gap-3">
-    <carbon:shuffle class="text-2xl shrink-0" style="color:#0d9488" />
-    <div class="text-base text-gray-800"><code style="color:#7c3aed; font-weight:600">pkBlind</code>: a random number</div>
+  <div v-click class="rounded-xl border-2 p-4 flex items-center gap-3" style="background: color-mix(in srgb, var(--steel) 8%, transparent); border-color: color-mix(in srgb, var(--steel) 50%, transparent);">
+    <carbon:shuffle class="text-2xl shrink-0" style="color:var(--steel)" />
+    <div class="text-base text-gray-800"><code style="color:var(--deep-steel); font-weight:600">pkBlind</code>: a random number</div>
   </div>
-  <div v-click class="bg-teal-50 rounded-xl border-2 border-teal-500 p-4 flex items-center gap-3">
-    <carbon:renew class="text-2xl shrink-0" style="color:#0d9488" />
+  <div v-click class="rounded-xl border-2 p-4 flex items-center gap-3" style="background: color-mix(in srgb, var(--steel) 8%, transparent); border-color: color-mix(in srgb, var(--steel) 50%, transparent);">
+    <carbon:renew class="text-2xl shrink-0" style="color:var(--steel)" />
     <div class="text-base text-gray-800">Prevents the same user from generating an identical <code class="text-gray-800">pkCommit</code><br/>across multiple proofs</div>
   </div>
 </div>
 
 <style>
 .pkcommit-box {
-  border-color: #0d9488;
-  background: #f0fdfa;
+  border-color: var(--steel);
+  background: color-mix(in srgb, var(--steel) 6%, transparent);
 }
 </style>
 
@@ -1214,17 +1200,17 @@ class: text-center
 
 <div class="grid grid-cols-3 gap-4 mt-6 max-w-4xl mx-auto">
   <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-6">
-    <ph:device-mobile class="text-3xl mb-2 mx-auto" style="color:#2563eb" />
+    <ph:device-mobile class="text-3xl mb-2 mx-auto" style="color:var(--steel)" />
     <div class="text-3xl font-bold text-gray-800">~5s</div>
     <div class="text-sm text-gray-600 mt-1">iPhone 16 Pro (2024)</div>
   </div>
   <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-6">
-    <ph:android-logo class="text-3xl mb-2 mx-auto" style="color:#2563eb" />
+    <ph:android-logo class="text-3xl mb-2 mx-auto" style="color:var(--steel)" />
     <div class="text-3xl font-bold text-gray-800">~6s</div>
     <div class="text-sm text-gray-600 mt-1">Samsung S23U (2023)</div>
   </div>
   <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-6">
-    <carbon:laptop class="text-3xl mb-2 mx-auto" style="color:#2563eb" />
+    <carbon:laptop class="text-3xl mb-2 mx-auto" style="color:var(--steel)" />
     <div class="text-3xl font-bold text-gray-800">~20s</div>
     <div class="text-sm text-gray-600 mt-1">MacBook Browser (wasm)</div>
   </div>
@@ -1356,7 +1342,7 @@ For security reasons, the private key never leaves the physical card's chip<br/>
 
 <div class="flex items-center justify-center mt-3">
   <div v-click class="bg-blue-50 rounded-lg border-2 border-blue-400 px-4 py-2 text-center">
-    <div class="text-base text-gray-700 flex items-center gap-1.5"><carbon:id-management class="text-lg" style="color:#2563eb" /> Same natural person</div>
+    <div class="text-base text-gray-700 flex items-center gap-1.5"><carbon:id-management class="text-lg" style="color:var(--steel)" /> Same natural person</div>
   </div>
 </div>
 
@@ -1442,11 +1428,11 @@ layout: center
 
 <div class="grid grid-cols-2 gap-4 mt-6 max-w-xl mx-auto text-left">
   <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-4 flex items-center gap-3">
-    <carbon:time class="text-2xl shrink-0" style="color:#2563eb" />
+    <carbon:time class="text-2xl shrink-0" style="color:var(--steel)" />
     <div class="text-gray-800">Gives the ZK proof <b>a time limit</b></div>
   </div>
   <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-4 flex items-center gap-3">
-    <carbon:certificate-check class="text-2xl shrink-0" style="color:#2563eb" />
+    <carbon:certificate-check class="text-2xl shrink-0" style="color:var(--steel)" />
     <div class="text-gray-800">The platform provides the challenge and <b>checks whether it has expired</b></div>
   </div>
 </div>
@@ -1518,15 +1504,15 @@ challengeSquared <== challenge * challenge;
 <div class="grid grid-cols-2 gap-8 mt-8 max-w-3xl mx-auto">
 <div>
 
-<h2 class="text-lg font-semibold flex items-center gap-2 text-gray-800"><carbon:devices class="text-2xl" style="color:#2563eb" /> Cross-platform</h2>
+<h2 class="text-lg font-semibold flex items-center gap-2 text-gray-800"><carbon:devices class="text-2xl" style="color:var(--steel)" /> Cross-platform</h2>
 
 <div class="flex flex-col gap-3 mt-4">
   <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-3 flex items-center gap-3">
-    <carbon:mobile class="text-xl shrink-0" style="color:#2563eb" />
+    <carbon:mobile class="text-xl shrink-0" style="color:var(--steel)" />
     <div class="text-gray-800">React Native</div>
   </div>
   <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-3 flex items-center gap-3">
-    <carbon:application class="text-xl shrink-0" style="color:#2563eb" />
+    <carbon:application class="text-xl shrink-0" style="color:var(--steel)" />
     <div class="text-gray-800">Flutter</div>
   </div>
 </div>
@@ -1580,10 +1566,11 @@ challengeSquared <== challenge * challenge;
 </div>
 
 ---
-layout: center
----
 
-# TW FidO <br/>(Mobile Citizen Digital Certificate)<br/> Development
+<div class="divider-slide">
+  <div class="part-no">Part Two &middot; TW FidO</div>
+  <h1>Mobile Citizen Digital<br/>Certificate Development</h1>
+</div>
 
 ---
 
@@ -1621,15 +1608,15 @@ Generate a key pair for the TW FidO app.
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': {
   'primaryColor': '#dbeafe',
-  'primaryBorderColor': '#2563eb',
+  'primaryBorderColor': '#5980a6',
   'primaryTextColor': '#1f2937',
   'actorBkg': '#dbeafe',
-  'actorBorder': '#2563eb',
+  'actorBorder': '#5980a6',
   'actorTextColor': '#1f2937',
   'signalColor': '#374151',
   'signalTextColor': '#1f2937',
   'labelBoxBkgColor': '#dbeafe',
-  'labelBoxBorderColor': '#2563eb',
+  'labelBoxBorderColor': '#5980a6',
   'labelTextColor': '#1f2937',
   'noteBkgColor': '#fef9c3',
   'noteBorderColor': '#d97706',
@@ -1661,15 +1648,15 @@ The application must first request an **SP ticket (Service Provider ticket)** fr
 ```mermaid {scale: 1}
 %%{init: {'theme': 'base', 'themeVariables': {
   'primaryColor': '#dbeafe',
-  'primaryBorderColor': '#2563eb',
+  'primaryBorderColor': '#5980a6',
   'primaryTextColor': '#1f2937',
   'actorBkg': '#dbeafe',
-  'actorBorder': '#2563eb',
+  'actorBorder': '#5980a6',
   'actorTextColor': '#1f2937',
   'signalColor': '#374151',
   'signalTextColor': '#1f2937',
   'labelBoxBkgColor': '#dbeafe',
-  'labelBoxBorderColor': '#2563eb',
+  'labelBoxBorderColor': '#5980a6',
   'labelTextColor': '#1f2937',
   'noteBkgColor': '#fef9c3',
   'noteBorderColor': '#d97706',
@@ -1775,15 +1762,15 @@ const idp_payload = transaction_id + error_code + sp_ticket;
 ```mermaid {scale: 0.9}
 %%{init: {'theme': 'base', 'themeVariables': {
   'primaryColor': '#dbeafe',
-  'primaryBorderColor': '#2563eb',
+  'primaryBorderColor': '#5980a6',
   'primaryTextColor': '#1f2937',
   'actorBkg': '#dbeafe',
-  'actorBorder': '#2563eb',
+  'actorBorder': '#5980a6',
   'actorTextColor': '#1f2937',
   'signalColor': '#374151',
   'signalTextColor': '#1f2937',
   'labelBoxBkgColor': '#dbeafe',
-  'labelBoxBorderColor': '#2563eb',
+  'labelBoxBorderColor': '#5980a6',
   'labelTextColor': '#1f2937',
   'noteBkgColor': '#fef9c3',
   'noteBorderColor': '#d97706',
@@ -1811,15 +1798,15 @@ sequenceDiagram
 ```mermaid {scale: 0.8}
 %%{init: {'theme': 'base', 'themeVariables': {
   'primaryColor': '#dbeafe',
-  'primaryBorderColor': '#2563eb',
+  'primaryBorderColor': '#5980a6',
   'primaryTextColor': '#1f2937',
   'actorBkg': '#dbeafe',
-  'actorBorder': '#2563eb',
+  'actorBorder': '#5980a6',
   'actorTextColor': '#1f2937',
   'signalColor': '#374151',
   'signalTextColor': '#1f2937',
   'labelBoxBkgColor': '#dbeafe',
-  'labelBoxBorderColor': '#2563eb',
+  'labelBoxBorderColor': '#5980a6',
   'labelTextColor': '#1f2937',
   'noteBkgColor': '#fef9c3',
   'noteBorderColor': '#d97706',
@@ -1896,7 +1883,7 @@ Response Fields of /getAthOrSignResult
 
 <div class="grid grid-cols-2 gap-4 mt-2">
   <div v-click class="bg-blue-50 rounded-xl border-2 border-blue-400 p-4">
-    <carbon:code class="text-2xl mb-1" style="color:#2563eb" />
+    <carbon:code class="text-2xl mb-1" style="color:var(--steel)" />
     <div class="font-semibold text-gray-800">Developer-Friendly</div>
     <div class="text-sm text-gray-600 mt-1">Verified via web or app — no photo upload or manual review like an ID card requires</div>
   </div>
@@ -2085,7 +2072,7 @@ make serve
 # Expose the backend server
 
 <div class="flex items-center gap-2 text-base text-gray-700 mt-2 mb-3">
-  <carbon:api class="text-xl shrink-0" style="color:#2563eb" />
+  <carbon:api class="text-xl shrink-0" style="color:var(--steel)" />
   Use <a href="https://ngrok.com/" target="_blank" class="underline">ngrok</a> to expose the local server
 </div>
 
@@ -2150,7 +2137,7 @@ class: text-center
 
 <div class="flex justify-center gap-6 mt-8">
   <a href="/50" class="platform-glow-blue flex flex-col items-center gap-2 bg-blue-50 border-2 border-blue-400 rounded-xl px-10 py-6 transition-shadow outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
-    <ph:apple-logo class="text-4xl" style="color:#2563eb" />
+    <ph:apple-logo class="text-4xl" style="color:var(--steel)" />
     <div class="text-lg font-semibold text-gray-800">iOS</div>
     <div class="text-xs text-gray-500">Page 50</div>
   </a>
@@ -2170,7 +2157,7 @@ class: text-center
 .platform-glow-blue { animation: platform-glow-blue 2.4s ease-in-out infinite; }
 @keyframes platform-glow-blue {
   0%, 100% { box-shadow: 0 0 0px 0px rgba(37,99,235,0); border-color: #60a5fa; }
-  50% { box-shadow: 0 0 20px 4px rgba(37,99,235,0.45); border-color: #2563eb; }
+  50% { box-shadow: 0 0 20px 4px rgba(37,99,235,0.45); border-color: var(--steel); }
 }
 .platform-glow-green { animation: platform-glow-green 2.4s ease-in-out infinite; }
 @keyframes platform-glow-green {
@@ -2200,15 +2187,15 @@ transition: slide-up
 
 <div class="flex flex-col gap-2 mt-2 max-w-2xl">
   <div class="flex items-center gap-3 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
-    <carbon:development class="text-xl shrink-0" style="color:#2563eb" />
+    <carbon:development class="text-xl shrink-0" style="color:var(--steel)" />
     <div class="text-sm text-gray-800">Xcode</div>
   </div>
   <div class="flex items-center gap-3 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
-    <carbon:password class="text-xl shrink-0" style="color:#2563eb" />
+    <carbon:password class="text-xl shrink-0" style="color:var(--steel)" />
     <div class="text-sm text-gray-800">Apply <code class="text-red-700 font-semibold" style="background-color:#fee2e2; border-radius:6px;">fidoSpServiceID</code> and <code class="text-red-700 font-semibold" style="background-color:#fee2e2; border-radius:6px;">fidoAESKey</code> from <a href="https://fido.moi.gov.tw/pt/" target="_blank" class="underline">fido.moi.gov.tw/pt</a></div>
   </div>
   <div class="flex flex-col gap-1 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
-    <div class="flex items-center gap-3 text-sm text-gray-800"><carbon:mobile class="text-xl shrink-0" style="color:#2563eb" /> Install TW FidO (行動自然人憑證) App from <a href="https://apps.apple.com/tw/app/%E8%A1%8C%E5%8B%95%E8%87%AA%E7%84%B6%E4%BA%BA%E6%86%91%E8%AD%89/id1462866416" target="_blank" class="underline">App Store</a></div>
+    <div class="flex items-center gap-3 text-sm text-gray-800"><carbon:mobile class="text-xl shrink-0" style="color:var(--steel)" /> Install TW FidO (行動自然人憑證) App from <a href="https://apps.apple.com/tw/app/%E8%A1%8C%E5%8B%95%E8%87%AA%E7%84%B6%E4%BA%BA%E6%86%91%E8%AD%89/id1462866416" target="_blank" class="underline">App Store</a></div>
     <div class="text-xs text-gray-600 pl-8">Apply for a Citizen Digital Certificate (自然人憑證) and register it in the TW FidO App</div>
   </div>
 </div>
@@ -2296,7 +2283,7 @@ transition: slide-up
 # Xcode
 
 
-<h2 class="text-lg font-semibold leading-tight flex items-center gap-2 mt-2"><carbon:development class="text-xl" style="color:#2563eb" /> Open the project in Xcode</h2>
+<h2 class="text-lg font-semibold leading-tight flex items-center gap-2 mt-2"><carbon:development class="text-xl" style="color:var(--steel)" /> Open the project in Xcode</h2>
 
 <div class="terminal-window max-w-2xl mx-auto mt-2 rounded-xl overflow-hidden border-2 border-gray-300 shadow-lg">
   <div class="flex items-center gap-2 px-4 py-2" style="background:#2d2d2d;">
@@ -2330,7 +2317,7 @@ open . -a Xcode
 }
 </style>
 
-<h2 class="text-lg font-semibold leading-tight flex items-center gap-2 mt-4"><carbon:update-now class="text-xl" style="color:#2563eb" /> Update dependencies</h2>
+<h2 class="text-lg font-semibold leading-tight flex items-center gap-2 mt-4"><carbon:update-now class="text-xl" style="color:var(--steel)" /> Update dependencies</h2>
 
 <div class="flex justify-center mt-2">
   <img src="/images/ios_update.jpg" alt="Update Swift package dependencies in Xcode" class="rounded-lg border-2 border-gray-300 shadow-lg max-w-md w-full" />
@@ -2396,15 +2383,15 @@ transition: slide-up
 
 <div class="flex flex-col gap-2 mt-2 max-w-2xl">
   <div class="flex items-center gap-3 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
-    <carbon:development class="text-xl shrink-0" style="color:#2563eb" />
+    <carbon:development class="text-xl shrink-0" style="color:var(--steel)" />
     <div class="text-sm text-gray-800">Android Studio</div>
   </div>
   <div class="flex items-center gap-3 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
-    <carbon:password class="text-xl shrink-0" style="color:#2563eb" />
+    <carbon:password class="text-xl shrink-0" style="color:var(--steel)" />
     <div class="text-sm text-gray-800">Apply <code class="text-red-700 font-semibold" style="background-color:#fee2e2; border-radius:6px;">fidoSpServiceID</code> and <code class="text-red-700 font-semibold" style="background-color:#fee2e2; border-radius:6px;">fidoAESKey</code> from <a href="https://fido.moi.gov.tw/pt/" target="_blank" class="underline">fido.moi.gov.tw/pt</a></div>
   </div>
   <div class="flex flex-col gap-1 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
-    <div class="flex items-center gap-3 text-sm text-gray-800"><carbon:mobile class="text-xl shrink-0" style="color:#2563eb" /> Install TW FidO (行動自然人憑證) App from <a href="https://play.google.com/store/apps/details?id=tw.gov.moi.tfido" target="_blank" class="underline">Google Play</a></div>
+    <div class="flex items-center gap-3 text-sm text-gray-800"><carbon:mobile class="text-xl shrink-0" style="color:var(--steel)" /> Install TW FidO (行動自然人憑證) App from <a href="https://play.google.com/store/apps/details?id=tw.gov.moi.tfido" target="_blank" class="underline">Google Play</a></div>
     <div class="text-xs text-gray-600 pl-8">Apply for a Citizen Digital Certificate (自然人憑證) and register it in the TW FidO App</div>
   </div>
 </div>
@@ -2497,7 +2484,7 @@ transition: slide-up
 
 # Android Studio
 
-<h2 class="text-lg font-semibold leading-tight flex items-center gap-2 mt-2"><carbon:development class="text-xl" style="color:#2563eb" /> Open the project in Android Studio</h2>
+<h2 class="text-lg font-semibold leading-tight flex items-center gap-2 mt-2"><carbon:development class="text-xl" style="color:var(--steel)" /> Open the project in Android Studio</h2>
 
 <div class="terminal-window mx-auto mt-2 rounded-xl overflow-hidden border-2 border-gray-300 shadow-lg">
   <div class="flex items-center gap-2 px-4 py-2" style="background:#2d2d2d;">
@@ -2515,7 +2502,7 @@ open . -a Android\ Studio
 
 </div>
 
-<h2 class="text-lg font-semibold leading-tight flex items-center gap-2 mt-4"><carbon:update-now class="text-xl" style="color:#2563eb" /> Sync dependencies</h2>
+<h2 class="text-lg font-semibold leading-tight flex items-center gap-2 mt-4"><carbon:update-now class="text-xl" style="color:var(--steel)" /> Sync dependencies</h2>
 
 <div class="flex justify-center mt-2">
   <img src="/images/android_sync.jpg" alt="Sync projects" class="rounded-lg border-2 border-gray-300 shadow-lg max-w-md w-full" />
@@ -2588,11 +2575,11 @@ transition: slide-up
 
 <div class="flex flex-col gap-2 mt-2 max-w-3xl">
   <div class="flex flex-col gap-1 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
-    <div class="flex items-center gap-3 text-m text-gray-800"><carbon:building class="text-xl shrink-0" style="color:#2563eb" /> Apply for a Citizen Digital Certificate (自然人憑證) at a Household Registration Office (戶政事務所)</div>
+    <div class="flex items-center gap-3 text-m text-gray-800"><carbon:building class="text-xl shrink-0" style="color:var(--steel)" /> Apply for a Citizen Digital Certificate (自然人憑證) at a Household Registration Office (戶政事務所)</div>
     <div class="text-s text-gray-600 pl-8">Reference: <a href="https://moica.nat.gov.tw/index.html" target="_blank" class="underline">moica.nat.gov.tw</a></div>
   </div>
   <div class="flex items-center gap-3 bg-gray-50 rounded-lg border-2 border-gray-300 px-3 py-2">
-    <carbon:usb class="text-xl shrink-0" style="color:#2563eb" />
+    <carbon:usb class="text-xl shrink-0" style="color:var(--steel)" />
     <div class="text-m text-gray-800">Prepare a smart card reader (晶片讀卡機)</div>
   </div>
 </div>
@@ -2746,7 +2733,7 @@ class: text-center
 <div class="flex flex-col gap-2 mt-2">
   <div class="bg-gray-50 rounded-lg border-2 border-gray-300 px-4 py-2.5">
     <div class="flex items-center gap-3 mb-1.5">
-      <carbon:store class="text-2xl shrink-0" style="color:#2563eb" />
+      <carbon:store class="text-2xl shrink-0" style="color:var(--steel)" />
       <div class="flex items-baseline gap-2 flex-wrap">
         <span class="text-lg font-semibold text-gray-800">第三方數位皮夾實現超商取貨</span>
         <span class="text-sm text-gray-500">Third-Party Digital Wallet Enables Convenience Store Pickup</span>
@@ -2759,7 +2746,7 @@ class: text-center
   </div>
   <div class="bg-gray-50 rounded-lg border-2 border-gray-300 px-4 py-2.5">
     <div class="flex items-center gap-3 mb-1.5">
-      <carbon:locked class="text-2xl shrink-0" style="color:#2563eb" />
+      <carbon:locked class="text-2xl shrink-0" style="color:var(--steel)" />
       <div class="flex items-baseline gap-2 flex-wrap">
         <span class="text-lg font-semibold text-gray-800">零知識證明數位皮夾</span>
         <span class="text-sm text-gray-500">Zero-Knowledge Proof Digital Wallet</span>
@@ -2773,7 +2760,7 @@ class: text-center
   </div>
   <div class="bg-gray-50 rounded-lg border-2 border-gray-300 px-4 py-2.5">
     <div class="flex items-center gap-3 mb-1.5">
-      <carbon:wifi-off class="text-2xl shrink-0" style="color:#2563eb" />
+      <carbon:wifi-off class="text-2xl shrink-0" style="color:var(--steel)" />
       <div class="flex items-baseline gap-2 flex-wrap">
         <span class="text-lg font-semibold text-gray-800">數位皮夾離線驗證</span>
         <span class="text-sm text-gray-500">Offline Verification for Digital Wallets</span>
@@ -2786,7 +2773,7 @@ class: text-center
   </div>
   <div class="bg-gray-50 rounded-lg border-2 border-gray-300 px-4 py-2.5">
     <div class="flex items-center gap-3 mb-1.5">
-      <carbon:bank-vault class="text-2xl shrink-0" style="color:#2563eb" />
+      <carbon:bank-vault class="text-2xl shrink-0" style="color:var(--steel)" />
       <div class="flex items-baseline gap-2 flex-wrap">
         <span class="text-lg font-semibold text-gray-800">數位皮夾成為 MyData 的資料保險箱</span>
         <span class="text-sm text-gray-500">Digital Wallet as a MyData Vault</span>
@@ -2799,7 +2786,7 @@ class: text-center
   </div>
   <div class="bg-gray-50 rounded-lg border-2 border-gray-300 px-4 py-2.5">
     <div class="flex items-center gap-3 mb-1.5">
-      <carbon:radar class="text-2xl shrink-0" style="color:#2563eb" />
+      <carbon:radar class="text-2xl shrink-0" style="color:var(--steel)" />
       <div class="flex items-baseline gap-2 flex-wrap">
         <span class="text-lg font-semibold text-gray-800">數位憑證皮夾生態系監測</span>
         <span class="text-sm text-gray-500">Monitoring the Digital Credential Wallet Ecosystem</span>
