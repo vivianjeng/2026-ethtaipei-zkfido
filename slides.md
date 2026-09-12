@@ -2149,22 +2149,40 @@ class: text-center
 # 3 Different Platforms
 
 <div class="flex justify-center gap-6 mt-8">
-  <a href="/50" class="flex flex-col items-center gap-2 bg-blue-50 border-2 border-blue-400 rounded-xl px-10 py-6 hover:shadow-lg transition-shadow outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
+  <a href="/50" class="platform-glow-blue flex flex-col items-center gap-2 bg-blue-50 border-2 border-blue-400 rounded-xl px-10 py-6 transition-shadow outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
     <ph:apple-logo class="text-4xl" style="color:#2563eb" />
     <div class="text-lg font-semibold text-gray-800">iOS</div>
     <div class="text-xs text-gray-500">Page 50</div>
   </a>
-  <a href="/54" class="flex flex-col items-center gap-2 bg-green-50 border-2 border-green-500 rounded-xl px-10 py-6 hover:shadow-lg transition-shadow outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2">
+  <a href="/54" class="platform-glow-green flex flex-col items-center gap-2 bg-green-50 border-2 border-green-500 rounded-xl px-10 py-6 transition-shadow outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2">
     <ph:android-logo class="text-4xl" style="color:#16a34a" />
     <div class="text-lg font-semibold text-gray-800">Android</div>
     <div class="text-xs text-gray-500">Page 54</div>
   </a>
-  <a href="/58" class="flex flex-col items-center gap-2 bg-purple-50 border-2 border-purple-400 rounded-xl px-10 py-6 hover:shadow-lg transition-shadow outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2">
+  <a href="/58" class="platform-glow-purple flex flex-col items-center gap-2 bg-purple-50 border-2 border-purple-400 rounded-xl px-10 py-6 transition-shadow outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2">
     <ph:globe class="text-4xl" style="color:#9333ea" />
     <div class="text-lg font-semibold text-gray-800">Web</div>
     <div class="text-xs text-gray-500">Page 58</div>
   </a>
 </div>
+
+<style>
+.platform-glow-blue { animation: platform-glow-blue 2.4s ease-in-out infinite; }
+@keyframes platform-glow-blue {
+  0%, 100% { box-shadow: 0 0 0px 0px rgba(37,99,235,0); border-color: #60a5fa; }
+  50% { box-shadow: 0 0 20px 4px rgba(37,99,235,0.45); border-color: #2563eb; }
+}
+.platform-glow-green { animation: platform-glow-green 2.4s ease-in-out infinite; }
+@keyframes platform-glow-green {
+  0%, 100% { box-shadow: 0 0 0px 0px rgba(22,163,74,0); border-color: #4ade80; }
+  50% { box-shadow: 0 0 20px 4px rgba(22,163,74,0.45); border-color: #16a34a; }
+}
+.platform-glow-purple { animation: platform-glow-purple 2.4s ease-in-out infinite; }
+@keyframes platform-glow-purple {
+  0%, 100% { box-shadow: 0 0 0px 0px rgba(147,51,234,0); border-color: #c084fc; }
+  50% { box-shadow: 0 0 20px 4px rgba(147,51,234,0.45); border-color: #9333ea; }
+}
+</style>
 
 ---
 transition: slide-up
